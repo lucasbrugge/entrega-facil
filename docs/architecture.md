@@ -11,7 +11,7 @@ erDiagram
     ENTREGA ||--o{ ENDERECO : possui
 
     ENTREGA {
-        string id PK "Gerado automaticamente"
+        int id PK "Gerado automaticamente"
         string clienteNome
         string clienteCpf
         string clienteTelefone
@@ -22,8 +22,8 @@ erDiagram
     }
 
     ENDERECO {
-        string id PK "Gerado automaticamente"
-        string entregaId FK "Vínculo com a Entrega"
+        int id PK "Gerado automaticamente"
+        int entregaId FK "Vínculo com a Entrega"
         string tipo "Origem ou Destino"
         string cep
         string logradouro
