@@ -16,7 +16,7 @@ Para entender as regras de negócio, o escopo e a arquitetura técnica da aplica
 ## 🎨 Design
 
 - 🎨 Design System - Documentado no arquivo `docs/architecture.md`.
-- 🖼️ Protótipo no Figma/Stitch - [Páginas](https://stitch.withgoogle.com/projects/16992851942747660504)
+- 🖼️ Protótipo no Figma/Stitch - [Páginas](https://stitch.withgoogle.com/projects/2737167932936789921)
 ## 🌐 Site em Produção - GitHub Pages
 
 Link será adicionado após a publicação da aplicação.
