@@ -23,13 +23,37 @@ Link será adicionado após a publicação da aplicação.
 
 ## 💻 Tecnologias e Dependências
 
-- Framework CSS: Bootstrap
-- JavaScript:
-  - jQuery - Para manipulação do DOM e interatividade.
-  - jQuery Mask Plugin - Para aplicação de máscaras em CPF, telefone e CEP.
-  - JSON Server - Para simular uma API REST.
-- API Pública:
-  - ViaCEP - Consulta de CEP e preenchimento automático dos endereços.
+### Framework CSS
+
+**Bootstrap 5.3.8**
+
+O Bootstrap foi escolhido por oferecer um sistema de Grid responsivo
+e uma ampla variedade de componentes prontos compatíveis com o
+protótipo do Entrega Fácil, como Navbar, Cards, Buttons, Forms,
+Input Groups, Badges e Modals.
+
+Além de facilitar a adaptação da aplicação para dispositivos mobile,
+tablet e desktop, o framework possui classes utilitárias para
+espaçamento, alinhamento e responsividade. O projeto possui
+documentação consolidada, licença MIT e desenvolvimento ativo.
+
+O Bootstrap será customizado com SCSS/CSS para manter a identidade
+visual Neo-Industrial do projeto.
+
+### API Pública
+
+**ViaCEP**
+
+O ViaCEP foi escolhido por fornecer uma API pública e gratuita para
+consulta de endereços brasileiros através do CEP.
+
+No Entrega Fácil, a API será utilizada nos campos de origem e destino.
+Ao informar um CEP válido, a aplicação poderá preencher automaticamente
+dados como logradouro, bairro, cidade e UF.
+
+Essa integração reduz o preenchimento manual dos endereços e permite
+demonstrar requisições assíncronas e tratamento de erros utilizando
+dados reais.
 
 ## ✅ Checklist | Indicadores de Desempenho (ID) dos Resultados de Aprendizagem (RA)
 

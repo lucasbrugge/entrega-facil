@@ -120,3 +120,41 @@ Esta é uma representação inicial da estrutura do banco de dados simulado que 
   ]
 }
 ```
+## 5. Tecnologias e Integrações
+
+### Framework CSS
+
+- **Tecnologia:** Bootstrap
+- **Versão:** 5.3.8
+- **Licença:** MIT
+- **Uso:** Grid responsivo, Navbar, Cards, Buttons, Forms,
+  Input Groups, Badges, Modal e classes utilitárias.
+
+A estilização padrão do Bootstrap será customizada com SCSS/CSS
+para reproduzir o Design System Neo-Industrial Mono definido
+no protótipo.
+
+### API Pública
+
+- **Serviço:** ViaCEP
+- **Versionamento:** não informado explicitamente pelo serviço
+- **Formato utilizado:** JSON
+- **Endpoint:** `https://viacep.com.br/ws/{cep}/json/`
+- **Método:** GET
+
+Campos utilizados:
+
+- `cep`
+- `logradouro`
+- `bairro`
+- `localidade`
+- `uf`
+
+A consulta será realizada para os endereços de origem e destino.
+
+#### Erros previstos
+
+- CEP fora do formato de 8 dígitos: requisição inválida.
+- CEP válido, porém inexistente: retorno com `erro: true`.
+- Erro de conexão: a aplicação deverá informar que não foi
+  possível consultar o CEP.
