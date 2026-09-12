@@ -1,0 +1,29 @@
+{
+  "name": "entrega-facil",
+  "version": "1.0.0",
+  "description": "O Entrega Fácil é uma aplicação web responsiva para cadastro e acompanhamento básico de entregas. A aplicação permitirá cadastrar os dados do cliente, informações do produto, endereço de origem, endereço de destino, data prevista e status da entrega.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucasbrugge/entrega-facil.git"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/lucasbrugge/entrega-facil/issues"
+  },
+  "homepage": "https://github.com/lucasbrugge/entrega-facil#readme",
+  "dependencies": {
+    "jquery": "^4.0.0",
+    "uuid": "^14.0.2"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
+  }
+}
