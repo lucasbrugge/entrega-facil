@@ -4,17 +4,35 @@
   // Keep the documented JSON Server contract configurable for local environments.
   const API_URL = window.ENTREGA_FACIL_API_URL || 'http://localhost:3000';
   const STATUSES = ['Pendente', 'Em transporte', 'Entregue', 'Cancelada'];
+  const demo = window.EntregaFacilDemo;
+  let dataSource = 'unknown';
+  let currentDelivery = null;
+  let currentAddresses = [];
   const all = (selector, root = document) => Array.from(root.querySelectorAll(selector));
   const byId = (id) => document.getElementById(id);
 
   async function api(path, options = {}) {
-    const response = await fetch(`${API_URL}${path}`, {
-      ...options,
-      headers: { 'Content-Type': 'application/json', ...(options.headers || {}) },
-    });
-    if (!response.ok) throw new Error(`A API respondeu com status ${response.status}.`);
+    let response;
+    try {
+      response = await fetch(`${API_URL}${path}`, {
+        ...options,
+        headers: { 'Content-Type': 'application/json', ...(options.headers || {}) },
+      });
+    } catch (error) {
+      error.apiUnavailable = true;
+      throw error;
+    }
+    if (!response.ok) {
+      const error = new Error(`A API respondeu com status ${response.status}.`);
+      error.status = response.status;
+      throw error;
+    }
     if (response.status === 204) return null;
     return response.json();
+  }
+
+  function apiUnavailable(error) {
+    return error.apiUnavailable === true || error.status >= 500;
   }
 
   function showAlert(message, type = 'danger') {
@@ -28,6 +46,10 @@
   function hideAlert() {
     const box = byId('app-alert');
     if (box) { box.className = 'alert d-none'; box.textContent = ''; }
+  }
+
+  function showDemoNotice() {
+    showAlert('JSON Server indisponível. Exibindo dados de demonstração; alterações ficam salvas somente neste navegador.', 'warning');
   }
 
   function statusClass(status = '') {
@@ -57,18 +79,29 @@
     if (!list) return;
     try {
       const [deliveries, addresses] = await Promise.all([api('/entregas'), api('/enderecos')]);
+      dataSource = 'api';
       hideAlert();
-      const merged = deliveries.map((delivery) => ({
-        ...delivery,
-        addresses: addresses.filter((address) => String(address.entregaId) === String(delivery.id)),
-      }));
-      window.entregaFacilItems = merged;
-      byId('delivery-count').textContent = merged.length;
-      renderDeliveries();
+      setDeliveries(deliveries, addresses);
     } catch (error) {
-      showAlert(`Não foi possível carregar as entregas. Verifique se o JSON Server está ativo em ${API_URL}. ${error.message}`);
-      byId('delivery-empty').classList.remove('d-none');
+      if (apiUnavailable(error)) {
+        dataSource = 'demo';
+        const sample = demo.snapshot();
+        setDeliveries(sample.entregas, sample.enderecos);
+        showDemoNotice();
+      } else {
+        showAlert(`Não foi possível carregar as entregas da API em ${API_URL}. ${error.message}`);
+        byId('delivery-empty').classList.remove('d-none');
+      }
     }
+  }
+
+  function setDeliveries(deliveries, addresses) {
+    window.entregaFacilItems = deliveries.map((delivery) => ({
+      ...delivery,
+      addresses: addresses.filter((address) => String(address.entregaId) === String(delivery.id)),
+    }));
+    byId('delivery-count').textContent = window.entregaFacilItems.length;
+    renderDeliveries();
   }
 
   function renderDeliveries() {
@@ -163,12 +196,30 @@
     submit.disabled = true;
     try {
       const value = Object.fromEntries(new FormData(form).entries());
-      const delivery = await api('/entregas', { method: 'POST', body: JSON.stringify({
+      if (dataSource === 'unknown') {
+        try {
+          await Promise.all([api('/entregas'), api('/enderecos')]);
+          dataSource = 'api';
+        } catch (error) {
+          if (!apiUnavailable(error)) throw error;
+          dataSource = 'demo';
+        }
+      }
+
+      const deliveryData = {
         clienteNome: value.clienteNome.trim(), clienteCpf: value.clienteCpf.trim(),
         clienteTelefone: value.clienteTelefone.trim(), produtoNome: value.produtoNome.trim(),
         produtoDescricao: value.produtoDescricao.trim(), dataPrevista: value.dataPrevista,
         status: value.status,
-      }) });
+      };
+
+      if (dataSource === 'demo') {
+        saveDemoDelivery(deliveryData, form);
+        window.location.href = '../index.html';
+        return;
+      }
+
+      const delivery = await api('/entregas', { method: 'POST', body: JSON.stringify(deliveryData) });
       for (const type of ['origem', 'destino']) {
         await api('/enderecos', { method: 'POST', body: JSON.stringify({ entregaId: delivery.id, ...formAddress(form, type) }) });
       }
@@ -176,6 +227,11 @@
     } catch (error) {
       showAlert(`Não foi possível salvar a entrega. ${error.message}`);
     } finally { submit.disabled = false; }
+  }
+
+  function saveDemoDelivery(delivery, form) {
+    const addresses = ['origem', 'destino'].map((type) => formAddress(form, type));
+    demo.saveDelivery(delivery, addresses);
   }
 
   async function lookupCep(type) {
@@ -212,22 +268,44 @@
     if (!id) { showAlert('O identificador da entrega não foi informado.'); return; }
     try {
       const [delivery, addresses] = await Promise.all([api(`/entregas/${encodeURIComponent(id)}`), api(`/enderecos?entregaId=${encodeURIComponent(id)}`)]);
-      const origin = addresses.find((item) => item.tipo?.toLocaleLowerCase('pt-BR') === 'origem');
-      const destination = addresses.find((item) => item.tipo?.toLocaleLowerCase('pt-BR') === 'destino');
-      title.textContent = `Entrega #${String(delivery.id).padStart(3, '0')}`;
-      fillAddress('origin', origin || {});
-      fillAddress('destination', destination || {});
-      byId('detail-client').textContent = delivery.clienteNome || '—';
-      byId('detail-cpf').textContent = delivery.clienteCpf || '—';
-      byId('detail-phone').textContent = delivery.clienteTelefone || '—';
-      byId('detail-product').textContent = delivery.produtoNome || '—';
-      byId('detail-description').textContent = delivery.produtoDescricao || '—';
-      byId('detail-date').textContent = localDate(delivery.dataPrevista);
-      updateStatusDisplay(delivery.status);
-      byId('modal-delivery-id').textContent = title.textContent;
-      byId('new-status').value = delivery.status;
-      byId('status-form').dataset.deliveryId = delivery.id;
-    } catch (error) { showAlert(`Não foi possível carregar os detalhes da entrega. ${error.message}`); }
+      dataSource = 'api';
+      hideAlert();
+      displayDetails(delivery, addresses);
+    } catch (error) {
+      if (apiUnavailable(error)) {
+        dataSource = 'demo';
+        const delivery = demo.findDelivery(id);
+        if (delivery) {
+          const addresses = demo.snapshot().enderecos.filter((item) => String(item.entregaId) === String(id));
+          showDemoNotice();
+          displayDetails(delivery, addresses);
+        } else {
+          showAlert('JSON Server indisponível. Esta entrega não está nos dados de demonstração locais.', 'warning');
+        }
+      } else {
+        showAlert(`Não foi possível carregar os detalhes da entrega. ${error.message}`);
+      }
+    }
+  }
+
+  function displayDetails(delivery, addresses) {
+    const origin = addresses.find((item) => item.tipo?.toLocaleLowerCase('pt-BR') === 'origem');
+    const destination = addresses.find((item) => item.tipo?.toLocaleLowerCase('pt-BR') === 'destino');
+    currentDelivery = delivery;
+    currentAddresses = addresses;
+    byId('detail-title').textContent = `Entrega #${String(delivery.id).padStart(3, '0')}`;
+    fillAddress('origin', origin || {});
+    fillAddress('destination', destination || {});
+    byId('detail-client').textContent = delivery.clienteNome || '—';
+    byId('detail-cpf').textContent = delivery.clienteCpf || '—';
+    byId('detail-phone').textContent = delivery.clienteTelefone || '—';
+    byId('detail-product').textContent = delivery.produtoNome || '—';
+    byId('detail-description').textContent = delivery.produtoDescricao || '—';
+    byId('detail-date').textContent = localDate(delivery.dataPrevista);
+    updateStatusDisplay(delivery.status);
+    byId('modal-delivery-id').textContent = byId('detail-title').textContent;
+    byId('new-status').value = delivery.status;
+    byId('status-form').dataset.deliveryId = delivery.id;
   }
 
   function updateStatusDisplay(status) {
@@ -243,11 +321,35 @@
     const submit = form.querySelector('[type="submit"]');
     submit.disabled = true;
     try {
+      const status = byId('new-status').value;
+      if (dataSource === 'demo') {
+        const updated = demo.updateStatus(form.dataset.deliveryId, status);
+        if (!updated) throw new Error('A entrega de demonstração não foi encontrada.');
+        currentDelivery = updated;
+        updateStatusDisplay(updated.status);
+        bootstrap.Modal.getOrCreateInstance(byId('status-modal')).hide();
+        showAlert('Status atualizado nos dados de demonstração deste navegador.', 'warning');
+        return;
+      }
+
       const updated = await api(`/entregas/${encodeURIComponent(form.dataset.deliveryId)}`, { method: 'PATCH', body: JSON.stringify({ status: byId('new-status').value }) });
       updateStatusDisplay(updated.status);
+      currentDelivery = updated;
       bootstrap.Modal.getOrCreateInstance(byId('status-modal')).hide();
       showAlert('Status atualizado com sucesso.', 'success');
-    } catch (error) { showAlert(`Não foi possível atualizar o status. ${error.message}`); }
+    } catch (error) {
+      if (apiUnavailable(error) && currentDelivery) {
+        dataSource = 'demo';
+        demo.upsertDelivery(currentDelivery, currentAddresses);
+        const updated = demo.updateStatus(currentDelivery.id, byId('new-status').value);
+        currentDelivery = updated;
+        updateStatusDisplay(updated.status);
+        bootstrap.Modal.getOrCreateInstance(byId('status-modal')).hide();
+        showAlert('JSON Server indisponível. Status atualizado somente nos dados de demonstração deste navegador.', 'warning');
+      } else {
+        showAlert(`Não foi possível atualizar o status. ${error.message}`);
+      }
+    }
     finally { submit.disabled = false; }
   }
 
