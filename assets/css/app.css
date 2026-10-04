@@ -28,8 +28,9 @@ h1, h2, h3, .navbar-brand, .ef-heading { font-family: 'Space Grotesk', Inter, sa
 .ef-page { max-width: 1200px; padding-top: 2rem; padding-bottom: 3rem; }
 .ef-kicker { color: var(--ef-secondary); font: 500 .72rem/1.3 'Space Grotesk', sans-serif; letter-spacing: .08em; text-transform: uppercase; }
 .ef-page-heading { border-bottom: 1px solid var(--ef-ink); padding-bottom: 1rem; margin-bottom: 1.5rem; }
+.ef-page-heading > div, .ef-card .card-header > div { min-width: 0; }
 .ef-page-heading h1 { margin: .3rem 0; font-size: clamp(1.65rem, 3vw, 2rem); font-weight: 700; letter-spacing: -.04em; }
-.ef-page-heading p { color: var(--ef-secondary); margin: 0; }
+.ef-page-heading p { color: var(--ef-secondary); margin: 0; overflow-wrap: anywhere; }
 .ef-card { background: var(--ef-surface); border: 1px solid var(--ef-ink); border-radius: 4px; box-shadow: var(--ef-shadow); }
 .ef-card .card-header { background: var(--ef-surface); border-bottom: 1px solid var(--ef-ink); }
 .ef-card-title { font: 600 1.05rem 'Space Grotesk', sans-serif; margin: 0; }
@@ -46,7 +47,7 @@ h1, h2, h3, .navbar-brand, .ef-heading { font-family: 'Space Grotesk', Inter, sa
 .ef-delivery-card .card-header, .ef-delivery-card .card-footer { padding: .85rem 1rem; }
 .ef-delivery-card .card-body { padding: 1rem; }
 .ef-meta { display: block; color: var(--ef-secondary); font: 500 .68rem 'Space Grotesk', sans-serif; letter-spacing: .08em; text-transform: uppercase; }
-.ef-meta-value { margin: .15rem 0 .8rem; font-size: .9rem; }
+.ef-meta-value { margin: .15rem 0 .8rem; font-size: .9rem; overflow-wrap: anywhere; }
 .ef-card-footer { background: var(--ef-muted); border-top: 1px solid var(--ef-ink); }
 .ef-status { display: inline-block; padding: .22rem .45rem; border: 1px solid; border-radius: 3px; font: 500 .68rem 'Space Grotesk', sans-serif; text-transform: uppercase; white-space: nowrap; }
 .status-pendente { color: #664d03; background: #fff3cd; border-color: #ffda6a; }
@@ -55,6 +56,7 @@ h1, h2, h3, .navbar-brand, .ef-heading { font-family: 'Space Grotesk', Inter, sa
 .status-cancelada { color: #842029; background: #f8d7da; border-color: #f1aeb5; }
 .ef-route-card { height: 100%; padding: 1.25rem; }
 .ef-route-card h3 { font-size: 1.05rem; }
+.ef-route-card h2, .ef-route-card p, #detail-description { overflow-wrap: anywhere; }
 .ef-detail-card { height: 100%; padding: 1.25rem; }
 .ef-detail-card-header { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--ef-ink); padding-bottom: .65rem; margin-bottom: 1rem; }
 .ef-modal .modal-content { border: 2px solid var(--ef-ink); border-radius: 3px; box-shadow: 0 8px 0 var(--ef-ink); }
@@ -66,4 +68,9 @@ h1, h2, h3, .navbar-brand, .ef-heading { font-family: 'Space Grotesk', Inter, sa
   .ef-page { padding-top: 1.25rem; }
   .ef-navbar .navbar-brand { font-size: 1rem; }
   .ef-page-heading { gap: .8rem; }
+  .ef-footer .container { flex-wrap: wrap; gap: .5rem 1rem; }
+  .ef-filters { row-gap: .5rem !important; }
+  .ef-modal .modal-dialog { margin: .5rem; }
+  .ef-modal .modal-body > .d-flex { flex-wrap: wrap; gap: .75rem; }
+  .ef-modal .modal-footer { gap: .5rem; }
 }

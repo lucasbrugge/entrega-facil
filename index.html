@@ -7,14 +7,14 @@
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/css/app.css">
 </head>
-<body>
+<body class="min-vh-100 d-flex flex-column">
   <nav class="navbar navbar-expand-sm ef-navbar">
     <div class="container"><a class="navbar-brand" href="index.html">Entrega Fácil</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Abrir menu"><span class="navbar-toggler-icon"></span></button>
       <div class="collapse navbar-collapse" id="mainNav"><div class="navbar-nav ms-auto align-items-sm-center gap-sm-3"><a class="nav-link active" aria-current="page" href="index.html">Entregas</a><a class="btn btn-dark btn-sm px-3" href="pages/cadastro.html">+ Nova Entrega</a></div></div>
     </div>
   </nav>
-  <main class="container ef-page">
+  <main class="container ef-page flex-grow-1">
     <header class="ef-page-heading d-flex flex-column flex-sm-row justify-content-between align-items-sm-end">
       <div><div class="ef-kicker">Controle de expedição // Painel operacional</div><h1>Suas entregas</h1><p>Gerencie e acompanhe o status de todas as suas remessas.</p></div>
       <div class="ef-kicker mt-3 mt-sm-0"><span id="delivery-count">0</span> entregas</div>
@@ -31,7 +31,7 @@
     <section id="delivery-list" class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4" aria-live="polite" aria-label="Lista de entregas"></section>
     <div id="delivery-empty" class="ef-card p-4 text-center d-none"><h2 class="h5 ef-heading">Nenhuma entrega encontrada</h2><p class="mb-0 text-secondary">Cadastre uma entrega ou ajuste os filtros.</p></div>
   </main>
-  <footer class="ef-footer py-3"><div class="container d-flex justify-content-between"><span class="ef-heading text-uppercase">Entrega Fácil</span><span>© 2026 Entrega Fácil</span></div></footer>
+  <footer class="ef-footer py-3 mt-auto"><div class="container d-flex justify-content-between"><span class="ef-heading text-uppercase">Entrega Fácil</span><span>© 2026 Entrega Fácil</span></div></footer>
   <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/app.js"></script>
 </body>

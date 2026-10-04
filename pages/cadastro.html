@@ -7,9 +7,9 @@
   <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="../assets/css/app.css">
 </head>
-<body>
+<body class="min-vh-100 d-flex flex-column">
   <nav class="navbar navbar-expand-sm ef-navbar"><div class="container"><a class="navbar-brand" href="../index.html">Entrega Fácil</a><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Abrir menu"><span class="navbar-toggler-icon"></span></button><div class="collapse navbar-collapse" id="mainNav"><div class="navbar-nav ms-auto align-items-sm-center gap-sm-3"><a class="nav-link" href="../index.html">Entregas</a><a class="btn btn-dark btn-sm px-3" aria-current="page" href="cadastro.html">+ Nova Entrega</a></div></div></div></nav>
-  <main class="container ef-page">
+  <main class="container ef-page flex-grow-1">
     <header class="ef-page-heading d-flex flex-column flex-md-row justify-content-between align-items-md-end"><div><div class="ef-kicker">Ordem de expedição // Módulo 01</div><h1>Nova entrega</h1><p>Preencha os dados abaixo para registrar uma nova entrega no sistema.</p></div><span class="badge text-bg-light border border-secondary-subtle text-dark mt-3 mt-md-0">Despacho rodoviário padrão</span></header>
     <div id="app-alert" class="alert d-none" role="alert"></div>
     <form id="delivery-form" class="d-grid gap-4" novalidate>
@@ -27,7 +27,7 @@
       <div class="d-flex flex-column-reverse flex-sm-row justify-content-end gap-2"><a class="btn btn-outline-dark" href="../index.html">Cancelar</a><button class="btn btn-dark px-4" type="submit">✓ Cadastrar entrega</button></div>
     </form>
   </main>
-  <footer class="ef-footer py-3"><div class="container d-flex justify-content-between"><span class="ef-heading text-uppercase">Entrega Fácil</span><span>© 2026 Entrega Fácil</span></div></footer>
+  <footer class="ef-footer py-3 mt-auto"><div class="container d-flex justify-content-between"><span class="ef-heading text-uppercase">Entrega Fácil</span><span>© 2026 Entrega Fácil</span></div></footer>
   <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script><script src="../assets/js/app.js"></script>
 </body>
 </html>

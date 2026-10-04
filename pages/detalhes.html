@@ -5,9 +5,9 @@
   <title>Detalhes da Entrega | Entrega Fácil</title>
   <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css"><link rel="stylesheet" href="../assets/css/app.css">
 </head>
-<body>
+<body class="min-vh-100 d-flex flex-column">
   <nav class="navbar navbar-expand-sm ef-navbar"><div class="container"><a class="navbar-brand" href="../index.html">Entrega Fácil</a><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Abrir menu"><span class="navbar-toggler-icon"></span></button><div class="collapse navbar-collapse" id="mainNav"><div class="navbar-nav ms-auto align-items-sm-center gap-sm-3"><a class="nav-link active" href="../index.html">Entregas</a><a class="btn btn-dark btn-sm px-3" href="cadastro.html">+ Nova Entrega</a></div></div></div></nav>
-  <main class="container ef-page">
+  <main class="container ef-page flex-grow-1">
     <a class="link-dark small text-uppercase text-decoration-none" href="../index.html">← Voltar para entregas</a>
     <header class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 border-bottom border-2 border-dark pb-3 mt-3 mb-4"><div class="d-flex flex-wrap align-items-center gap-3"><h1 class="h2 ef-heading text-uppercase mb-0" id="detail-title">Entrega</h1><span id="detail-status" class="ef-status">—</span></div><button class="btn btn-dark" type="button" data-bs-toggle="modal" data-bs-target="#status-modal">↻ Atualizar status</button></header>
     <div id="app-alert" class="alert d-none" role="alert"></div>
@@ -19,7 +19,7 @@
     </section>
   </main>
   <div class="modal fade ef-modal" id="status-modal" tabindex="-1" aria-labelledby="status-modal-title" aria-hidden="true"><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h2 class="modal-title h5 ef-heading text-uppercase" id="status-modal-title">Atualizar status</h2><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button></div><form id="status-form"><div class="modal-body d-grid gap-3"><div class="d-flex justify-content-between p-3 border bg-light"><div><span class="ef-meta">Identificador</span><strong class="ef-heading" id="modal-delivery-id">—</strong></div><div class="text-end"><span class="ef-meta">Status atual</span><span class="ef-status" id="modal-current-status">—</span></div></div><div><label for="new-status" class="form-label ef-label text-uppercase">Novo status</label><select id="new-status" name="status" class="form-select" required><option value="Pendente">Pendente</option><option value="Em transporte">Em transporte</option><option value="Entregue">Entregue</option><option value="Cancelada">Cancelada</option></select><div class="form-text">A alteração atualizará a etapa operacional da entrega.</div></div></div><div class="modal-footer"><button class="btn btn-outline-dark" type="button" data-bs-dismiss="modal">Cancelar</button><button class="btn btn-dark" type="submit">Confirmar</button></div></form></div></div></div>
-  <footer class="ef-footer py-3"><div class="container d-flex justify-content-between"><span class="ef-heading text-uppercase">Entrega Fácil</span><span>© 2026 Entrega Fácil</span></div></footer>
+  <footer class="ef-footer py-3 mt-auto"><div class="container d-flex justify-content-between"><span class="ef-heading text-uppercase">Entrega Fácil</span><span>© 2026 Entrega Fácil</span></div></footer>
   <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script><script src="../assets/js/app.js"></script>
 </body>
 </html>
