@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "outline": "#747878", "on-secondary-container": "#5f6363", "on-surface-variant": "#4c4546", "status-pending-text": "#664D03", "surface-container": "#efeded", "on-surface": "#1b1c1c", "surface-muted": "#EFEDED", "tertiary-fixed-dim": "#b6c4ff", "on-primary": "#ffffff", "text-secondary": "#444748", "focus": "#0055FF", "on-background": "#1b1c1c", "tertiary": "#000000", "status-delivered-bg": "#D1E7DD", "surface-container-lowest": "#ffffff", "background": "#FBF9F8", "on-tertiary-fixed-variant": "#0039b3", "on-tertiary": "#ffffff", "status-transit-border": "#9EC5FE", "primary": "#000000", "secondary-container": "#dde0e0", "surface-container-high": "#e9e8e7", "on-primary-fixed": "#1b1b1b", "status-cancelled-text": "#842029", "on-secondary-fixed-variant": "#434748", "on-primary-container": "#848484", "error-container": "#ffdad6", "primary-fixed": "#e2e2e2", "status-delivered-border": "#A3CFBB", "primary-container": "#1b1b1b", "surface-bright": "#fbf9f8", "on-tertiary-fixed": "#001551", "status-transit-bg": "#CFE2FF", "inverse-surface": "#303030", "on-tertiary-container": "#537aff", "inverse-on-surface": "#f2f0f0", "outline-variant": "#cfc4c5", "tertiary-container": "#001551", "surface-container-low": "#f5f3f3", "text-primary": "#1B1C1C", "status-transit-text": "#084298", "status-delivered-text": "#0F5132", "on-secondary-fixed": "#181c1d", "secondary-fixed": "#e0e3e3", "surface-container-highest": "#e3e2e2", "on-error-container": "#93000a", "error": "#BA1A1A", "outline-light": "#C4C7C7", "tertiary-fixed": "#dce1ff", "secondary-fixed-dim": "#c4c7c7", "surface-tint": "#5e5e5e", "surface-secondary": "#F5F3F3", "status-cancelled-border": "#F1AEB5", "on-primary-fixed-variant": "#474747", "surface-variant": "#e3e2e2", "surface-dim": "#dbdad9", "on-secondary": "#ffffff", "inverse-primary": "#c6c6c6", "secondary": "#5b5f5f", "primary-fixed-dim": "#c6c6c6", "surface": "#FFFFFF", "status-cancelled-bg": "#F8D7DA", "status-pending-border": "#FFDA6A", "on-error": "#ffffff", "status-pending-bg": "#FFF3CD" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "xxl": "48px", "xl": "32px", "md": "16px", "lg": "24px", "sm": "8px", "xs": "4px" }, "fontFamily": { "headline-xl": [ "Space Grotesk" ], "headline-md": [ "Space Grotesk" ], "label-sm": [ "Space Grotesk" ], "headline-xl-mobile": [ "Space Grotesk" ], "headline-lg": [ "Space Grotesk" ], "body-xs": [ "Inter" ], "body-md": [ "Inter" ], "label-md": [ "Space Grotesk" ], "headline-lg-mobile": [ "Space Grotesk" ], "body-sm": [ "Inter" ] }, "fontSize": { "headline-xl": [ "32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "headline-md": [ "20px", { "lineHeight": "26px", "letterSpacing": "0em", "fontWeight": "600" } ], "label-sm": [ "12px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500" } ], "headline-xl-mobile": [ "28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "headline-lg": [ "24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "body-xs": [ "12px", { "lineHeight": "16px", "letterSpacing": "0em", "fontWeight": "400" } ], "body-md": [ "16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" } ], "label-md": [ "14px", { "lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "500" } ], "headline-lg-mobile": [ "22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "body-sm": [ "14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" } ] } } } };</script></head><body class="bg-background font-body-md text-on-surface min-h-screen flex flex-col"><header class="navbar fixed top-0 left-0 right-0 w-full z-50 bg-surface border-b border-text-primary"><div class="container max-w-[1200px] mx-auto px-lg h-16 flex items-center justify-between"><a class="flex items-center no-underline" data-path="entregas" href="#"><span class="font-headline-lg text-headline-lg text-primary uppercase tracking-tight">Entrega Fácil</span></a><nav class="flex items-center gap-md" data-active-classes="border-b-2 border-primary text-primary font-semibold"><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface py-xs transition-colors" data-path="entregas" href="#">Entregas</a><a aria-current="page" class="btn btn-primary bg-primary px-md py-sm rounded-lg hover:bg-surface transition-all flex items-center gap-xs border-b-2 border-primary text-primary font-semibold" data-path="nova-entrega" href="#">+ Nova Entrega</a></nav></div></header><main class="w-full pt-16 flex-1 bg-background max-w-[1200px] mx-auto px-lg"><div class="flex flex-col w-full">
+<div class="py-xl">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between border-b border-text-primary pb-md mb-xl gap-md">
+<div class="space-y-xs">
+<div class="flex items-center gap-xs">
+<span class="w-2.5 h-2.5 bg-primary rounded-[1px]"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-text-secondary">Ordem de Expedição // Módulo 01</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-primary tracking-tight">Nova Entrega</h1>
+<p class="font-body-md text-body-md text-text-secondary">Preencha os dados abaixo para registrar uma nova entrega no sistema.</p>
+</div>
+<div class="flex items-center gap-sm bg-surface-container px-md py-xs rounded-[4px] border border-outline-light">
+<span class="material-symbols-outlined text-text-secondary" style="font-size: 18px;">local_shipping</span>
+<span class="font-label-sm text-label-sm text-text-primary uppercase tracking-wide">Despacho Rodoviário Padrão</span>
+</div>
+</div>
+<!-- Registration Form -->
+<form class="space-y-xl" id="form-nova-entrega" onsubmit="event.preventDefault(); document.getElementById('toast-success').classList.remove('hidden');">
+<!-- Card 1: Dados do Cliente -->
+<section class="bg-surface rounded-lg border border-text-primary shadow-[0_4px_0_#1B1C1C]">
+<div class="px-lg py-md border-b border-text-primary flex items-center justify-between bg-surface-bright">
+<div class="flex items-center gap-sm">
+<span class="font-label-sm text-label-sm bg-primary text-on-primary px-xs py-[2px] rounded-[2px]">01</span>
+<h2 class="font-headline-md text-headline-md text-text-primary">Dados do Cliente</h2>
+</div>
+<span class="font-label-sm text-label-sm text-text-secondary uppercase">Identificação Principal</span>
+</div>
+<div class="p-lg grid grid-cols-1 md:grid-cols-3 gap-lg">
+<div class="space-y-xs">
+<label class="block font-label-md text-label-md text-text-primary" for="cliente-nome">
+              Nome Completo <span class="text-error">*</span>
+</label>
+<input class="w-full bg-surface border border-outline rounded-lg px-md py-sm font-body-md text-body-md text-text-primary placeholder:text-outline focus:outline-none focus:border-focus focus:ring-1 focus:ring-focus transition-all" id="cliente-nome" name="cliente_nome" placeholder="Ex: João da Silva" required="" type="text"/>
+</div>
+<div class="space-y-xs">
+<label class="block font-label-md text-label-md text-text-primary" for="cliente-cpf">
+              CPF <span class="text-error">*</span>
+</label>
+<input class="w-full bg-surface border border-outline rounded-lg px-md py-sm font-body-md text-body-md text-text-primary placeholder:text-outline focus:outline-none focus:border-focus focus:ring-1 focus:ring-focus transition-all" id="cliente-cpf" maxlength="14" name="cliente_cpf" placeholder="000.000.000-00" required="" type="text"/>
+</div>
+<div class="space-y-xs">
+<label class="block font-label-md text-label-md text-text-primary" for="cliente-telefone">
+              Telefone <span class="text-error">*</span>
+</label>
+<input class="w-full bg-surface border border-outline rounded-lg px-md py-sm font-body-md text-body-md text-text-primary placeholder:text-outline focus:outline-none focus:border-focus focus:ring-1 focus:ring-focus transition-all" id="cliente-telefone" maxlength="15" name="cliente_telefone" placeholder="(00) 00000-0000" required="" type="text"/>
+</div>
+</div>
+</section>
+<!-- Card 2: Produto -->
+<section class="bg-surface rounded-lg border border-text-primary shadow-[0_4px_0_#1B1C1C]">
+<div class="px-lg py-md border-b border-text-primary flex items-center justify-between bg-surface-bright">
+<div class="flex items-center gap-sm">
+<span class="font-label-sm text-label-sm bg-primary text-on-primary px-xs py-[2px] rounded-[2px]">02</span>
+<h2 class="font-headline-md text-headline-md text-text-primary">Produto</h2>
+</div>
+<span class="font-label-sm text-label-sm text-text-secondary uppercase">Manifesto de Carga</span>
+</div>
+<div class="p-lg space-y-md">
+<div class="space-y-xs">
+<label class="block font-label-md text-label-md text-text-primary" for="produto-nome">
+              Nome do Produto <span class="text-error">*</span>
+</label>
+<input class="w-full bg-surface border border-outline rounded-lg px-md py-sm font-body-md text-body-md text-text-primary placeholder:text-outline focus:outline-none focus:border-focus focus:ring-1 focus:ring-focus transition-all" id="produto-nome" name="produto_nome" placeholder="Ex: Peça Industrial Retificada Mod. 4" required="" type="text"/>
+</div>
+<div class="space-y-xs">
+<label class="block font-label-md text-label-md text-text-primary" for="produto-descricao">
+              Descrição (Opcional)
+            </label>
+<textarea class="w-full bg-surface border border-outline rounded-lg px-md py-sm font-body-md text-body-md text-text-primary placeholder:text-outline focus:outline-none focus:border-focus focus:ring-1 focus:ring-focus transition-all resize-y" id="produto-descricao" name="produto_descricao" placeholder="Informações adicionais, fragilidade, orientações de acondicionamento..." rows="3"></textarea>
+</div>
+</div>
+</section>
+<!-- Seção de Endereços: Origem e Destino lado a lado -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-lg">
+<!-- Card Origem -->
+<section class="bg-surface rounded-lg border border-text-primary shadow-[0_4px_0_#1B1C1C] flex flex-col justify-between">
+<div>
+<div class="px-lg py-md border-b border-text-primary flex items-center justify-between bg-surface-bright">
+<div class="flex items-center gap-sm">
+<span class="font-label-sm text-label-sm bg-primary text-on-primary px-xs py-[2px] rounded-[2px]">03A</span>
+<h2 class="font-headline-md text-headline-md text-text-primary">Origem</h2>
+</div>
+<span class="font-label-sm text-label-sm text-text-secondary uppercase">Coleta / Hub</span>
+</div>
+<div class="p-lg space-y-md">
+<!-- CEP Input Group -->
+<div class="space-y-xs">
+<label class="block font-label-md text-label-md text-text-primary" for="origem-cep">
+                  CEP <span class="text-error">*</span>
+</label>
+<div class="flex rounded-lg overflow-hidden">
+<input class="flex-1 bg-surface border border-outline border-r-0 rounded-l-lg px-md py-sm font-body-md text-body-md text-text-primary placeholder:text-outline focus:outline-none focus:border-focus focus:ring-1 focus:ring-focus transition-all" id="origem-cep" maxlength="9" name="origem_cep" placeholder="00000-000" required="" type="text"/>
+<button class="bg-surface border border-text-primary px-md py-sm font-label-md text-label-md text-text-primary hover:bg-surface-secondary active:bg-surface-container transition-colors flex items-center gap-xs whitespace-nowrap" id="btn-consultar-origem" type="button">
+<span class="material-symbols-outlined" style="font-size: 16px;">search</span>
+                    Consultar
+                  </button>
+</div>
+</div>
+<!-- Logradouro e Número -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-md">
+<div class="sm:col-span-2 space-y-xs">
+<label class="block font-label-md text-label-md text-text-primary" for="origem-logradouro">
+                    Logradouro <span class="text-error">*</span>
+</label>
+<input class="w-full bg-surface border border-outline rounded-lg px-md py-sm font-body-md text-body-md text-text-primary placeholder:text-outline focus:outline-none focus:border-focus focus:ring-1 focus:ring-focus transition-all" id="origem-logradouro" name="origem_logradouro" placeholder="Rua, Avenida, Estrada..." required="" type="text"/>
+</div>
+<div class="space-y-xs">
+<label class="block font-label-md text-label-md text-text-primary" for="origem-numero">
+                    Número <span class="text-error">*</span>
+</label>
+<input class="w-full bg-surface border border-outline rounded-lg px-md py-sm font-body-md text-body-md text-text-primary placeholder:text-outline focus:outline-none focus:border-focus focus:ring-1 focus:ring-focus transition-all" id="origem-numero" name="origem_numero" placeholder="123" required="" type="text"/>
+</div>
+</div>
+<!-- Bairro, Cidade e UF -->
+<div class="grid grid-cols-1 sm:grid-cols-6 gap-md">
+<div class="sm:col-span-3 space-y-xs">
+<label class="block font-label-md text-label-md text-text-primary" for="origem-bairro">
+                    Bairro <span class="text-error">*</span>
+</label>
+<input class="w-full bg-surface border border-outline rounded-lg px-md py-sm font-body-md text-body-md text-text-primary placeholder:text-outline focus:outline-none focus:border-focus focus:ring-1 focus:ring-focus transition-all" id="origem-bairro" name="origem_bairro" placeholder="Bairro" required="" type="text"/>
+</div>
+<div class="sm:col-span-2 space-y-xs">
+<label class="block font-label-md text-label-md text-text-primary" for="origem-cidade">
+                    Cidade <span class="text-error">*</span>
+</label>
+<input class="w-full bg-surface border border-outline rounded-lg px-md py-sm font-body-md text-body-md text-text-primary placeholder:text-outline focus:outline-none focus:border-focus focus:ring-1 focus:ring-focus transition-all" id="origem-cidade" name="origem_cidade" placeholder="Cidade" required="" type="text"/>
+</div>
+<div class="space-y-xs">
+<label class="block font-label-md text-label-md text-text-primary" for="origem-uf">
+                    UF <span class="text-error">*</span>
+</label>
+<input class="w-full uppercase bg-surface border border-outline rounded-lg px-md py-sm font-body-md text-body-md text-text-primary placeholder:text-outline focus:outline-none focus:border-focus focus:ring-1 focus:ring-focus transition-all" id="origem-uf" maxlength="2" name="origem_uf" placeholder="SP" required="" type="text"/>
+</div>
+</div>
+</div>
+</div>
+<div class="px-lg py-xs bg-surface-secondary border-t border-outline-light text-right">
+<span class="font-label-sm text-label-sm text-text-secondary">Ponto de Retirada Logística</span>
+</div>
+</section>
+<!-- Card Destino -->
+<section class="bg-surface rounded-lg border border-text-primary shadow-[0_4px_0_#1B1C1C] flex flex-col justify-between">
+<div>
+<div class="px-lg py-md border-b border-text-primary flex items-center justify-between bg-surface-bright">
+<div class="flex items-center gap-sm">
+<span class="font-label-sm text-label-sm bg-primary text-on-primary px-xs py-[2px] rounded-[2px]">03B</span>
+<h2 class="font-headline-md text-headline-md text-text-primary">Destino</h2>
+</div>
+<span class="font-label-sm text-label-sm text-text-secondary uppercase">Entrega Final</span>
+</div>
+<div class="p-lg space-y-md">
+<!-- CEP Input Group -->
+<div class="space-y-xs">
+<label class="block font-label-md text-label-md text-text-primary" for="destino-cep">
+                  CEP <span class="text-error">*</span>
+</label>
+<div class="flex rounded-lg overflow-hidden">
+<input class="flex-1 bg-surface border border-outline border-r-0 rounded-l-lg px-md py-sm font-body-md text-body-md text-text-primary placeholder:text-outline focus:outline-none focus:border-focus focus:ring-1 focus:ring-focus transition-all" id="destino-cep" maxlength="9" name="destino_cep" placeholder="00000-000" required="" type="text"/>
+<button class="bg-surface border border-text-primary px-md py-sm font-label-md text-label-md text-text-primary hover:bg-surface-secondary active:bg-surface-container transition-colors flex items-center gap-xs whitespace-nowrap" id="btn-consultar-destino" type="button">
+<span class="material-symbols-outlined" style="font-size: 16px;">search</span>
+                    Consultar
+                  </button>
+</div>
+</div>
+<!-- Logradouro e Número -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-md">
+<div class="sm:col-span-2 space-y-xs">
+<label class="block font-label-md text-label-md text-text-primary" for="destino-logradouro">
+                    Logradouro <span class="text-error">*</span>
+</label>
+<input class="w-full bg-surface border border-outline rounded-lg px-md py-sm font-body-md text-body-md text-text-primary placeholder:text-outline focus:outline-none focus:border-focus focus:ring-1 focus:ring-focus transition-all" id="destino-logradouro" name="destino_logradouro" placeholder="Rua, Avenida, Alameda..." required="" type="text"/>
+</div>
+<div class="space-y-xs">
+<label class="block font-label-md text-label-md text-text-primary" for="destino-numero">
+                    Número <span class="text-error">*</span>
+</label>
+<input class="w-full bg-surface border border-outline rounded-lg px-md py-sm font-body-md text-body-md text-text-primary placeholder:text-outline focus:outline-none focus:border-focus focus:ring-1 focus:ring-focus transition-all" id="destino-numero" name="destino_numero" placeholder="450" required="" type="text"/>
+</div>
+</div>
+<!-- Bairro, Cidade e UF -->
+<div class="grid grid-cols-1 sm:grid-cols-6 gap-md">
+<div class="sm:col-span-3 space-y-xs">
+<label class="block font-label-md text-label-md text-text-primary" for="destino-bairro">
+                    Bairro <span class="text-error">*</span>
+</label>
+<input class="w-full bg-surface border border-outline rounded-lg px-md py-sm font-body-md text-body-md text-text-primary placeholder:text-outline focus:outline-none focus:border-focus focus:ring-1 focus:ring-focus transition-all" id="destino-bairro" name="destino_bairro" placeholder="Bairro" required="" type="text"/>
+</div>
+<div class="sm:col-span-2 space-y-xs">
+<label class="block font-label-md text-label-md text-text-primary" for="destino-cidade">
+                    Cidade <span class="text-error">*</span>
+</label>
+<input class="w-full bg-surface border border-outline rounded-lg px-md py-sm font-body-md text-body-md text-text-primary placeholder:text-outline focus:outline-none focus:border-focus focus:ring-1 focus:ring-focus transition-all" id="destino-cidade" name="destino_cidade" placeholder="Cidade" required="" type="text"/>
+</div>
+<div class="space-y-xs">
+<label class="block font-label-md text-label-md text-text-primary" for="destino-uf">
+                    UF <span class="text-error">*</span>
+</label>
+<input class="w-full uppercase bg-surface border border-outline rounded-lg px-md py-sm font-body-md text-body-md text-text-primary placeholder:text-outline focus:outline-none focus:border-focus focus:ring-1 focus:ring-focus transition-all" id="destino-uf" maxlength="2" name="destino_uf" placeholder="RJ" required="" type="text"/>
+</div>
+</div>
+</div>
+</div>
+<div class="px-lg py-xs bg-surface-secondary border-t border-outline-light text-right">
+<span class="font-label-sm text-label-sm text-text-secondary">Ponto de Descarga Final</span>
+</div>
+</section>
+</div>
+<!-- Card 4: Dados da Entrega -->
+<section class="bg-surface rounded-lg border border-text-primary shadow-[0_4px_0_#1B1C1C]">
+<div class="px-lg py-md border-b border-text-primary flex items-center justify-between bg-surface-bright">
+<div class="flex items-center gap-sm">
+<span class="font-label-sm text-label-sm bg-primary text-on-primary px-xs py-[2px] rounded-[2px]">04</span>
+<h2 class="font-headline-md text-headline-md text-text-primary">Dados da Entrega</h2>
+</div>
+<span class="font-label-sm text-label-sm text-text-secondary uppercase">Cronograma Operacional</span>
+</div>
+<div class="p-lg grid grid-cols-1 md:grid-cols-2 gap-lg">
+<div class="space-y-xs">
+<label class="block font-label-md text-label-md text-text-primary" for="entrega-data">
+              Data Prevista <span class="text-error">*</span>
+</label>
+<input class="w-full bg-surface border border-outline rounded-lg px-md py-sm font-body-md text-body-md text-text-primary focus:outline-none focus:border-focus focus:ring-1 focus:ring-focus transition-all" id="entrega-data" name="entrega_data" required="" type="date"/>
+</div>
+<div class="space-y-xs">
+<label class="block font-label-md text-label-md text-text-primary" for="entrega-status">
+              Status Inicial <span class="text-error">*</span>
+</label>
+<div class="relative">
+<select class="w-full appearance-none bg-surface border border-outline rounded-lg px-md py-sm pr-10 font-body-md text-body-md text-text-primary focus:outline-none focus:border-focus focus:ring-1 focus:ring-focus transition-all" id="entrega-status" name="entrega_status" required="">
+<option selected="" value="Pendente">Pendente</option>
+<option value="Em transporte">Em transporte</option>
+<option value="Entregue">Entregue</option>
+<option value="Cancelada">Cancelada</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-text-secondary" style="font-size: 20px;">
+                expand_more
+              </span>
+</div>
+</div>
+</div>
+</section>
+<!-- Barra de Ações (Rodapé) -->
+<div class="flex flex-col-reverse sm:flex-row items-center justify-end gap-md pt-md border-t border-text-primary">
+<a class="w-full sm:w-auto text-center font-label-md text-label-md bg-surface text-text-primary border border-text-primary px-xl py-sm rounded-lg hover:bg-surface-secondary active:bg-surface-container transition-colors inline-block" data-path="entregas" href="#">
+          Cancelar
+        </a>
+<button class="w-full sm:w-auto font-label-md text-label-md bg-primary text-on-primary border border-primary px-xl py-sm rounded-lg hover:bg-surface hover:text-primary transition-all duration-150 flex items-center justify-center gap-xs shadow-[0_2px_0_#1B1C1C]" type="submit">
+<span class="material-symbols-outlined" style="font-size: 18px;">check</span>
+          Cadastrar entrega
+        </button>
+</div>
+</form>
+<!-- Feedback Banner (Toast / Feedback Simples) -->
+<div class="hidden mt-lg p-md bg-status-delivered-bg border border-status-delivered-border text-status-delivered-text rounded-lg flex items-center justify-between" id="toast-success">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined">check_circle</span>
+<span class="font-label-md text-label-md">Entrega registrada no sistema com sucesso!</span>
+</div>
+<button class="text-status-delivered-text hover:opacity-80" onclick="document.getElementById('toast-success').classList.add('hidden')" type="button">
+<span class="material-symbols-outlined text-sm">close</span>
+</button>
+</div>
+</div>
+<script>
+    // Visual Input Masks (CPF, Telefone, CEP)
+    const cpfInput = document.getElementById('cliente-cpf');
+    if (cpfInput) {
+      cpfInput.addEventListener('input', (e) => {
+        let v = e.target.value.replace(/\D/g, '');
+        if (v.length > 11) v = v.slice(0, 11);
+        v = v.replace(/(\d{3})(\d)/, '$1.$2');
+        v = v.replace(/(\d{3})(\d)/, '$1.$2');
+        v = v.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+        e.target.value = v;
+      });
+    }
+
+    const telInput = document.getElementById('cliente-telefone');
+    if (telInput) {
+      telInput.addEventListener('input', (e) => {
+        let v = e.target.value.replace(/\D/g, '');
+        if (v.length > 11) v = v.slice(0, 11);
+        if (v.length > 10) {
+          v = v.replace(/^(\d{2})(\d{5})(\d{4})$/, '($1) $2-$3');
+        } else if (v.length > 5) {
+          v = v.replace(/^(\d{2})(\d{4})(\d{0,4})$/, '($1) $2-$3');
+        } else if (v.length > 2) {
+          v = v.replace(/^(\d{2})(\d{0,5})$/, '($1) $2');
+        }
+        e.target.value = v;
+      });
+    }
+
+    const formatCep = (input) => {
+      input.addEventListener('input', (e) => {
+        let v = e.target.value.replace(/\D/g, '');
+        if (v.length > 8) v = v.slice(0, 8);
+        if (v.length > 5) {
+          v = v.replace(/^(\d{5})(\d{1,3})$/, '$1-$2');
+        }
+        e.target.value = v;
+      });
+    };
+
+    const origemCep = document.getElementById('origem-cep');
+    const destinoCep = document.getElementById('destino-cep');
+    if (origemCep) formatCep(origemCep);
+    if (destinoCep) formatCep(destinoCep);
+
+    // Mock CEP Consultation interaction
+    const btnOrigem = document.getElementById('btn-consultar-origem');
+    if (btnOrigem) {
+      btnOrigem.addEventListener('click', () => {
+        const val = origemCep.value.replace(/\D/g, '');
+        if (val.length === 8) {
+          document.getElementById('origem-logradouro').value = 'Av. das Indústrias';
+          document.getElementById('origem-bairro').value = 'Distrito Industrial';
+          document.getElementById('origem-cidade').value = 'São Paulo';
+          document.getElementById('origem-uf').value = 'SP';
+        }
+      });
+    }
+
+    const btnDestino = document.getElementById('btn-consultar-destino');
+    if (btnDestino) {
+      btnDestino.addEventListener('click', () => {
+        const val = destinoCep.value.replace(/\D/g, '');
+        if (val.length === 8) {
+          document.getElementById('destino-logradouro').value = 'Rua do Comércio';
+          document.getElementById('destino-bairro').value = 'Centro';
+          document.getElementById('destino-cidade').value = 'Rio de Janeiro';
+          document.getElementById('destino-uf').value = 'RJ';
+        }
+      });
+    }
+  </script>
+</div></main><footer class="w-full bg-surface border-t border-text-primary py-md"><div class="container max-w-[1200px] mx-auto px-lg flex items-center justify-between"><span class="font-headline-md text-label-md text-primary uppercase tracking-tight">Entrega Fácil</span><span class="font-body-sm text-body-sm text-text-secondary">© 2026 Entrega Fácil</span></div></footer></body></html>
