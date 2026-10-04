@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Entregas | Entrega Fácil</title>
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body>
+  <nav class="navbar navbar-expand-sm ef-navbar">
+    <div class="container"><a class="navbar-brand" href="index.html">Entrega Fácil</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Abrir menu"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="mainNav"><div class="navbar-nav ms-auto align-items-sm-center gap-sm-3"><a class="nav-link active" aria-current="page" href="index.html">Entregas</a><a class="btn btn-dark btn-sm px-3" href="pages/cadastro.html">+ Nova Entrega</a></div></div>
+    </div>
+  </nav>
+  <main class="container ef-page">
+    <header class="ef-page-heading d-flex flex-column flex-sm-row justify-content-between align-items-sm-end">
+      <div><div class="ef-kicker">Controle de expedição // Painel operacional</div><h1>Suas entregas</h1><p>Gerencie e acompanhe o status de todas as suas remessas.</p></div>
+      <div class="ef-kicker mt-3 mt-sm-0"><span id="delivery-count">0</span> entregas</div>
+    </header>
+    <section aria-label="Filtros de entregas" class="mb-4">
+      <div class="row g-2 align-items-center">
+        <div class="col-12 col-lg-6"><div class="input-group"><span class="input-group-text bg-white" aria-hidden="true">⌕</span><input id="delivery-search" class="form-control" type="search" placeholder="Buscar por ID, cliente ou produto..." aria-label="Buscar entregas"></div></div>
+        <div class="col-12 col-lg-6"><nav class="nav nav-pills ef-filters flex-wrap gap-1" aria-label="Filtrar por status">
+          <button class="btn btn-dark btn-sm" type="button" data-filter="todos">Todas</button><button class="btn btn-outline-dark btn-sm" type="button" data-filter="Pendente">Pendentes</button><button class="btn btn-outline-dark btn-sm" type="button" data-filter="Em transporte">Em transporte</button><button class="btn btn-outline-dark btn-sm" type="button" data-filter="Entregue">Entregues</button><button class="btn btn-outline-dark btn-sm" type="button" data-filter="Cancelada">Canceladas</button>
+        </nav></div>
+      </div>
+    </section>
+    <div id="app-alert" class="alert alert-warning d-none" role="alert"></div>
+    <section id="delivery-list" class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4" aria-live="polite" aria-label="Lista de entregas"></section>
+    <div id="delivery-empty" class="ef-card p-4 text-center d-none"><h2 class="h5 ef-heading">Nenhuma entrega encontrada</h2><p class="mb-0 text-secondary">Cadastre uma entrega ou ajuste os filtros.</p></div>
+  </main>
+  <footer class="ef-footer py-3"><div class="container d-flex justify-content-between"><span class="ef-heading text-uppercase">Entrega Fácil</span><span>© 2026 Entrega Fácil</span></div></footer>
+  <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
