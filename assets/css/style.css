@@ -28,7 +28,11 @@ main {
   flex: 1;
 }
 
-h1, h2, h3, .navbar-brand, .ef-heading {
+h1,
+h2,
+h3,
+.navbar-brand,
+.ef-heading {
   font-family: "Space Grotesk", Inter, sans-serif;
 }
 
@@ -81,7 +85,8 @@ h1, h2, h3, .navbar-brand, .ef-heading {
   margin-bottom: 1.5rem;
 }
 
-.ef-page-heading > div, .ef-card .card-header > div {
+.ef-page-heading > div,
+.ef-card .card-header > div {
   min-width: 0;
 }
 
@@ -126,6 +131,19 @@ h1, h2, h3, .navbar-brand, .ef-heading {
     gap: 0.5rem 1rem;
   }
 }
+.ef-navbar .navbar-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ef-brand-icon {
+  width: 2rem;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
 .ef-kicker {
   color: var(--ef-secondary);
   font: 500 0.72rem/1.3 "Space Grotesk", sans-serif;
@@ -164,13 +182,15 @@ h1, h2, h3, .navbar-brand, .ef-heading {
   font: 500 0.82rem "Space Grotesk", sans-serif;
 }
 
-.form-control, .form-select {
+.form-control,
+.form-select {
   border-color: #747878;
   border-radius: 4px;
   min-height: 2.55rem;
 }
 
-.form-control:focus, .form-select:focus {
+.form-control:focus,
+.form-select:focus {
   border-color: var(--ef-focus);
   box-shadow: 0 0 0 0.15rem rgba(0, 85, 255, 0.15);
 }
@@ -206,7 +226,8 @@ h1, h2, h3, .navbar-brand, .ef-heading {
   transform: translateY(-2px);
 }
 
-.ef-delivery-card .card-header, .ef-delivery-card .card-footer {
+.ef-delivery-card .card-header,
+.ef-delivery-card .card-footer {
   padding: 0.85rem 1rem;
 }
 
@@ -276,7 +297,9 @@ h1, h2, h3, .navbar-brand, .ef-heading {
   font-size: 1.05rem;
 }
 
-.ef-route-card h2, .ef-route-card p, #detail-description {
+.ef-route-card h2,
+.ef-route-card p,
+#detail-description {
   overflow-wrap: anywhere;
 }
 

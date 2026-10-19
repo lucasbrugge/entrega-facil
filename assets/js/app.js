@@ -3,11 +3,12 @@
 
   // Keep the documented JSON Server contract configurable for local environments.
   const API_URL = window.ENTREGA_FACIL_API_URL || 'http://localhost:3000';
-  const STATUSES = ['Pendente', 'Em transporte', 'Entregue', 'Cancelada'];
   const demo = window.EntregaFacilDemo;
+  const validation = window.EntregaFacilValidation;
   let dataSource = 'unknown';
   let currentDelivery = null;
   let currentAddresses = [];
+  let pendingCreation = null;
   const all = (selector, root = document) => Array.from(root.querySelectorAll(selector));
   const byId = (id) => document.getElementById(id);
 
@@ -45,15 +46,25 @@
 
   function hideAlert() {
     const box = byId('app-alert');
-    if (box) { box.className = 'alert d-none'; box.textContent = ''; }
+    if (box) {
+      box.className = 'alert d-none';
+      box.textContent = '';
+    }
   }
 
   function showDemoNotice() {
-    showAlert('JSON Server indisponível. Exibindo dados de demonstração; alterações ficam salvas somente neste navegador.', 'warning');
+    showAlert(
+      'JSON Server indisponível. Exibindo dados de demonstração; alterações ficam salvas somente neste navegador.',
+      'warning',
+    );
   }
 
   function statusClass(status = '') {
-    return `status-${status.toLocaleLowerCase('pt-BR').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, '-')}`;
+    return `status-${status
+      .toLocaleLowerCase('pt-BR')
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/\s+/g, '-')}`;
   }
 
   function statusBadge(status) {
@@ -110,43 +121,51 @@
     const query = (byId('delivery-search').value || '').trim().toLocaleLowerCase('pt-BR');
     const filter = document.querySelector('[data-filter].active-filter')?.dataset.filter || 'todos';
     const items = (window.entregaFacilItems || []).filter((delivery) => {
-      const text = `${delivery.id} ${delivery.clienteNome} ${delivery.produtoNome}`.toLocaleLowerCase('pt-BR');
+      const text =
+        `${delivery.id} ${delivery.clienteNome} ${delivery.produtoNome}`.toLocaleLowerCase('pt-BR');
       return (!query || text.includes(query)) && (filter === 'todos' || delivery.status === filter);
     });
-    list.replaceChildren(...items.map((delivery) => {
-      const origin = delivery.addresses.find((address) => address.tipo?.toLocaleLowerCase('pt-BR') === 'origem');
-      const destination = delivery.addresses.find((address) => address.tipo?.toLocaleLowerCase('pt-BR') === 'destino');
-      const col = document.createElement('div');
-      col.className = 'col';
-      const article = document.createElement('article');
-      article.className = 'card ef-card ef-delivery-card';
-      const header = document.createElement('div');
-      header.className = 'card-header d-flex justify-content-between align-items-center gap-2';
-      const title = document.createElement('h2');
-      title.className = 'h6 ef-heading mb-0';
-      title.textContent = `Entrega #${String(delivery.id).padStart(3, '0')}`;
-      header.append(title, statusBadge(delivery.status));
-      const body = document.createElement('div');
-      body.className = 'card-body';
-      body.append(
-        metaBlock('Produto', delivery.produtoNome),
-        metaBlock('Cliente', delivery.clienteNome),
-        metaBlock('Itinerário', `${addressCity(origin)} → ${addressCity(destination)}`),
-      );
-      const footer = document.createElement('div');
-      footer.className = 'card-footer ef-card-footer d-flex justify-content-between align-items-center gap-2';
-      const date = document.createElement('span');
-      date.className = 'small text-secondary';
-      date.textContent = `Previsão: ${localDate(delivery.dataPrevista)}`;
-      const link = document.createElement('a');
-      link.className = 'link-dark small fw-semibold text-nowrap';
-      link.href = `pages/detalhes.html?id=${encodeURIComponent(delivery.id)}`;
-      link.textContent = 'Ver detalhes →';
-      footer.append(date, link);
-      article.append(header, body, footer);
-      col.append(article);
-      return col;
-    }));
+    list.replaceChildren(
+      ...items.map((delivery) => {
+        const origin = delivery.addresses.find(
+          (address) => address.tipo?.toLocaleLowerCase('pt-BR') === 'origem',
+        );
+        const destination = delivery.addresses.find(
+          (address) => address.tipo?.toLocaleLowerCase('pt-BR') === 'destino',
+        );
+        const col = document.createElement('div');
+        col.className = 'col';
+        const article = document.createElement('article');
+        article.className = 'card ef-card ef-delivery-card';
+        const header = document.createElement('div');
+        header.className = 'card-header d-flex justify-content-between align-items-center gap-2';
+        const title = document.createElement('h2');
+        title.className = 'h6 ef-heading mb-0';
+        title.textContent = `Entrega #${String(delivery.id).padStart(3, '0')}`;
+        header.append(title, statusBadge(delivery.status));
+        const body = document.createElement('div');
+        body.className = 'card-body';
+        body.append(
+          metaBlock('Produto', delivery.produtoNome),
+          metaBlock('Cliente', delivery.clienteNome),
+          metaBlock('Itinerário', `${addressCity(origin)} → ${addressCity(destination)}`),
+        );
+        const footer = document.createElement('div');
+        footer.className =
+          'card-footer ef-card-footer d-flex justify-content-between align-items-center gap-2';
+        const date = document.createElement('span');
+        date.className = 'small text-secondary';
+        date.textContent = `Previsão: ${localDate(delivery.dataPrevista)}`;
+        const link = document.createElement('a');
+        link.className = 'link-dark small fw-semibold text-nowrap';
+        link.href = `pages/detalhes.html?id=${encodeURIComponent(delivery.id)}`;
+        link.textContent = 'Ver detalhes →';
+        footer.append(date, link);
+        article.append(header, body, footer);
+        col.append(article);
+        return col;
+      }),
+    );
     byId('delivery-empty').classList.toggle('d-none', items.length > 0);
   }
 
@@ -165,15 +184,17 @@
   function wireFilters() {
     if (!byId('delivery-list')) return;
     byId('delivery-search').addEventListener('input', renderDeliveries);
-    all('[data-filter]').forEach((button) => button.addEventListener('click', () => {
-      all('[data-filter]').forEach((item) => {
-        item.classList.remove('active-filter', 'btn-dark');
-        item.classList.add('btn-outline-dark');
-      });
-      button.classList.add('active-filter', 'btn-dark');
-      button.classList.remove('btn-outline-dark');
-      renderDeliveries();
-    }));
+    all('[data-filter]').forEach((button) =>
+      button.addEventListener('click', () => {
+        all('[data-filter]').forEach((item) => {
+          item.classList.remove('active-filter', 'btn-dark');
+          item.classList.add('btn-outline-dark');
+        });
+        button.classList.add('active-filter', 'btn-dark');
+        button.classList.remove('btn-outline-dark');
+        renderDeliveries();
+      }),
+    );
     document.querySelector('[data-filter="todos"]')?.classList.add('active-filter');
   }
 
@@ -181,8 +202,12 @@
     const field = (suffix) => byId(`${type}-${suffix}`).value.trim();
     return {
       tipo: type === 'origem' ? 'Origem' : 'Destino',
-      cep: field('cep'), logradouro: field('logradouro'), numero: field('numero'),
-      bairro: field('bairro'), cidade: field('cidade'), uf: field('uf').toUpperCase(),
+      cep: validation.formatCep(field('cep')),
+      logradouro: field('logradouro'),
+      numero: field('numero'),
+      bairro: field('bairro'),
+      cidade: field('cidade'),
+      uf: field('uf').toUpperCase(),
     };
   }
 
@@ -190,8 +215,7 @@
     event.preventDefault();
     const form = event.currentTarget;
     hideAlert();
-    form.classList.add('was-validated');
-    if (!form.checkValidity()) { form.querySelector(':invalid')?.focus(); return; }
+    if (!validation.validateForm(form)) return;
     const submit = form.querySelector('[type="submit"]');
     submit.disabled = true;
     try {
@@ -207,9 +231,12 @@
       }
 
       const deliveryData = {
-        clienteNome: value.clienteNome.trim(), clienteCpf: value.clienteCpf.trim(),
-        clienteTelefone: value.clienteTelefone.trim(), produtoNome: value.produtoNome.trim(),
-        produtoDescricao: value.produtoDescricao.trim(), dataPrevista: value.dataPrevista,
+        clienteNome: value.clienteNome.trim(),
+        clienteCpf: validation.formatCpf(value.clienteCpf),
+        clienteTelefone: validation.formatPhone(value.clienteTelefone),
+        produtoNome: value.produtoNome.trim(),
+        produtoDescricao: value.produtoDescricao.trim(),
+        dataPrevista: value.dataPrevista,
         status: value.status,
       };
 
@@ -219,14 +246,63 @@
         return;
       }
 
-      const delivery = await api('/entregas', { method: 'POST', body: JSON.stringify(deliveryData) });
-      for (const type of ['origem', 'destino']) {
-        await api('/enderecos', { method: 'POST', body: JSON.stringify({ entregaId: delivery.id, ...formAddress(form, type) }) });
+      // IDs conhecidos permitem compensar até POST que foi persistido, mas perdeu a resposta.
+      if (pendingCreation) await undoCreation(pendingCreation);
+      const deliveryId = crypto.randomUUID();
+      pendingCreation = {
+        deliveryId,
+        addresses: ['origem', 'destino'].map((type) => ({
+          id: crypto.randomUUID(),
+          entregaId: deliveryId,
+          ...formAddress(form, type),
+        })),
+      };
+      try {
+        await api('/entregas', {
+          method: 'POST',
+          body: JSON.stringify({ ...deliveryData, id: deliveryId }),
+        });
+        for (const address of pendingCreation.addresses) {
+          await api('/enderecos', { method: 'POST', body: JSON.stringify(address) });
+        }
+      } catch (error) {
+        try {
+          await undoCreation(pendingCreation);
+        } catch (cleanupError) {
+          throw new Error(`${error.message} ${cleanupError.message}`, { cause: cleanupError });
+        }
+        throw new Error(
+          `${error.message} O cadastro incompleto foi desfeito. Você pode tentar novamente.`,
+          { cause: error },
+        );
       }
+      pendingCreation = null;
       window.location.href = '../index.html';
     } catch (error) {
       showAlert(`Não foi possível salvar a entrega. ${error.message}`);
-    } finally { submit.disabled = false; }
+    } finally {
+      submit.disabled = false;
+    }
+  }
+
+  async function undoCreation(creation) {
+    const paths = creation.addresses.map(({ id }) => `/enderecos/${encodeURIComponent(id)}`);
+    paths.push(`/entregas/${encodeURIComponent(creation.deliveryId)}`);
+    const results = await Promise.allSettled(
+      paths.map(async (path) => {
+        try {
+          await api(path, { method: 'DELETE' });
+        } catch (error) {
+          if (error.status !== 404) throw error;
+        }
+      }),
+    );
+    if (results.some((result) => result.status === 'rejected')) {
+      throw new Error(
+        `A limpeza do cadastro ${creation.deliveryId} não terminou. Restabeleça a API e tente novamente nesta página; nenhum novo cadastro será enviado antes da limpeza. Se sair desta página, confira esse ID na API antes de cadastrar novamente.`,
+      );
+    }
+    pendingCreation = null;
   }
 
   function saveDemoDelivery(delivery, form) {
@@ -234,30 +310,51 @@
     demo.saveDelivery(delivery, addresses);
   }
 
+  const cepRequests = {};
   async function lookupCep(type) {
     const input = byId(`${type}-cep`);
     const feedback = byId(`${type}-feedback`);
     const cep = input.value.replace(/\D/g, '');
+    const request = Symbol(type);
+    cepRequests[type] = request;
     feedback.className = 'form-text';
-    if (!/^\d{8}$/.test(cep)) { feedback.classList.add('text-danger'); feedback.textContent = 'Informe um CEP com 8 números.'; input.focus(); return; }
+    if (!/^\d{8}$/.test(cep)) {
+      feedback.classList.add('text-danger');
+      feedback.textContent = 'Informe um CEP com 8 números.';
+      input.focus();
+      return;
+    }
     feedback.textContent = 'Consultando CEP...';
     try {
       const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
       if (!response.ok) throw new Error('Falha de conexão com o ViaCEP.');
       const address = await response.json();
-      if (address.erro) { feedback.classList.add('text-danger'); feedback.textContent = 'CEP não encontrado. Confira o número e tente novamente.'; return; }
+      if (cepRequests[type] !== request || input.value.replace(/\D/g, '') !== cep) return;
+      if (address.erro) {
+        feedback.classList.add('text-danger');
+        feedback.textContent = 'CEP não encontrado. Confira o número e tente novamente.';
+        return;
+      }
       byId(`${type}-logradouro`).value = address.logradouro || '';
       byId(`${type}-bairro`).value = address.bairro || '';
       byId(`${type}-cidade`).value = address.localidade || '';
       byId(`${type}-uf`).value = address.uf || '';
       feedback.classList.add('text-success');
       feedback.textContent = 'Endereço preenchido pelo ViaCEP. Complete o número.';
-    } catch (error) { feedback.classList.add('text-danger'); feedback.textContent = `Não foi possível consultar o CEP. ${error.message}`; }
+    } catch (error) {
+      if (cepRequests[type] !== request || input.value.replace(/\D/g, '') !== cep) return;
+      feedback.classList.add('text-danger');
+      feedback.textContent = `Não foi possível consultar o CEP. ${error.message}`;
+    }
   }
 
   function fillAddress(prefix, address) {
-    byId(`${prefix}-address-title`).textContent = [address?.logradouro, address?.numero].filter(Boolean).join(', ') || 'Endereço não informado';
-    byId(`${prefix}-address-line`).textContent = [address?.bairro, address?.cidade || address?.localidade, address?.uf].filter(Boolean).join(', ') || '—';
+    byId(`${prefix}-address-title`).textContent =
+      [address?.logradouro, address?.numero].filter(Boolean).join(', ') || 'Endereço não informado';
+    byId(`${prefix}-address-line`).textContent =
+      [address?.bairro, address?.cidade || address?.localidade, address?.uf]
+        .filter(Boolean)
+        .join(', ') || '—';
     byId(`${prefix}-cep`).textContent = `CEP: ${address?.cep || '—'}`;
   }
 
@@ -265,9 +362,15 @@
     const title = byId('detail-title');
     if (!title) return;
     const id = new URLSearchParams(window.location.search).get('id');
-    if (!id) { showAlert('O identificador da entrega não foi informado.'); return; }
+    if (!id) {
+      showAlert('O identificador da entrega não foi informado.');
+      return;
+    }
     try {
-      const [delivery, addresses] = await Promise.all([api(`/entregas/${encodeURIComponent(id)}`), api(`/enderecos?entregaId=${encodeURIComponent(id)}`)]);
+      const [delivery, addresses] = await Promise.all([
+        api(`/entregas/${encodeURIComponent(id)}`),
+        api(`/enderecos?entregaId=${encodeURIComponent(id)}`),
+      ]);
       dataSource = 'api';
       hideAlert();
       displayDetails(delivery, addresses);
@@ -276,11 +379,16 @@
         dataSource = 'demo';
         const delivery = demo.findDelivery(id);
         if (delivery) {
-          const addresses = demo.snapshot().enderecos.filter((item) => String(item.entregaId) === String(id));
+          const addresses = demo
+            .snapshot()
+            .enderecos.filter((item) => String(item.entregaId) === String(id));
           showDemoNotice();
           displayDetails(delivery, addresses);
         } else {
-          showAlert('JSON Server indisponível. Esta entrega não está nos dados de demonstração locais.', 'warning');
+          showAlert(
+            'JSON Server indisponível. Esta entrega não está nos dados de demonstração locais.',
+            'warning',
+          );
         }
       } else {
         showAlert(`Não foi possível carregar os detalhes da entrega. ${error.message}`);
@@ -290,7 +398,9 @@
 
   function displayDetails(delivery, addresses) {
     const origin = addresses.find((item) => item.tipo?.toLocaleLowerCase('pt-BR') === 'origem');
-    const destination = addresses.find((item) => item.tipo?.toLocaleLowerCase('pt-BR') === 'destino');
+    const destination = addresses.find(
+      (item) => item.tipo?.toLocaleLowerCase('pt-BR') === 'destino',
+    );
     currentDelivery = delivery;
     currentAddresses = addresses;
     byId('detail-title').textContent = `Entrega #${String(delivery.id).padStart(3, '0')}`;
@@ -311,13 +421,17 @@
   function updateStatusDisplay(status) {
     for (const id of ['detail-status', 'detail-status-secondary', 'modal-current-status']) {
       const badge = byId(id);
-      if (badge) { badge.className = `ef-status ${statusClass(status)}`; badge.textContent = status || 'Sem status'; }
+      if (badge) {
+        badge.className = `ef-status ${statusClass(status)}`;
+        badge.textContent = status || 'Sem status';
+      }
     }
   }
 
   async function saveStatus(event) {
     event.preventDefault();
     const form = event.currentTarget;
+    if (!validation.validateForm(form)) return;
     const submit = form.querySelector('[type="submit"]');
     submit.disabled = true;
     try {
@@ -332,7 +446,10 @@
         return;
       }
 
-      const updated = await api(`/entregas/${encodeURIComponent(form.dataset.deliveryId)}`, { method: 'PATCH', body: JSON.stringify({ status: byId('new-status').value }) });
+      const updated = await api(`/entregas/${encodeURIComponent(form.dataset.deliveryId)}`, {
+        method: 'PATCH',
+        body: JSON.stringify({ status: byId('new-status').value }),
+      });
       updateStatusDisplay(updated.status);
       currentDelivery = updated;
       bootstrap.Modal.getOrCreateInstance(byId('status-modal')).hide();
@@ -345,18 +462,24 @@
         currentDelivery = updated;
         updateStatusDisplay(updated.status);
         bootstrap.Modal.getOrCreateInstance(byId('status-modal')).hide();
-        showAlert('JSON Server indisponível. Status atualizado somente nos dados de demonstração deste navegador.', 'warning');
+        showAlert(
+          'JSON Server indisponível. Status atualizado somente nos dados de demonstração deste navegador.',
+          'warning',
+        );
       } else {
         showAlert(`Não foi possível atualizar o status. ${error.message}`);
       }
+    } finally {
+      submit.disabled = false;
     }
-    finally { submit.disabled = false; }
   }
 
   wireFilters();
   loadDeliveries();
   byId('delivery-form')?.addEventListener('submit', submitDelivery);
-  all('[data-cep]').forEach((button) => button.addEventListener('click', () => lookupCep(button.dataset.cep)));
+  all('[data-cep]').forEach((button) =>
+    button.addEventListener('click', () => lookupCep(button.dataset.cep)),
+  );
   byId('status-form')?.addEventListener('submit', saveStatus);
   loadDetails();
 })();

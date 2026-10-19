@@ -1,34 +1,449 @@
 <!doctype html>
 <html lang="pt-BR">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Nova Entrega | Entrega Fácil</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-  <link rel="stylesheet" href="../assets/css/style.css">
-</head>
-<body class="min-vh-100 d-flex flex-column">
-  <nav class="navbar navbar-expand-sm ef-navbar"><div class="container"><a class="navbar-brand" href="../index.html">Entrega Fácil</a><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Abrir menu"><span class="navbar-toggler-icon"></span></button><div class="collapse navbar-collapse" id="mainNav"><div class="navbar-nav ms-auto align-items-sm-center gap-sm-3"><a class="nav-link" href="../index.html">Entregas</a><a class="btn btn-dark btn-sm px-3" aria-current="page" href="cadastro.html">+ Nova Entrega</a></div></div></div></nav>
-  <main class="container ef-page flex-grow-1">
-    <header class="ef-page-heading d-flex flex-column flex-md-row justify-content-between align-items-md-end"><div><div class="ef-kicker">Ordem de expedição // Módulo 01</div><h1>Nova entrega</h1><p>Preencha os dados abaixo para registrar uma nova entrega no sistema.</p></div><span class="badge text-bg-light border border-secondary-subtle text-dark mt-3 mt-md-0">Despacho rodoviário padrão</span></header>
-    <div id="app-alert" class="alert d-none" role="alert"></div>
-    <form id="delivery-form" class="d-grid gap-4" novalidate>
-      <section class="card ef-card"><div class="card-header d-flex justify-content-between align-items-center"><div class="d-flex align-items-center gap-2"><span class="ef-section-number">01</span><h2 class="ef-card-title">Dados do Cliente</h2></div><span class="ef-kicker d-none d-sm-inline">Identificação principal</span></div><div class="card-body"><div class="row g-3">
-        <div class="col-12 col-md-4"><label class="form-label ef-label" for="cliente-nome">Nome completo <span class="text-danger">*</span></label><input class="form-control" id="cliente-nome" name="clienteNome" placeholder="Ex: João da Silva" autocomplete="name" required></div>
-        <div class="col-12 col-md-4"><label class="form-label ef-label" for="cliente-cpf">CPF <span class="text-danger">*</span></label><input class="form-control" id="cliente-cpf" name="clienteCpf" placeholder="000.000.000-00" maxlength="14" inputmode="numeric" required></div>
-        <div class="col-12 col-md-4"><label class="form-label ef-label" for="cliente-telefone">Telefone <span class="text-danger">*</span></label><input class="form-control" id="cliente-telefone" name="clienteTelefone" placeholder="(00) 00000-0000" maxlength="15" inputmode="tel" required></div>
-      </div></div></section>
-      <section class="card ef-card"><div class="card-header d-flex justify-content-between align-items-center"><div class="d-flex align-items-center gap-2"><span class="ef-section-number">02</span><h2 class="ef-card-title">Produto</h2></div><span class="ef-kicker d-none d-sm-inline">Manifesto de carga</span></div><div class="card-body d-grid gap-3"><div><label class="form-label ef-label" for="produto-nome">Nome do produto <span class="text-danger">*</span></label><input class="form-control" id="produto-nome" name="produtoNome" placeholder="Ex: Peça industrial retificada Mod. 4" required></div><div><label class="form-label ef-label" for="produto-descricao">Descrição (opcional)</label><textarea class="form-control" id="produto-descricao" name="produtoDescricao" rows="3" placeholder="Informações adicionais, fragilidade, orientações de acondicionamento..."></textarea></div></div></section>
-      <div class="row g-4">
-        <div class="col-12 col-lg-6"><section class="card ef-card h-100"><div class="card-header d-flex justify-content-between align-items-center"><div class="d-flex align-items-center gap-2"><span class="ef-section-number">03A</span><h2 class="ef-card-title">Origem</h2></div><span class="ef-kicker d-none d-sm-inline">Coleta / Hub</span></div><div class="card-body d-grid gap-3"><div><label class="form-label ef-label" for="origem-cep">CEP <span class="text-danger">*</span></label><div class="input-group"><input class="form-control" id="origem-cep" name="cep" placeholder="00000-000" maxlength="9" inputmode="numeric" required><button class="btn btn-outline-dark" type="button" data-cep="origem">⌕ Consultar</button></div><div class="form-text" id="origem-feedback" aria-live="polite"></div></div><div class="row g-3"><div class="col-8"><label class="form-label ef-label" for="origem-logradouro">Logradouro <span class="text-danger">*</span></label><input class="form-control" id="origem-logradouro" name="logradouro" placeholder="Rua, Avenida, Estrada..." required></div><div class="col-4"><label class="form-label ef-label" for="origem-numero">Número <span class="text-danger">*</span></label><input class="form-control" id="origem-numero" name="numero" placeholder="123" required></div></div><div class="row g-3"><div class="col-12 col-sm-5"><label class="form-label ef-label" for="origem-bairro">Bairro <span class="text-danger">*</span></label><input class="form-control" id="origem-bairro" name="bairro" required></div><div class="col-8 col-sm-5"><label class="form-label ef-label" for="origem-cidade">Cidade <span class="text-danger">*</span></label><input class="form-control" id="origem-cidade" name="cidade" required></div><div class="col-4 col-sm-2"><label class="form-label ef-label" for="origem-uf">UF <span class="text-danger">*</span></label><input class="form-control text-uppercase" id="origem-uf" name="uf" maxlength="2" required></div></div></div></section></div>
-        <div class="col-12 col-lg-6"><section class="card ef-card h-100"><div class="card-header d-flex justify-content-between align-items-center"><div class="d-flex align-items-center gap-2"><span class="ef-section-number">03B</span><h2 class="ef-card-title">Destino</h2></div><span class="ef-kicker d-none d-sm-inline">Entrega final</span></div><div class="card-body d-grid gap-3"><div><label class="form-label ef-label" for="destino-cep">CEP <span class="text-danger">*</span></label><div class="input-group"><input class="form-control" id="destino-cep" name="cep" placeholder="00000-000" maxlength="9" inputmode="numeric" required><button class="btn btn-outline-dark" type="button" data-cep="destino">⌕ Consultar</button></div><div class="form-text" id="destino-feedback" aria-live="polite"></div></div><div class="row g-3"><div class="col-8"><label class="form-label ef-label" for="destino-logradouro">Logradouro <span class="text-danger">*</span></label><input class="form-control" id="destino-logradouro" name="logradouro" required></div><div class="col-4"><label class="form-label ef-label" for="destino-numero">Número <span class="text-danger">*</span></label><input class="form-control" id="destino-numero" name="numero" placeholder="123" required></div></div><div class="row g-3"><div class="col-12 col-sm-5"><label class="form-label ef-label" for="destino-bairro">Bairro <span class="text-danger">*</span></label><input class="form-control" id="destino-bairro" name="bairro" required></div><div class="col-8 col-sm-5"><label class="form-label ef-label" for="destino-cidade">Cidade <span class="text-danger">*</span></label><input class="form-control" id="destino-cidade" name="cidade" required></div><div class="col-4 col-sm-2"><label class="form-label ef-label" for="destino-uf">UF <span class="text-danger">*</span></label><input class="form-control text-uppercase" id="destino-uf" name="uf" maxlength="2" required></div></div></div></section></div>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nova Entrega | Entrega Fácil</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+  </head>
+  <body class="min-vh-100 d-flex flex-column">
+    <nav class="navbar navbar-expand-sm ef-navbar">
+      <div class="container">
+        <a class="navbar-brand" href="../index.html"
+          ><img
+            class="ef-brand-icon"
+            src="../assets/images/entrega-icon-32.webp"
+            srcset="
+              ../assets/images/entrega-icon-32.webp 32w,
+              ../assets/images/entrega-icon-64.webp 64w,
+              ../assets/images/entrega-icon-96.webp 96w
+            "
+            sizes="32px"
+            width="32"
+            height="32"
+            alt=""
+          />Entrega Fácil</a
+        ><button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainNav"
+          aria-controls="mainNav"
+          aria-expanded="false"
+          aria-label="Abrir menu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+          <div class="navbar-nav ms-auto align-items-sm-center gap-sm-3">
+            <a class="nav-link" href="../index.html">Entregas</a
+            ><a class="btn btn-dark btn-sm px-3" aria-current="page" href="cadastro.html"
+              >+ Nova Entrega</a
+            >
+          </div>
+        </div>
       </div>
-      <section class="card ef-card"><div class="card-header d-flex justify-content-between align-items-center"><div class="d-flex align-items-center gap-2"><span class="ef-section-number">04</span><h2 class="ef-card-title">Dados da Entrega</h2></div><span class="ef-kicker d-none d-sm-inline">Cronograma operacional</span></div><div class="card-body"><div class="row g-3"><div class="col-12 col-md-6"><label class="form-label ef-label" for="data-prevista">Data prevista <span class="text-danger">*</span></label><input class="form-control" id="data-prevista" name="dataPrevista" type="date" required></div><div class="col-12 col-md-6"><label class="form-label ef-label" for="status">Status inicial <span class="text-danger">*</span></label><select class="form-select" id="status" name="status" required><option value="Pendente" selected>Pendente</option><option value="Em transporte">Em transporte</option><option value="Entregue">Entregue</option><option value="Cancelada">Cancelada</option></select></div></div></div></section>
-      <div class="d-flex flex-column-reverse flex-sm-row justify-content-end gap-2"><a class="btn btn-outline-dark" href="../index.html">Cancelar</a><button class="btn btn-dark px-4" type="submit">✓ Cadastrar entrega</button></div>
-    </form>
-  </main>
-  <footer class="ef-footer py-3 mt-auto"><div class="container d-flex justify-content-between"><span class="ef-heading text-uppercase">Entrega Fácil</span><span>© 2026 Entrega Fácil</span></div></footer>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-  <script src="../assets/js/demo-data.js"></script><script src="../assets/js/app.js"></script>
-</body>
+    </nav>
+    <main class="container ef-page flex-grow-1">
+      <header
+        class="ef-page-heading d-flex flex-column flex-md-row justify-content-between align-items-md-end"
+      >
+        <div>
+          <div class="ef-kicker">Ordem de expedição // Módulo 01</div>
+          <h1>Nova entrega</h1>
+          <p>Preencha os dados abaixo para registrar uma nova entrega no sistema.</p>
+        </div>
+        <span class="badge text-bg-light border border-secondary-subtle text-dark mt-3 mt-md-0"
+          >Despacho rodoviário padrão</span
+        >
+      </header>
+      <div id="app-alert" class="alert d-none" role="alert"></div>
+      <form id="delivery-form" class="d-grid gap-4" novalidate>
+        <section class="card ef-card">
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center gap-2">
+              <span class="ef-section-number">01</span>
+              <h2 class="ef-card-title">Dados do Cliente</h2>
+            </div>
+            <span class="ef-kicker d-none d-sm-inline">Identificação principal</span>
+          </div>
+          <div class="card-body">
+            <div class="row g-3">
+              <div class="col-12 col-md-4">
+                <label class="form-label ef-label" for="cliente-nome"
+                  >Nome completo <span class="text-danger">*</span></label
+                ><input
+                  class="form-control"
+                  id="cliente-nome"
+                  name="clienteNome"
+                  placeholder="Ex: João da Silva"
+                  autocomplete="name"
+                  aria-describedby="cliente-nome-error"
+                  required
+                />
+                <div class="invalid-feedback" id="cliente-nome-error" aria-live="polite"></div>
+              </div>
+              <div class="col-12 col-md-4">
+                <label class="form-label ef-label" for="cliente-cpf"
+                  >CPF <span class="text-danger">*</span></label
+                ><input
+                  class="form-control"
+                  id="cliente-cpf"
+                  name="clienteCpf"
+                  placeholder="000.000.000-00"
+                  maxlength="14"
+                  inputmode="numeric"
+                  aria-describedby="cliente-cpf-error"
+                  required
+                />
+                <div class="invalid-feedback" id="cliente-cpf-error" aria-live="polite"></div>
+              </div>
+              <div class="col-12 col-md-4">
+                <label class="form-label ef-label" for="cliente-telefone"
+                  >Telefone <span class="text-danger">*</span></label
+                ><input
+                  class="form-control"
+                  id="cliente-telefone"
+                  name="clienteTelefone"
+                  placeholder="(00) 00000-0000"
+                  maxlength="15"
+                  inputmode="tel"
+                  aria-describedby="cliente-telefone-error"
+                  required
+                />
+                <div class="invalid-feedback" id="cliente-telefone-error" aria-live="polite"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="card ef-card">
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center gap-2">
+              <span class="ef-section-number">02</span>
+              <h2 class="ef-card-title">Produto</h2>
+            </div>
+            <span class="ef-kicker d-none d-sm-inline">Manifesto de carga</span>
+          </div>
+          <div class="card-body d-grid gap-3">
+            <div>
+              <label class="form-label ef-label" for="produto-nome"
+                >Nome do produto <span class="text-danger">*</span></label
+              ><input
+                class="form-control"
+                id="produto-nome"
+                name="produtoNome"
+                placeholder="Ex: Peça industrial retificada Mod. 4"
+                aria-describedby="produto-nome-error"
+                required
+              />
+              <div class="invalid-feedback" id="produto-nome-error" aria-live="polite"></div>
+            </div>
+            <div>
+              <label class="form-label ef-label" for="produto-descricao">Descrição (opcional)</label
+              ><textarea
+                class="form-control"
+                id="produto-descricao"
+                name="produtoDescricao"
+                rows="3"
+                placeholder="Informações adicionais, fragilidade, orientações de acondicionamento..."
+              ></textarea>
+            </div>
+          </div>
+        </section>
+        <div class="row g-4">
+          <div class="col-12 col-lg-6">
+            <section class="card ef-card h-100">
+              <div class="card-header d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center gap-2">
+                  <span class="ef-section-number">03A</span>
+                  <h2 class="ef-card-title">Origem</h2>
+                </div>
+                <span class="ef-kicker d-none d-sm-inline">Coleta / Hub</span>
+              </div>
+              <div class="card-body d-grid gap-3">
+                <div>
+                  <label class="form-label ef-label" for="origem-cep"
+                    >CEP <span class="text-danger">*</span></label
+                  >
+                  <div class="input-group has-validation">
+                    <input
+                      class="form-control"
+                      id="origem-cep"
+                      name="cep"
+                      placeholder="00000-000"
+                      maxlength="9"
+                      inputmode="numeric"
+                      aria-describedby="origem-cep-error origem-feedback"
+                      required
+                    /><button class="btn btn-outline-dark" type="button" data-cep="origem">
+                      ⌕ Consultar
+                    </button>
+                    <div class="invalid-feedback" id="origem-cep-error" aria-live="polite"></div>
+                  </div>
+                  <div class="form-text" id="origem-feedback" aria-live="polite"></div>
+                </div>
+                <div class="row g-3">
+                  <div class="col-8">
+                    <label class="form-label ef-label" for="origem-logradouro"
+                      >Logradouro <span class="text-danger">*</span></label
+                    ><input
+                      class="form-control"
+                      id="origem-logradouro"
+                      name="logradouro"
+                      placeholder="Rua, Avenida, Estrada..."
+                      aria-describedby="origem-logradouro-error"
+                      required
+                    />
+                    <div
+                      class="invalid-feedback"
+                      id="origem-logradouro-error"
+                      aria-live="polite"
+                    ></div>
+                  </div>
+                  <div class="col-4">
+                    <label class="form-label ef-label" for="origem-numero"
+                      >Número <span class="text-danger">*</span></label
+                    ><input
+                      class="form-control"
+                      id="origem-numero"
+                      name="numero"
+                      placeholder="123"
+                      aria-describedby="origem-numero-error"
+                      required
+                    />
+                    <div class="invalid-feedback" id="origem-numero-error" aria-live="polite"></div>
+                  </div>
+                </div>
+                <div class="row g-3">
+                  <div class="col-12 col-sm-5">
+                    <label class="form-label ef-label" for="origem-bairro"
+                      >Bairro <span class="text-danger">*</span></label
+                    ><input
+                      class="form-control"
+                      id="origem-bairro"
+                      name="bairro"
+                      aria-describedby="origem-bairro-error"
+                      required
+                    />
+                    <div class="invalid-feedback" id="origem-bairro-error" aria-live="polite"></div>
+                  </div>
+                  <div class="col-8 col-sm-5">
+                    <label class="form-label ef-label" for="origem-cidade"
+                      >Cidade <span class="text-danger">*</span></label
+                    ><input
+                      class="form-control"
+                      id="origem-cidade"
+                      name="cidade"
+                      aria-describedby="origem-cidade-error"
+                      required
+                    />
+                    <div class="invalid-feedback" id="origem-cidade-error" aria-live="polite"></div>
+                  </div>
+                  <div class="col-4 col-sm-2">
+                    <label class="form-label ef-label" for="origem-uf"
+                      >UF <span class="text-danger">*</span></label
+                    ><input
+                      class="form-control text-uppercase"
+                      id="origem-uf"
+                      name="uf"
+                      maxlength="2"
+                      aria-describedby="origem-uf-error"
+                      required
+                    />
+                    <div class="invalid-feedback" id="origem-uf-error" aria-live="polite"></div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+          <div class="col-12 col-lg-6">
+            <section class="card ef-card h-100">
+              <div class="card-header d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center gap-2">
+                  <span class="ef-section-number">03B</span>
+                  <h2 class="ef-card-title">Destino</h2>
+                </div>
+                <span class="ef-kicker d-none d-sm-inline">Entrega final</span>
+              </div>
+              <div class="card-body d-grid gap-3">
+                <div>
+                  <label class="form-label ef-label" for="destino-cep"
+                    >CEP <span class="text-danger">*</span></label
+                  >
+                  <div class="input-group has-validation">
+                    <input
+                      class="form-control"
+                      id="destino-cep"
+                      name="cep"
+                      placeholder="00000-000"
+                      maxlength="9"
+                      inputmode="numeric"
+                      aria-describedby="destino-cep-error destino-feedback"
+                      required
+                    /><button class="btn btn-outline-dark" type="button" data-cep="destino">
+                      ⌕ Consultar
+                    </button>
+                    <div class="invalid-feedback" id="destino-cep-error" aria-live="polite"></div>
+                  </div>
+                  <div class="form-text" id="destino-feedback" aria-live="polite"></div>
+                </div>
+                <div class="row g-3">
+                  <div class="col-8">
+                    <label class="form-label ef-label" for="destino-logradouro"
+                      >Logradouro <span class="text-danger">*</span></label
+                    ><input
+                      class="form-control"
+                      id="destino-logradouro"
+                      name="logradouro"
+                      aria-describedby="destino-logradouro-error"
+                      required
+                    />
+                    <div
+                      class="invalid-feedback"
+                      id="destino-logradouro-error"
+                      aria-live="polite"
+                    ></div>
+                  </div>
+                  <div class="col-4">
+                    <label class="form-label ef-label" for="destino-numero"
+                      >Número <span class="text-danger">*</span></label
+                    ><input
+                      class="form-control"
+                      id="destino-numero"
+                      name="numero"
+                      placeholder="123"
+                      aria-describedby="destino-numero-error"
+                      required
+                    />
+                    <div
+                      class="invalid-feedback"
+                      id="destino-numero-error"
+                      aria-live="polite"
+                    ></div>
+                  </div>
+                </div>
+                <div class="row g-3">
+                  <div class="col-12 col-sm-5">
+                    <label class="form-label ef-label" for="destino-bairro"
+                      >Bairro <span class="text-danger">*</span></label
+                    ><input
+                      class="form-control"
+                      id="destino-bairro"
+                      name="bairro"
+                      aria-describedby="destino-bairro-error"
+                      required
+                    />
+                    <div
+                      class="invalid-feedback"
+                      id="destino-bairro-error"
+                      aria-live="polite"
+                    ></div>
+                  </div>
+                  <div class="col-8 col-sm-5">
+                    <label class="form-label ef-label" for="destino-cidade"
+                      >Cidade <span class="text-danger">*</span></label
+                    ><input
+                      class="form-control"
+                      id="destino-cidade"
+                      name="cidade"
+                      aria-describedby="destino-cidade-error"
+                      required
+                    />
+                    <div
+                      class="invalid-feedback"
+                      id="destino-cidade-error"
+                      aria-live="polite"
+                    ></div>
+                  </div>
+                  <div class="col-4 col-sm-2">
+                    <label class="form-label ef-label" for="destino-uf"
+                      >UF <span class="text-danger">*</span></label
+                    ><input
+                      class="form-control text-uppercase"
+                      id="destino-uf"
+                      name="uf"
+                      maxlength="2"
+                      aria-describedby="destino-uf-error"
+                      required
+                    />
+                    <div class="invalid-feedback" id="destino-uf-error" aria-live="polite"></div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+        <section class="card ef-card">
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center gap-2">
+              <span class="ef-section-number">04</span>
+              <h2 class="ef-card-title">Dados da Entrega</h2>
+            </div>
+            <span class="ef-kicker d-none d-sm-inline">Cronograma operacional</span>
+          </div>
+          <div class="card-body">
+            <div class="row g-3">
+              <div class="col-12 col-md-6">
+                <label class="form-label ef-label" for="data-prevista"
+                  >Data prevista <span class="text-danger">*</span></label
+                ><input
+                  class="form-control"
+                  id="data-prevista"
+                  name="dataPrevista"
+                  type="date"
+                  aria-describedby="data-prevista-error"
+                  required
+                />
+                <div class="invalid-feedback" id="data-prevista-error" aria-live="polite"></div>
+              </div>
+              <div class="col-12 col-md-6">
+                <label class="form-label ef-label" for="status"
+                  >Status inicial <span class="text-danger">*</span></label
+                ><select
+                  class="form-select"
+                  id="status"
+                  name="status"
+                  aria-describedby="status-error"
+                  required
+                >
+                  <option value="Pendente" selected>Pendente</option>
+                  <option value="Em transporte">Em transporte</option>
+                  <option value="Entregue">Entregue</option>
+                  <option value="Cancelada">Cancelada</option>
+                </select>
+                <div class="invalid-feedback" id="status-error" aria-live="polite"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <div class="d-flex flex-column-reverse flex-sm-row justify-content-end gap-2">
+          <a class="btn btn-outline-dark" href="../index.html">Cancelar</a
+          ><button class="btn btn-dark px-4" type="submit">✓ Cadastrar entrega</button>
+        </div>
+      </form>
+    </main>
+    <footer class="ef-footer py-3 mt-auto">
+      <div class="container d-flex justify-content-between">
+        <span class="ef-heading text-uppercase">Entrega Fácil</span
+        ><span>© 2026 Entrega Fácil</span>
+      </div>
+    </footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../assets/vendor/jquery.min.js"></script>
+    <script src="../assets/vendor/jquery.mask.min.js"></script>
+    <script src="../assets/js/masks.js"></script>
+    <script src="../assets/js/validation.js"></script>
+    <script src="../assets/js/demo-data.js"></script>
+    <script src="../assets/js/app.js"></script>
+  </body>
 </html>

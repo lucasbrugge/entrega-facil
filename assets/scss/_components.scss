@@ -3,8 +3,8 @@
 
 .ef-kicker {
   color: var(--ef-secondary);
-  font: 500 .72rem/1.3 v.$font-display;
-  letter-spacing: .08em;
+  font: 500 0.72rem/1.3 v.$font-display;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
@@ -34,20 +34,22 @@
   height: 1.7rem;
   color: v.$surface;
   background: v.$black;
-  font: 500 .72rem v.$font-display;
+  font: 500 0.72rem v.$font-display;
 }
 
 .ef-label {
-  font: 500 .82rem v.$font-display;
+  font: 500 0.82rem v.$font-display;
 }
 
-.form-control, .form-select {
+.form-control,
+.form-select {
   border-color: v.$input-border;
   border-radius: v.$radius;
   min-height: 2.55rem;
 }
 
-.form-control:focus, .form-select:focus {
+.form-control:focus,
+.form-select:focus {
   border-color: var(--ef-focus);
   box-shadow: v.$focus-shadow;
 }
@@ -76,7 +78,7 @@
 
 .ef-delivery-card {
   height: 100%;
-  transition: transform .12s ease;
+  transition: transform 0.12s ease;
 }
 
 .ef-delivery-card {
@@ -85,8 +87,9 @@
   }
 }
 
-.ef-delivery-card .card-header, .ef-delivery-card .card-footer {
-  padding: .85rem v.$space;
+.ef-delivery-card .card-header,
+.ef-delivery-card .card-footer {
+  padding: 0.85rem v.$space;
 }
 
 .ef-delivery-card {
@@ -98,14 +101,14 @@
 .ef-meta {
   display: block;
   color: var(--ef-secondary);
-  font: 500 .68rem v.$font-display;
-  letter-spacing: .08em;
+  font: 500 0.68rem v.$font-display;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 .ef-meta-value {
-  margin: .15rem 0 .8rem;
-  font-size: .9rem;
+  margin: 0.15rem 0 0.8rem;
+  font-size: 0.9rem;
   overflow-wrap: anywhere;
 }
 
@@ -116,10 +119,10 @@
 
 .ef-status {
   display: inline-block;
-  padding: .22rem .45rem;
+  padding: 0.22rem 0.45rem;
   border: 1px solid;
   border-radius: 3px;
-  font: 500 .68rem v.$font-display;
+  font: 500 0.68rem v.$font-display;
   text-transform: uppercase;
   white-space: nowrap;
 }
@@ -157,7 +160,9 @@
   font-size: 1.05rem;
 }
 
-.ef-route-card h2, .ef-route-card p, #detail-description {
+.ef-route-card h2,
+.ef-route-card p,
+#detail-description {
   overflow-wrap: anywhere;
 }
 
@@ -171,7 +176,7 @@
   align-items: center;
   justify-content: space-between;
   border-bottom: v.$border;
-  padding-bottom: .65rem;
+  padding-bottom: 0.65rem;
   margin-bottom: v.$space;
 }
 
@@ -211,7 +216,7 @@
 @include m.mobile {
   .ef-modal .modal-body > .d-flex {
     flex-wrap: wrap;
-    gap: .75rem;
+    gap: 0.75rem;
   }
 }
 

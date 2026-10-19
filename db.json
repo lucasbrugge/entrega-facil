@@ -1,0 +1,134 @@
+{
+  "entregas": [
+    {
+      "id": "1",
+      "clienteNome": "João Silva",
+      "clienteCpf": "529.982.247-25",
+      "clienteTelefone": "(42) 99999-0001",
+      "produtoNome": "Notebook",
+      "produtoDescricao": "Notebook para entrega de demonstração.",
+      "dataPrevista": "2026-10-10",
+      "status": "Pendente"
+    },
+    {
+      "id": "2",
+      "clienteNome": "Marina Costa",
+      "clienteCpf": "111.444.777-35",
+      "clienteTelefone": "(42) 99999-0002",
+      "produtoNome": "Cadeira de escritório",
+      "produtoDescricao": "Cadeira ergonômica embalada para transporte.",
+      "dataPrevista": "2026-10-12",
+      "status": "Em transporte"
+    },
+    {
+      "id": "3",
+      "clienteNome": "Rafael Mendes",
+      "clienteCpf": "123.456.789-09",
+      "clienteTelefone": "(42) 99999-0003",
+      "produtoNome": "Monitor 27 polegadas",
+      "produtoDescricao": "Monitor com embalagem reforçada.",
+      "dataPrevista": "2026-10-14",
+      "status": "Entregue"
+    },
+    {
+      "id": "4",
+      "clienteNome": "Ana Oliveira",
+      "clienteCpf": "987.654.321-00",
+      "clienteTelefone": "(42) 99999-0004",
+      "produtoNome": "Impressora",
+      "produtoDescricao": "Impressora para escritório.",
+      "dataPrevista": "2026-10-16",
+      "status": "Cancelada"
+    }
+  ],
+  "enderecos": [
+    {
+      "id": "1",
+      "entregaId": "1",
+      "tipo": "Origem",
+      "cep": "85000-000",
+      "logradouro": "Rua Exemplo",
+      "numero": "100",
+      "bairro": "Centro",
+      "cidade": "Guarapuava",
+      "uf": "PR"
+    },
+    {
+      "id": "2",
+      "entregaId": "1",
+      "tipo": "Destino",
+      "cep": "80000-000",
+      "logradouro": "Avenida Modelo",
+      "numero": "250",
+      "bairro": "Centro",
+      "cidade": "Curitiba",
+      "uf": "PR"
+    },
+    {
+      "id": "3",
+      "entregaId": "2",
+      "tipo": "Origem",
+      "cep": "84010-000",
+      "logradouro": "Rua das Flores",
+      "numero": "45",
+      "bairro": "Centro",
+      "cidade": "Ponta Grossa",
+      "uf": "PR"
+    },
+    {
+      "id": "4",
+      "entregaId": "2",
+      "tipo": "Destino",
+      "cep": "80010-000",
+      "logradouro": "Rua do Mercado",
+      "numero": "810",
+      "bairro": "São Francisco",
+      "cidade": "Curitiba",
+      "uf": "PR"
+    },
+    {
+      "id": "5",
+      "entregaId": "3",
+      "tipo": "Origem",
+      "cep": "86010-000",
+      "logradouro": "Rua Paraná",
+      "numero": "32",
+      "bairro": "Centro",
+      "cidade": "Londrina",
+      "uf": "PR"
+    },
+    {
+      "id": "6",
+      "entregaId": "3",
+      "tipo": "Destino",
+      "cep": "87013-000",
+      "logradouro": "Avenida Brasil",
+      "numero": "120",
+      "bairro": "Zona 01",
+      "cidade": "Maringá",
+      "uf": "PR"
+    },
+    {
+      "id": "7",
+      "entregaId": "4",
+      "tipo": "Origem",
+      "cep": "85015-000",
+      "logradouro": "Rua XV de Novembro",
+      "numero": "77",
+      "bairro": "Centro",
+      "cidade": "Guarapuava",
+      "uf": "PR"
+    },
+    {
+      "id": "8",
+      "entregaId": "4",
+      "tipo": "Destino",
+      "cep": "84020-000",
+      "logradouro": "Rua do Lago",
+      "numero": "19",
+      "bairro": "Uvaranas",
+      "cidade": "Ponta Grossa",
+      "uf": "PR"
+    }
+  ]
+}

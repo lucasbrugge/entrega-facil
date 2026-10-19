@@ -32,7 +32,11 @@ main {
   flex: 1;
 }
 
-h1, h2, h3, .navbar-brand, .ef-heading {
+h1,
+h2,
+h3,
+.navbar-brand,
+.ef-heading {
   font-family: v.$font-heading;
 }
 
@@ -43,7 +47,7 @@ h1, h2, h3, .navbar-brand, .ef-heading {
   padding: 0;
   margin: -1px;
   overflow: hidden;
-  clip: rect(0,0,0,0);
+  clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
 }
