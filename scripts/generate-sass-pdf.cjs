@@ -1,25 +1,16 @@
 const { chromium } = require('playwright');
 const fs = require('node:fs');
 const path = require('node:path');
-const { spawn } = require('node:child_process');
 const root = path.resolve(__dirname, '..');
 const read = file => fs.readFileSync(path.join(root, file), 'utf8');
 const escape = text => text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const code = (file, text = read(file)) => `<p class="caption">${file}</p><pre>${escape(text)}</pre>`;
 const img = (name, cls = '') => `<img class="${cls}" src="data:image/png;base64,${fs.readFileSync(path.join(root, 'docs/evidencias', name)).toString('base64')}">`;
 (async () => {
-  const listingServer = spawn('python3', ['-m', 'http.server', '8766', '--bind', '127.0.0.1', '--directory', root], { stdio: 'ignore' });
   const browser = await chromium.launch({ headless: true });
   try {
     const page = await browser.newPage({ viewport: { width: 1000, height: 540 } });
-    // Listagem real do filesystem servida pelo http.server da biblioteca padrão Python.
-    for (let attempt = 0; attempt < 50; attempt++) {
-      try { await fetch('http://127.0.0.1:8766/assets/scss/'); break; }
-      catch { await new Promise(resolve => setTimeout(resolve, 100)); }
-    }
-    await page.goto('http://127.0.0.1:8766/assets/scss/');
-    await page.getByText('_base.scss', { exact: true }).waitFor();
-    await page.screenshot({ path: path.join(root, 'docs/evidencias/estrutura-scss.png'), fullPage: true });
+    // Captura do VS Code fornecida pelo autor; preservar ao regenerar o PDF.
     const report = JSON.parse(read('docs/evidencias/validacao.json'));
     const component = read('assets/scss/_components.scss');
     const card = component.slice(component.indexOf('.ef-card {'), component.indexOf('.ef-card-title'));
@@ -34,11 +25,11 @@ const img = (name, cls = '') => `<img class="${cls}" src="data:image/png;base64,
       h1 { font-size:30px; line-height:1.1; margin:12px 0; } h2 { font-size:22px; border-bottom:2px solid; padding-bottom:8px; } h3 { font-size:15px; }
       pre { white-space:pre-wrap; overflow-wrap:anywhere; background:#f5f3f3; border:1px solid #c4c7c7; padding:12px; font:11px/1.4 monospace; }
       .caption { color:#444748; font-size:11px; margin:10px 0 4px; } img { display:block; max-width:100%; max-height:220mm; margin:auto; object-fit:contain; }
-      .tree { max-height:75mm; } .row { display:flex; gap:20px; align-items:flex-start; } .row>div { flex:1; min-width:0; } .mobile { max-height:210mm; } .half { max-height:100mm; }
+      .tree { width:333px; max-height:75mm; } .row { display:flex; gap:20px; align-items:flex-start; } .row>div { flex:1; min-width:0; } .mobile { max-height:210mm; } .half { max-height:100mm; }
     </style><body>
     <section><p>ATIVIDADE ACADÊMICA • 19/10/2026</p><h1>Entrega Fácil<br>Refatoração com Sass</h1>
       <p>Autor: Lucas Brugge de Almeida</p><p>Aplicação responsiva para cadastrar e acompanhar entregas, reunindo cliente, produto, origem, destino e status. A refatoração transforma o CSS existente em módulos SCSS, preservando o design Neo-Industrial Mono, o Bootstrap 5.3.8 e a lógica JavaScript.</p>
-      <h2>1. Estrutura final e módulos</h2><p>Captura real da pasta assets/scss/, aberta no navegador local. Base define tipografia e propriedades globais; layout organiza navbar, páginas e footer; components reúne cards, formulários, badges e modal.</p>
+      <h2>1. Estrutura final e módulos</h2><p>Captura real da pasta assets/scss/, no explorador do VS Code. Base define tipografia e propriedades globais; layout organiza navbar, páginas e footer; components reúne cards, formulários, badges e modal.</p>
       ${img('estrutura-scss.png','tree')}${code('assets/scss/main.scss')}
       <p>Os módulos usam @use. O @import url de Google Fonts é uma importação CSS nativa preservada, não uma importação de módulos Sass.</p></section>
     <section><h2>2. Variáveis utilizadas</h2><p>Cores e fontes originais, bordas, sombras, espaçamentos e breakpoint centralizados. As propriedades CSS --ef-* e --bs-* continuam disponíveis em tempo de execução, com valores Sass interpolados.</p>
@@ -60,5 +51,5 @@ const img = (name, cls = '') => `<img class="${cls}" src="data:image/png;base64,
     await page.setContent(html, { waitUntil: 'load' });
     await page.pdf({ path: path.join(root, 'docs/atividade-sass.pdf'), format: 'A4', printBackground: true, displayHeaderFooter: true, headerTemplate:'<span></span>', footerTemplate:'<div style="font:9px Arial;width:100%;text-align:center">Entrega Fácil • Sass — <span class="pageNumber"></span> / <span class="totalPages"></span></div>' });
     console.log('PDF gerado: docs/atividade-sass.pdf');
-  } finally { await browser.close(); listingServer.kill(); }
+  } finally { await browser.close(); }
 })().catch(error => { console.error(error); process.exitCode = 1; });

@@ -154,7 +154,7 @@ não há validação de JSON Server ou de uma consulta ViaCEP bem-sucedida.
 O PDF está em [docs/atividade-sass.pdf](docs/atividade-sass.pdf).
 As capturas reais e o relatório ficam em `docs/evidencias/`.
 `npm run docs:sass` gera o PDF com trechos dos arquivos implementados e
-as capturas produzidas pelo teste, incluindo a listagem real da pasta SCSS.
+as capturas produzidas pelo teste, incluindo o print da pasta SCSS no VS Code fornecido pelo autor.
 
 Pendência identificada por `npm audit`: cinco alertas altos na cadeia de
 `gh-pages` preexistente. A correção dessa ferramenta de publicação fica fora
