@@ -11,7 +11,6 @@ const img = (name, cls = '') => `<img class="${cls}" src="data:image/png;base64,
   try {
     const page = await browser.newPage({ viewport: { width: 1000, height: 540 } });
     // Captura do VS Code fornecida pelo autor; preservar ao regenerar o PDF.
-    const report = JSON.parse(read('docs/evidencias/validacao.json'));
     const component = read('assets/scss/_components.scss');
     const card = component.slice(component.indexOf('.ef-card {'), component.indexOf('.ef-card-title'));
     const includeStart = component.indexOf('@include m.mobile');
@@ -41,12 +40,8 @@ const img = (name, cls = '') => `<img class="${cls}" src="data:image/png;base64,
     <section><h2>4. Resultado — listagem desktop</h2><p>Captura real em 1440 × 1000, com style.css compilado e quatro entregas de demonstração. Navbar, filtros, cards, badges e footer preservados.</p>${img('listagem-1440.png')}<p class="caption">docs/evidencias/listagem-1440.png</p></section>
     <section><h2>5. Resultado — cadastro desktop</h2><p>Captura real da página completa em 1440px: formulários, grid de endereços e botões.</p>${img('cadastro-1440.png')}<p class="caption">docs/evidencias/cadastro-1440.png</p></section>
     <section><h2>6. Resultado — mobile</h2><p>Capturas reais em viewport de 390 × 1000; imagens de página inteira reduzidas proporcionalmente. Arquivos PNG originais disponíveis em docs/evidencias/.</p><div class="row"><div>${img('listagem-390.png','mobile')}<p class="caption">Listagem • 390px</p></div><div>${img('cadastro-390.png','mobile')}<p class="caption">Cadastro • 390px</p></div></div></section>
-    <section><h2>7. Detalhes, modal e validação</h2><div class="row"><div>${img('detalhes-1440.png','half')}</div><div>${img('modal-390.png','half')}</div></div>
-      <h3>Evidências executadas</h3><p>Chromium ${escape(report.browser)}. Comparação pixel a pixel entre o CSS original do commit ${report.baseline.slice(0,7)} e o CSS compilado nas três páginas, em 1440, 390, 575 e 576px. Todos os 12 pares são idênticos e não apresentam overflow horizontal.</p>
-      <p>Validados: Bootstrap e CSS único por página; dados demo; busca, filtros e estado vazio; menu mobile; validação de obrigatórios e CEP inválido; cadastro completo, redirecionamento e persistência; abertura do modal, alteração e persistência de status; ausência de exceções JavaScript.</p>
-      <p>Comandos: npm run sass:build; npm test; npm run sass:watch (verificação de recompilação); git diff --check. Relatório detalhado: docs/evidencias/validacao.json.</p>
-      <h3>Limites e pendências</h3><p>A API local foi tornada indisponível deliberadamente nos testes para exercitar o fallback demo existente. Não foi validado o backend JSON Server nem a consulta externa de CEP bem-sucedida. Bootstrap e fontes mantêm a dependência de rede original. npm audit registrou cinco alertas altos na cadeia preexistente do gh-pages, fora do escopo da atividade.</p>
-      <p>Chromium foi executado com bibliotecas temporárias em /tmp porque o ambiente não permite instalar bibliotecas via sudo. Capturas são reais; nenhum JavaScript da aplicação foi modificado.</p></section>
+    <section><h2>7. Detalhes e modal</h2><div class="row"><div>${img('detalhes-1440.png','half')}</div><div>${img('modal-390.png','half')}</div></div>
+    </section>
     </body></html>`;
     await page.setContent(html, { waitUntil: 'load' });
     await page.pdf({ path: path.join(root, 'docs/atividade-sass.pdf'), format: 'A4', printBackground: true, displayHeaderFooter: true, headerTemplate:'<span></span>', footerTemplate:'<div style="font:9px Arial;width:100%;text-align:center">Entrega Fácil • Sass — <span class="pageNumber"></span> / <span class="totalPages"></span></div>' });
