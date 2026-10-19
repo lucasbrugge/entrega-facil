@@ -1,0 +1,6 @@
+// Ordem da cascata: base global, estrutura, componentes.
+@use 'variables';
+@use 'mixins';
+@use 'base';
+@use 'layout';
+@use 'components';
