@@ -1,0 +1,94 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+
+.ef-navbar {
+  min-height: 4rem;
+  background: var(--ef-surface);
+  border-bottom: v.$border;
+}
+
+.ef-navbar {
+  .navbar-brand {
+    color: var(--ef-black);
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: -.04em;
+    text-transform: uppercase;
+  }
+}
+
+.ef-navbar {
+  .nav-link {
+    color: var(--ef-secondary);
+    font-family: v.$font-display;
+    font-size: .9rem;
+  }
+}
+
+.ef-navbar {
+  .nav-link.active {
+    color: var(--ef-black);
+    border-bottom: 2px solid var(--ef-black);
+  }
+}
+
+.ef-page {
+  max-width: 1200px;
+  padding-top: v.$space-xl;
+  padding-bottom: 3rem;
+}
+
+.ef-page-heading {
+  border-bottom: v.$border;
+  padding-bottom: v.$space;
+  margin-bottom: 1.5rem;
+}
+
+.ef-page-heading > div, .ef-card .card-header > div {
+  min-width: 0;
+}
+
+.ef-page-heading h1 {
+  margin: .3rem 0;
+  font-size: clamp(1.65rem, 3vw, v.$space-xl);
+  font-weight: 700;
+  letter-spacing: -.04em;
+}
+
+.ef-page-heading p {
+  color: var(--ef-secondary);
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.ef-footer {
+  border-top: v.$border;
+  background: var(--ef-surface);
+  color: var(--ef-secondary);
+  font-size: .75rem;
+}
+
+@include m.mobile {
+  .ef-page {
+    padding-top: 1.25rem;
+  }
+}
+
+@include m.mobile {
+  .ef-navbar .navbar-brand {
+    font-size: 1rem;
+  }
+}
+
+@include m.mobile {
+  .ef-page-heading {
+    gap: .8rem;
+  }
+}
+
+@include m.mobile {
+  .ef-footer .container {
+    flex-wrap: wrap;
+    gap: .5rem 1rem;
+  }
+}
