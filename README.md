@@ -65,7 +65,7 @@ dados reais.
 - [ ] ID 04 - Utiliza componentes prontos de um Framework CSS (ex.: card, button) e componentes JavaScript do framework (ex.: modal, carousel).
 - [ ] ID 05 - Cria layout fluido usando unidades relativas (vw, vh, %, em, rem) no lugar de unidades fixas (px).
 - [ ] ID 06 - Aplica um Design System consistente (cores, tipografia, padrões de componentes) em toda a aplicação.
-- [ ] ID 07 - Utiliza Sass (SCSS) com ou sem framework, aplicando variáveis, mixins e funções para modularizar o código.
+- [x] ID 07 - Utiliza Sass (SCSS) com ou sem framework, aplicando variáveis, mixins e funções para modularizar o código.
 - [ ] ID 08 - Aplica tipografia responsiva (media queries mobile first) ou tipografia fluida (função clamp() + unidades relativas).
 - [ ] ID 09 - Aplica técnicas de responsividade de imagens usando CSS (object-fit, containers com unidades relativas).
 - [ ] ID 10 - Otimiza imagens usando formatos modernos (WebP) e carregamento adaptativo (srcset, picture, ou parâmetros do Cloudinary).
@@ -98,8 +98,64 @@ dados reais.
 
 ## 🚀 Manual de execução
 
-As instruções de execução serão adicionadas durante o desenvolvimento da aplicação.
+Consulte os comandos de instalação, servidor local e compilação Sass abaixo.
 
 ## 📱 Telas da aplicação
 
-As imagens das telas serão adicionadas após o desenvolvimento da aplicação.
+Capturas reais de desktop e mobile estão em `docs/evidencias/` e no PDF da atividade Sass.
+
+## Sass: desenvolvimento e compilação
+
+Requer Node.js 20.19+ e npm. Instale as dependências e compile:
+
+```bash
+npm ci
+npm run sass:build
+```
+
+Para recompilar automaticamente enquanto edita:
+
+```bash
+npm run sass:watch
+```
+
+Edite `assets/scss/`, nunca o CSS gerado. `main.scss` carrega os módulos
+com `@use`: tokens em `_variables.scss`, responsividade em `_mixins.scss`,
+estilos globais em `_base.scss`, estrutura em `_layout.scss` e componentes
+em `_components.scss`. O `@import url(...)` de Google Fonts é CSS nativo,
+não o mecanismo legado de módulos Sass.
+
+As três páginas utilizam somente `assets/css/style.css` como CSS personalizado.
+Bootstrap 5.3.8 (CSS e bundle JS) vem uma única vez do CDN, com integridade;
+é necessária conexão para Bootstrap e Google Fonts. O CSS compilado é versionado.
+O antigo `app.css` foi removido; sua referência permanece no histórico Git.
+
+Para servir localmente, execute `python3 -m http.server 8080` e abra
+`http://localhost:8080`. Sem JSON Server em `localhost:3000`, a aplicação usa
+os dados de demonstração existentes e persiste alterações no navegador.
+
+### Validação e entrega acadêmica
+
+```bash
+npx playwright install --with-deps chromium
+npm run sass:build
+npm test
+npm run docs:sass
+```
+
+`npm test` inicia seu próprio servidor temporário, compara pixel a pixel as três
+páginas com o CSS original do commit `00152b2` em 1440, 390, 575 e 576px, e
+exercita navbar, filtros, busca, validação de formulário, cadastro persistido e
+modal de status no modo demo. Requer o histórico desse commit, Chromium e acesso
+aos CDNs. O contexto de teste tolera certificados HTTPS do ambiente; as páginas
+mantêm seus atributos de integridade. A API é interceptada como indisponível;
+não há validação de JSON Server ou de uma consulta ViaCEP bem-sucedida.
+
+O PDF está em [docs/atividade-sass.pdf](docs/atividade-sass.pdf).
+As capturas reais e o relatório ficam em `docs/evidencias/`.
+`npm run docs:sass` gera o PDF com trechos dos arquivos implementados e
+as capturas produzidas pelo teste, incluindo a listagem real da pasta SCSS.
+
+Pendência identificada por `npm audit`: cinco alertas altos na cadeia de
+`gh-pages` preexistente. A correção dessa ferramenta de publicação fica fora
+do escopo da refatoração Sass.
