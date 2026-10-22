@@ -1,9 +1,5 @@
 node_modules/
-stitch/
 assets/vendor/
 assets/css/style.css
 package-lock.json
-test-results/
-docs/atividade-sass.pdf
-docs/prd.md
-docs/architecture.md
+docs/

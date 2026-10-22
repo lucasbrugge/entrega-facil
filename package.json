@@ -2,12 +2,7 @@
   "name": "entrega-facil",
   "version": "1.0.0",
   "description": "O Entrega Fácil é uma aplicação web responsiva para cadastro e acompanhamento básico de entregas. A aplicação permitirá cadastrar os dados do cliente, informações do produto, endereço de origem, endereço de destino, data prevista e status da entrega.",
-  "main": "index.js",
-  "directories": {
-    "doc": "docs"
-  },
   "scripts": {
-    "test": "node --test tests/*.test.cjs",
     "sass:build": "sass --no-source-map assets/scss/main.scss assets/css/style.css",
     "sass:watch": "sass --no-source-map --watch assets/scss/main.scss:assets/css/style.css",
     "start": "node scripts/serve.cjs",
@@ -16,8 +11,7 @@
     "images:build": "node scripts/build-images.cjs",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "format:check": "prettier --check .",
-    "test:external": "TEST_EXTERNAL=1 node --test --test-name-pattern=\"ViaCEP real\" tests/browser.test.cjs"
+    "format:check": "prettier --check ."
   },
   "repository": {
     "type": "git",
@@ -32,16 +26,13 @@
   "dependencies": {
     "bootstrap": "^5.3.8",
     "jquery": "4.0.0",
-    "jquery-mask-plugin": "1.14.16",
-    "uuid": "^14.0.2"
+    "jquery-mask-plugin": "1.14.16"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
     "eslint": "10.13.0",
-    "gh-pages": "^6.3.0",
     "globals": "17.13.0",
     "json-server": "0.17.4",
-    "playwright": "^1.64.1",
     "prettier": "3.9.10",
     "sass": "^1.105.2",
     "sharp": "0.35.5"
