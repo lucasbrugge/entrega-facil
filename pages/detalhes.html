@@ -4,12 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Detalhes da Entrega | Entrega Fácil</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-      crossorigin="anonymous"
-    />
+    <link href="../assets/vendor/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="../assets/css/style.css" />
   </head>
   <body class="min-vh-100 d-flex flex-column">
@@ -59,15 +54,32 @@
           <h1 class="h2 ef-heading text-uppercase mb-0" id="detail-title">Entrega</h1>
           <span id="detail-status" class="ef-status">—</span>
         </div>
-        <button
-          class="btn btn-dark"
-          type="button"
-          data-bs-toggle="modal"
-          data-bs-target="#status-modal"
-        >
-          ↻ Atualizar status
-        </button>
+        <div class="d-flex flex-wrap gap-2">
+          <button
+            class="btn btn-dark"
+            id="status-open"
+            type="button"
+            data-delivery-action
+            data-bs-toggle="modal"
+            data-bs-target="#status-modal"
+            disabled
+          >
+            ↻ Atualizar status
+          </button>
+          <button
+            class="btn btn-outline-danger"
+            id="delete-open"
+            type="button"
+            data-delivery-action
+            data-bs-toggle="modal"
+            data-bs-target="#delete-modal"
+            disabled
+          >
+            Excluir entrega
+          </button>
+        </div>
       </header>
+      <div id="persistence-notice" class="alert d-none" role="status"></div>
       <div id="app-alert" class="alert d-none" role="alert"></div>
       <section class="mb-4" aria-labelledby="route-heading">
         <div class="ef-kicker mb-2" id="route-heading">◇ Rota da entrega</div>
@@ -167,6 +179,7 @@
           </div>
           <form id="status-form" novalidate>
             <div class="modal-body d-grid gap-3">
+              <div id="status-feedback" class="alert d-none" role="alert"></div>
               <div class="d-flex justify-content-between p-3 border bg-light">
                 <div>
                   <span class="ef-meta">Identificador</span
@@ -205,19 +218,58 @@
         </div>
       </div>
     </div>
+    <div
+      class="modal fade ef-modal"
+      id="delete-modal"
+      tabindex="-1"
+      aria-labelledby="delete-modal-title"
+      aria-describedby="delete-description"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2
+              class="modal-title h5 ef-heading text-uppercase text-danger"
+              id="delete-modal-title"
+            >
+              Excluir entrega
+            </h2>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Fechar"
+            ></button>
+          </div>
+          <form id="delete-form">
+            <div class="modal-body">
+              <div id="delete-feedback" class="alert d-none" role="alert"></div>
+              <p class="ef-heading fw-semibold" id="delete-delivery-number">Entrega</p>
+              <p id="delete-description" class="mb-0">
+                Deseja excluir esta entrega e seus endereços de origem e destino? Esta ação não pode
+                ser desfeita.
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-outline-dark" type="button" data-bs-dismiss="modal">
+                Cancelar
+              </button>
+              <button class="btn btn-danger" id="delete-confirm" type="submit">
+                Confirmar exclusão
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
     <footer class="ef-footer py-3 mt-auto">
       <div class="container d-flex justify-content-between">
         <span class="ef-heading text-uppercase">Entrega Fácil</span
         ><span>© 2026 Entrega Fácil</span>
       </div>
     </footer>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-      crossorigin="anonymous"
-    ></script>
-    <script src="../assets/js/validation.js"></script>
-    <script src="../assets/js/demo-data.js"></script>
-    <script src="../assets/js/app.js"></script>
+    <script src="../assets/vendor/bootstrap.bundle.min.js"></script>
+    <script type="module" src="../assets/js/app.js"></script>
   </body>
 </html>

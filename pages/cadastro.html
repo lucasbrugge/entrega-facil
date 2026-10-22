@@ -4,12 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Nova Entrega | Entrega Fácil</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-      crossorigin="anonymous"
-    />
+    <link href="../assets/vendor/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="../assets/css/style.css" />
   </head>
   <body class="min-vh-100 d-flex flex-column">
@@ -63,6 +58,7 @@
           >Despacho rodoviário padrão</span
         >
       </header>
+      <div id="persistence-notice" class="alert d-none" role="status"></div>
       <div id="app-alert" class="alert d-none" role="alert"></div>
       <form id="delivery-form" class="d-grid gap-4" novalidate>
         <section class="card ef-card">
@@ -424,7 +420,7 @@
         </section>
         <div class="d-flex flex-column-reverse flex-sm-row justify-content-end gap-2">
           <a class="btn btn-outline-dark" href="../index.html">Cancelar</a
-          ><button class="btn btn-dark px-4" type="submit">✓ Cadastrar entrega</button>
+          ><button class="btn btn-dark px-4" type="submit" disabled>✓ Cadastrar entrega</button>
         </div>
       </form>
     </main>
@@ -434,16 +430,9 @@
         ><span>© 2026 Entrega Fácil</span>
       </div>
     </footer>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-      crossorigin="anonymous"
-    ></script>
+    <script src="../assets/vendor/bootstrap.bundle.min.js"></script>
     <script src="../assets/vendor/jquery.min.js"></script>
     <script src="../assets/vendor/jquery.mask.min.js"></script>
-    <script src="../assets/js/masks.js"></script>
-    <script src="../assets/js/validation.js"></script>
-    <script src="../assets/js/demo-data.js"></script>
-    <script src="../assets/js/app.js"></script>
+    <script type="module" src="../assets/js/app.js"></script>
   </body>
 </html>

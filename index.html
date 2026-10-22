@@ -4,12 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Entregas | Entrega Fácil</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-      crossorigin="anonymous"
-    />
+    <link href="assets/vendor/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
   <body class="min-vh-100 d-flex flex-column">
@@ -69,34 +64,58 @@
                 id="delivery-search"
                 class="form-control"
                 type="search"
-                placeholder="Buscar por ID, cliente ou produto..."
+                placeholder="Buscar por número, cliente ou produto..."
                 aria-label="Buscar entregas"
               />
             </div>
           </div>
           <div class="col-12 col-lg-6">
             <nav class="nav nav-pills ef-filters flex-wrap gap-1" aria-label="Filtrar por status">
-              <button class="btn btn-dark btn-sm" type="button" data-filter="todos">Todas</button
-              ><button class="btn btn-outline-dark btn-sm" type="button" data-filter="Pendente">
+              <button
+                class="btn btn-dark btn-sm"
+                type="button"
+                data-filter="todos"
+                aria-pressed="true"
+              >
+                Todas</button
+              ><button
+                class="btn btn-outline-dark btn-sm"
+                type="button"
+                data-filter="Pendente"
+                aria-pressed="false"
+              >
                 Pendentes</button
               ><button
                 class="btn btn-outline-dark btn-sm"
                 type="button"
                 data-filter="Em transporte"
+                aria-pressed="false"
               >
                 Em transporte</button
-              ><button class="btn btn-outline-dark btn-sm" type="button" data-filter="Entregue">
+              ><button
+                class="btn btn-outline-dark btn-sm"
+                type="button"
+                data-filter="Entregue"
+                aria-pressed="false"
+              >
                 Entregues</button
-              ><button class="btn btn-outline-dark btn-sm" type="button" data-filter="Cancelada">
+              ><button
+                class="btn btn-outline-dark btn-sm"
+                type="button"
+                data-filter="Cancelada"
+                aria-pressed="false"
+              >
                 Canceladas
               </button>
             </nav>
           </div>
         </div>
       </section>
+      <div id="persistence-notice" class="alert d-none" role="status"></div>
       <div id="app-alert" class="alert alert-warning d-none" role="alert"></div>
       <section
         id="delivery-list"
+        aria-busy="true"
         class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4"
         aria-live="polite"
         aria-label="Lista de entregas"
@@ -112,12 +131,7 @@
         ><span>© 2026 Entrega Fácil</span>
       </div>
     </footer>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-      crossorigin="anonymous"
-    ></script>
-    <script src="assets/js/demo-data.js"></script>
-    <script src="assets/js/app.js"></script>
+    <script src="assets/vendor/bootstrap.bundle.min.js"></script>
+    <script type="module" src="assets/js/app.js"></script>
   </body>
 </html>

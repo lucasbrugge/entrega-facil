@@ -8,7 +8,8 @@
       "produtoNome": "Notebook",
       "produtoDescricao": "Notebook para entrega de demonstração.",
       "dataPrevista": "2026-10-10",
-      "status": "Pendente"
+      "status": "Pendente",
+      "numeroEntrega": 1
     },
     {
       "id": "2",
@@ -18,7 +19,8 @@
       "produtoNome": "Cadeira de escritório",
       "produtoDescricao": "Cadeira ergonômica embalada para transporte.",
       "dataPrevista": "2026-10-12",
-      "status": "Em transporte"
+      "status": "Em transporte",
+      "numeroEntrega": 2
     },
     {
       "id": "3",
@@ -28,7 +30,8 @@
       "produtoNome": "Monitor 27 polegadas",
       "produtoDescricao": "Monitor com embalagem reforçada.",
       "dataPrevista": "2026-10-14",
-      "status": "Entregue"
+      "status": "Entregue",
+      "numeroEntrega": 3
     },
     {
       "id": "4",
@@ -38,7 +41,8 @@
       "produtoNome": "Impressora",
       "produtoDescricao": "Impressora para escritório.",
       "dataPrevista": "2026-10-16",
-      "status": "Cancelada"
+      "status": "Cancelada",
+      "numeroEntrega": 4
     }
   ],
   "enderecos": [
@@ -130,5 +134,8 @@
       "cidade": "Ponta Grossa",
       "uf": "PR"
     }
-  ]
+  ],
+  "configuracao": {
+    "ultimoNumeroEntrega": 4
+  }
 }
