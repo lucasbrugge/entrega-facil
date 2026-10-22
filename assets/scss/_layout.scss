@@ -62,6 +62,11 @@
   overflow-wrap: anywhere;
 }
 
+// Uma linha vazia não deve anular o espaço dos filtros com os gutters negativos.
+.ef-delivery-list:empty {
+  display: none;
+}
+
 .ef-footer {
   border-top: v.$border;
   background: var(--ef-surface);

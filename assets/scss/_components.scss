@@ -202,12 +202,6 @@
 }
 
 @include m.mobile {
-  .ef-filters {
-    row-gap: v.$space-sm !important;
-  }
-}
-
-@include m.mobile {
   .ef-modal .modal-dialog {
     margin: v.$space-sm;
   }

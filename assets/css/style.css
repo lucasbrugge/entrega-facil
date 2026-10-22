@@ -103,6 +103,10 @@ h3,
   overflow-wrap: anywhere;
 }
 
+.ef-delivery-list:empty {
+  display: none;
+}
+
 .ef-footer {
   border-top: 1px solid var(--ef-ink);
   background: var(--ef-surface);
@@ -332,11 +336,6 @@ h3,
   border-top: 2px solid var(--ef-ink);
 }
 
-@media (max-width: 575.98px) {
-  .ef-filters {
-    row-gap: 0.5rem !important;
-  }
-}
 @media (max-width: 575.98px) {
   .ef-modal .modal-dialog {
     margin: 0.5rem;
