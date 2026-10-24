@@ -177,8 +177,9 @@ o número digitado manualmente.
 O pequeno ícone de entregas da navbar é renderizado nas três páginas. O SVG
 original acompanha os WebP otimizados de **32, 64 e 96px**, com menos de 1,2 KB cada.
 `srcset` e `sizes="32px"` permitem ao navegador escolher a imagem para a densidade
-da tela. O SCSS utiliza `width: 2rem`, `height: auto`, `max-width: 100%` e
-`object-fit: contain`. O `alt` vazio evita repetir o nome da marca ao leitor de tela.
+da tela. O SCSS define apenas `width: 2rem`; as classes Bootstrap `img-fluid` e
+`object-fit-contain` cuidam da proporção, do limite de largura e do encaixe.
+O `alt` vazio evita repetir o nome da marca ao leitor de tela.
 
 ```bash
 npm run images:build
@@ -191,12 +192,35 @@ npm run sass:build
 npm run sass:watch
 ```
 
-Edite `assets/scss/`, nunca `assets/css/style.css`, que é compilado e versionado.
-`main.scss` usa `@use` para carregar variáveis, mixins, base, layout e componentes.
-São preservados os tokens Neo-Industrial Mono, nesting raso, breakpoint mobile,
-propriedades CSS `--ef-*` e `--bs-*`, Flexbox, grid Bootstrap e tipografia `clamp()`.
-O `@import url(...)` das fontes é CSS nativo, não importação legada de módulos Sass.
-As páginas usam apenas Bootstrap e um CSS personalizado compilado.
+Edite `assets/scss/`, nunca os arquivos compilados e versionados em `assets/css/`.
+Os dois comandos compilam os quatro pontos de entrada:
+
+| SCSS → CSS                       | Carregamento          | Personalização e motivo                                                                                                                                                                                                                                                       |
+| -------------------------------- | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `main.scss` → `main.css`         | Todas as páginas      | Fontes Inter/Space Grotesk, cores de fundo/texto, títulos e marca com `clamp()`, espaçamento entre letras, largura de 2rem do ícone WebP e sombra sólida dos cards. São valores específicos da identidade Neo-Industrial Mono, sem utilitários Bootstrap equivalentes exatos. |
+| `entregas.scss` → `entregas.css` | `index.html`          | Oculta a lista vazia para neutralizar os gutters; eleva levemente o card no hover, somente com ponteiro compatível e sem preferência por movimento reduzido. Bootstrap não oferece utilitários condicionais para `:empty` ou essa transformação.                              |
+| `cadastro.scss` → `cadastro.css` | `pages/cadastro.html` | Marcadores quadrados fluidos de 1,7 a 2rem centralizados com `inline-grid`. Bootstrap não fornece essas dimensões; o pequeno layout próprio demonstra CSS Grid responsivo sem substituir o grid de colunas do framework.                                                      |
+| `detalhes.scss` → `detalhes.css` | `pages/detalhes.html` | `white-space: pre-line` preserva as quebras digitadas na descrição do produto. Os utilitários Bootstrap de texto não oferecem esse comportamento.                                                                                                                             |
+
+Cada HTML carrega **Bootstrap → main.css → CSS da página**. O antigo CSS
+monolítico e os parciais de base/layout/componentes foram removidos.
+`_variables.scss` centraliza somente cinco valores utilizados. O mixin
+`square-marker` em `_mixins.scss` recebe a dimensão do marcador e reúne seu
+micro-layout. `@use` carrega esses recursos sem emitir CSS global novamente:
+`main.scss` usa variáveis; `cadastro.scss` usa variáveis e o mixin; as demais
+páginas não precisam importar recursos Sass. O `@import url(...)` das fontes é
+CSS nativo, não importação legada de módulos Sass.
+
+Botões, inputs, selects, validação visual, cards, badges e modais usam os estilos
+nativos do Bootstrap. Classes como `row`, `col-*`, `d-flex`, `flex-wrap`, `gap-*`,
+`h-100`, `p-3`, `border-dark` e `text-break` substituem regras próprias de layout.
+Os status usam `badge` e as cores semânticas `*-subtle`/`*-emphasis` do framework.
+Não há redefinições próprias de `.btn`, `.form-control`, `.form-select` ou `.modal`.
+
+A base é mobile-first: navbar recolhida, campos/cards empilhados e ações que
+quebram linha. Classes responsivas do Bootstrap fazem as adaptações a partir de
+`sm`, `md`, `lg` e `xl`; o CSS próprio não precisa de media queries por largura.
+As fontes usam `clamp()`, e as imagens mantêm WebP, `srcset` e `object-fit`.
 
 ### Qualidade do código
 
