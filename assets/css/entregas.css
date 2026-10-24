@@ -1,0 +1,12 @@
+.ef-delivery-list:empty {
+  display: none;
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .ef-delivery-card {
+    transition: transform 0.12s ease;
+  }
+  .ef-delivery-card:hover {
+    transform: translateY(-2px);
+  }
+}

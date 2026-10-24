@@ -1,6 +1,45 @@
-// Ordem da cascata: base global, estrutura, componentes.
-@use 'variables';
-@use 'mixins';
-@use 'base';
-@use 'layout';
-@use 'components';
+@use 'variables' as v;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+// Bootstrap fornece estrutura e componentes; aqui fica apenas a identidade comum.
+:root {
+  --bs-body-font-family: #{v.$font-body};
+  --bs-body-color: #{v.$ink};
+  --bs-body-bg: #{v.$bg};
+}
+
+h1,
+h2,
+h3,
+.navbar-brand,
+.ef-heading,
+.ef-kicker,
+.ef-meta {
+  font-family: v.$font-heading;
+}
+
+.navbar-brand {
+  font-size: clamp(1rem, 2.5vw, 1.15rem);
+  letter-spacing: -0.04em;
+}
+
+.ef-brand-icon {
+  width: 2rem;
+}
+
+.ef-page-title {
+  font-size: clamp(1.65rem, 3vw, 2rem);
+  letter-spacing: -0.04em;
+}
+
+.ef-kicker,
+.ef-meta {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+}
+
+// O Bootstrap não oferece esta sombra sólida, sem desfoque.
+.ef-card {
+  box-shadow: 0 4px 0 v.$ink;
+}

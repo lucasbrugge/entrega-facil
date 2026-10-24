@@ -6,10 +6,10 @@ const byId = (id) => document.getElementById(id);
 function metaBlock(label, value) {
   const wrapper = document.createElement('div');
   const name = document.createElement('span');
-  name.className = 'ef-meta';
+  name.className = 'ef-meta d-block fw-medium text-secondary text-uppercase';
   name.textContent = label;
   const text = document.createElement('p');
-  text.className = 'ef-meta-value';
+  text.className = 'small mb-3 text-break';
   text.textContent = value || '—';
   wrapper.append(name, text);
   return wrapper;
@@ -23,9 +23,10 @@ function deliveryCard(delivery, mode) {
   const col = document.createElement('div');
   col.className = 'col';
   const article = document.createElement('article');
-  article.className = 'card ef-card ef-delivery-card';
+  article.className = 'card bg-white border-dark ef-card ef-delivery-card h-100';
   const header = document.createElement('div');
-  header.className = 'card-header d-flex justify-content-between align-items-center gap-2';
+  header.className =
+    'card-header bg-white d-flex flex-wrap justify-content-between align-items-center gap-2';
   const title = document.createElement('h2');
   title.className = 'h6 ef-heading mb-0';
   title.textContent = `Entrega #${formatDeliveryNumber(delivery)}`;
@@ -39,7 +40,7 @@ function deliveryCard(delivery, mode) {
   );
   const footer = document.createElement('div');
   footer.className =
-    'card-footer ef-card-footer d-flex justify-content-between align-items-center gap-2';
+    'card-footer d-flex flex-wrap justify-content-between align-items-center gap-2';
   const date = document.createElement('span');
   date.className = 'small text-secondary';
   date.textContent = `Previsão: ${localDate(delivery.dataPrevista)}`;

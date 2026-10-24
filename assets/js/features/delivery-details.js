@@ -16,7 +16,7 @@ function fillAddress(prefix, address = {}) {
 function displayStatus(status) {
   for (const id of ['detail-status', 'detail-status-secondary', 'modal-current-status']) {
     const badge = byId(id);
-    badge.className = `ef-status ${statusClass(status)}`;
+    badge.className = statusClass(status);
     badge.textContent = status || 'Sem status';
   }
 }

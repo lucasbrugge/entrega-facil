@@ -1,0 +1,7 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+
+// Dimensão fluida dos marcadores 01–04; cores e tipografia vêm de classes.
+.ef-section-number {
+  @include m.square-marker(v.$section-marker-size);
+}

@@ -5,14 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Entregas | Entrega Fácil</title>
     <link href="assets/vendor/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/entregas.css" />
   </head>
   <body class="min-vh-100 d-flex flex-column">
-    <nav class="navbar navbar-expand-sm ef-navbar">
+    <nav class="navbar navbar-expand-sm bg-white border-bottom border-dark">
       <div class="container">
-        <a class="navbar-brand" href="index.html"
+        <a
+          class="navbar-brand d-inline-flex align-items-center gap-2 fw-bold text-uppercase"
+          href="index.html"
           ><img
-            class="ef-brand-icon"
+            class="ef-brand-icon img-fluid object-fit-contain"
             src="assets/images/entrega-icon-32.webp"
             srcset="
               assets/images/entrega-icon-32.webp 32w,
@@ -44,16 +47,22 @@
         </div>
       </div>
     </nav>
-    <main class="container ef-page flex-grow-1">
+    <main class="container flex-grow-1 pt-4 pt-sm-5 pb-5">
       <header
-        class="ef-page-heading d-flex flex-column flex-sm-row justify-content-between align-items-sm-end"
+        class="border-bottom border-dark pb-3 mb-4 gap-3 d-flex flex-column flex-sm-row justify-content-between align-items-sm-end"
       >
         <div>
-          <div class="ef-kicker">Controle de expedição // Painel operacional</div>
-          <h1>Suas entregas</h1>
-          <p>Gerencie e acompanhe o status de todas as suas remessas.</p>
+          <div class="ef-kicker fw-medium text-secondary text-uppercase">
+            Controle de expedição // Painel operacional
+          </div>
+          <h1 class="ef-page-title fw-bold my-1">Suas entregas</h1>
+          <p class="mb-0 text-secondary">
+            Gerencie e acompanhe o status de todas as suas remessas.
+          </p>
         </div>
-        <div class="ef-kicker mt-3 mt-sm-0"><span id="delivery-count">0</span> entregas</div>
+        <div class="ef-kicker fw-medium text-secondary text-uppercase mt-3 mt-sm-0">
+          <span id="delivery-count">0</span> entregas
+        </div>
       </header>
       <section aria-label="Filtros de entregas" class="mb-4">
         <div class="row g-3 align-items-center">
@@ -120,13 +129,13 @@
         aria-live="polite"
         aria-label="Lista de entregas"
       ></section>
-      <div id="delivery-empty" class="ef-card p-4 text-center d-none">
+      <div id="delivery-empty" class="card bg-white border-dark ef-card p-4 text-center d-none">
         <h2 class="h5 ef-heading">Nenhuma entrega encontrada</h2>
         <p class="mb-0 text-secondary">Cadastre uma entrega ou ajuste os filtros.</p>
       </div>
     </main>
-    <footer class="ef-footer py-3 mt-auto">
-      <div class="container d-flex justify-content-between">
+    <footer class="small border-top border-dark bg-white text-secondary py-3 mt-auto">
+      <div class="container d-flex flex-wrap justify-content-between gap-2">
         <span class="ef-heading text-uppercase">Entrega Fácil</span
         ><span>© 2026 Entrega Fácil</span>
       </div>

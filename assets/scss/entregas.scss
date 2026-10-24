@@ -1,0 +1,15 @@
+// Evita que os gutters da row vazia invadam o espaço dos filtros.
+.ef-delivery-list:empty {
+  display: none;
+}
+
+// Interação discreta da listagem, respeitando a preferência por menos movimento.
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .ef-delivery-card {
+    transition: transform 0.12s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+}

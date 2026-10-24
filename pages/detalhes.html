@@ -5,14 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Detalhes da Entrega | Entrega Fácil</title>
     <link href="../assets/vendor/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <link rel="stylesheet" href="../assets/css/detalhes.css" />
   </head>
   <body class="min-vh-100 d-flex flex-column">
-    <nav class="navbar navbar-expand-sm ef-navbar">
+    <nav class="navbar navbar-expand-sm bg-white border-bottom border-dark">
       <div class="container">
-        <a class="navbar-brand" href="../index.html"
+        <a
+          class="navbar-brand d-inline-flex align-items-center gap-2 fw-bold text-uppercase"
+          href="../index.html"
           ><img
-            class="ef-brand-icon"
+            class="ef-brand-icon img-fluid object-fit-contain"
             src="../assets/images/entrega-icon-32.webp"
             srcset="
               ../assets/images/entrega-icon-32.webp 32w,
@@ -43,7 +46,7 @@
         </div>
       </div>
     </nav>
-    <main class="container ef-page flex-grow-1">
+    <main class="container flex-grow-1 pt-4 pt-sm-5 pb-5">
       <a class="link-dark small text-uppercase text-decoration-none" href="../index.html"
         >← Voltar para entregas</a
       >
@@ -51,8 +54,10 @@
         class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 border-bottom border-2 border-dark pb-3 mt-3 mb-4"
       >
         <div class="d-flex flex-wrap align-items-center gap-3">
-          <h1 class="h2 ef-heading text-uppercase mb-0" id="detail-title">Entrega</h1>
-          <span id="detail-status" class="ef-status">—</span>
+          <h1 class="ef-page-title fw-bold text-uppercase mb-0 text-break" id="detail-title">
+            Entrega
+          </h1>
+          <span id="detail-status" class="badge text-bg-secondary fw-medium text-uppercase">—</span>
         </div>
         <div class="d-flex flex-wrap gap-2">
           <button
@@ -82,31 +87,35 @@
       <div id="persistence-notice" class="alert d-none" role="status"></div>
       <div id="app-alert" class="alert d-none" role="alert"></div>
       <section class="mb-4" aria-labelledby="route-heading">
-        <div class="ef-kicker mb-2" id="route-heading">◇ Rota da entrega</div>
+        <div class="ef-kicker fw-medium text-secondary text-uppercase mb-2" id="route-heading">
+          ◇ Rota da entrega
+        </div>
         <div class="row g-3 align-items-stretch">
           <div class="col-12 col-lg">
-            <article class="ef-card ef-route-card">
+            <article class="card bg-white border-dark ef-card h-100 p-3">
               <div class="d-flex justify-content-between border-bottom pb-2 mb-3">
-                <span class="ef-kicker">Ponto A</span><span class="ef-kicker">Origem</span>
+                <span class="ef-kicker fw-medium text-secondary text-uppercase">Ponto A</span
+                ><span class="ef-kicker fw-medium text-secondary text-uppercase">Origem</span>
               </div>
-              <h2 class="h5" id="origin-address-title">—</h2>
-              <p class="text-secondary mb-2" id="origin-address-line">—</p>
+              <h2 class="h5 text-break" id="origin-address-title">—</h2>
+              <p class="text-secondary mb-2 text-break" id="origin-address-line">—</p>
               <span class="badge text-bg-light border text-secondary" id="origin-cep">CEP: —</span>
             </article>
           </div>
           <div class="col-auto d-none d-lg-flex align-items-center">
             <div class="text-center">
-              <span class="d-grid place-items-center border border-dark ef-card p-3">→</span
-              ><span class="ef-kicker">Trânsito</span>
+              <span class="d-block border border-dark bg-white ef-card p-3">→</span
+              ><span class="ef-kicker fw-medium text-secondary text-uppercase">Trânsito</span>
             </div>
           </div>
           <div class="col-12 col-lg">
-            <article class="ef-card ef-route-card">
+            <article class="card bg-white border-dark ef-card h-100 p-3">
               <div class="d-flex justify-content-between border-bottom pb-2 mb-3">
-                <span class="ef-kicker">Ponto B</span><span class="ef-kicker">Destino</span>
+                <span class="ef-kicker fw-medium text-secondary text-uppercase">Ponto B</span
+                ><span class="ef-kicker fw-medium text-secondary text-uppercase">Destino</span>
               </div>
-              <h2 class="h5" id="destination-address-title">—</h2>
-              <p class="text-secondary mb-2" id="destination-address-line">—</p>
+              <h2 class="h5 text-break" id="destination-address-title">—</h2>
+              <p class="text-secondary mb-2 text-break" id="destination-address-line">—</p>
               <span class="badge text-bg-light border text-secondary" id="destination-cep"
                 >CEP: —</span
               >
@@ -116,49 +125,65 @@
       </section>
       <section class="row g-3" aria-label="Informações da entrega">
         <div class="col-12 col-md-6 col-lg-4">
-          <article class="ef-card ef-detail-card">
-            <div class="ef-detail-card-header">
+          <article class="card bg-white border-dark ef-card h-100 p-3">
+            <div
+              class="d-flex align-items-center justify-content-between border-bottom border-dark pb-2 mb-3 gap-2"
+            >
               <h2 class="h6 text-uppercase mb-0">Cliente</h2>
               <span aria-hidden="true">♙</span>
             </div>
             <div>
-              <span class="ef-meta">Nome</span>
-              <p class="ef-meta-value" id="detail-client">—</p>
-              <span class="ef-meta">CPF</span>
-              <p class="ef-meta-value" id="detail-cpf">—</p>
-              <span class="ef-meta">Telefone</span>
-              <p class="ef-meta-value mb-0" id="detail-phone">—</p>
+              <span class="ef-meta d-block fw-medium text-secondary text-uppercase">Nome</span>
+              <p class="small mb-3 text-break" id="detail-client">—</p>
+              <span class="ef-meta d-block fw-medium text-secondary text-uppercase">CPF</span>
+              <p class="small mb-3 text-break" id="detail-cpf">—</p>
+              <span class="ef-meta d-block fw-medium text-secondary text-uppercase">Telefone</span>
+              <p class="small text-break mb-0" id="detail-phone">—</p>
             </div>
           </article>
         </div>
         <div class="col-12 col-md-6 col-lg-4">
-          <article class="ef-card ef-detail-card">
-            <div class="ef-detail-card-header">
+          <article class="card bg-white border-dark ef-card h-100 p-3">
+            <div
+              class="d-flex align-items-center justify-content-between border-bottom border-dark pb-2 mb-3 gap-2"
+            >
               <h2 class="h6 text-uppercase mb-0">Produto</h2>
               <span aria-hidden="true">▣</span>
             </div>
-            <span class="ef-meta">Nome</span>
-            <p class="ef-meta-value" id="detail-product">—</p>
-            <span class="ef-meta">Descrição</span>
-            <p class="mb-0" id="detail-description">—</p>
+            <span class="ef-meta d-block fw-medium text-secondary text-uppercase">Nome</span>
+            <p class="small mb-3 text-break" id="detail-product">—</p>
+            <span class="ef-meta d-block fw-medium text-secondary text-uppercase">Descrição</span>
+            <p class="mb-0 text-break" id="detail-description">—</p>
           </article>
         </div>
         <div class="col-12 col-md-6 col-lg-4">
-          <article class="ef-card ef-detail-card">
-            <div class="ef-detail-card-header">
+          <article class="card bg-white border-dark ef-card h-100 p-3">
+            <div
+              class="d-flex align-items-center justify-content-between border-bottom border-dark pb-2 mb-3 gap-2"
+            >
               <h2 class="h6 text-uppercase mb-0">Informações da Entrega</h2>
               <span aria-hidden="true">▱</span>
             </div>
-            <span class="ef-meta">Data prevista</span>
-            <p class="ef-meta-value" id="detail-date">—</p>
-            <span class="ef-meta">Status atual</span>
-            <p class="mb-0"><span id="detail-status-secondary" class="ef-status">—</span></p>
+            <span class="ef-meta d-block fw-medium text-secondary text-uppercase"
+              >Data prevista</span
+            >
+            <p class="small mb-3 text-break" id="detail-date">—</p>
+            <span class="ef-meta d-block fw-medium text-secondary text-uppercase"
+              >Status atual</span
+            >
+            <p class="mb-0">
+              <span
+                id="detail-status-secondary"
+                class="badge text-bg-secondary fw-medium text-uppercase"
+                >—</span
+              >
+            </p>
           </article>
         </div>
       </section>
     </main>
     <div
-      class="modal fade ef-modal"
+      class="modal fade"
       id="status-modal"
       tabindex="-1"
       aria-labelledby="status-modal-title"
@@ -180,18 +205,24 @@
           <form id="status-form" novalidate>
             <div class="modal-body d-grid gap-3">
               <div id="status-feedback" class="alert d-none" role="alert"></div>
-              <div class="d-flex justify-content-between p-3 border bg-light">
+              <div class="d-flex flex-wrap justify-content-between gap-3 p-3 border bg-light">
                 <div>
-                  <span class="ef-meta">Identificador</span
+                  <span class="ef-meta d-block fw-medium text-secondary text-uppercase"
+                    >Identificador</span
                   ><strong class="ef-heading" id="modal-delivery-id">—</strong>
                 </div>
                 <div class="text-end">
-                  <span class="ef-meta">Status atual</span
-                  ><span class="ef-status" id="modal-current-status">—</span>
+                  <span class="ef-meta d-block fw-medium text-secondary text-uppercase"
+                    >Status atual</span
+                  ><span
+                    class="badge text-bg-secondary fw-medium text-uppercase"
+                    id="modal-current-status"
+                    >—</span
+                  >
                 </div>
               </div>
               <div>
-                <label for="new-status" class="form-label ef-label text-uppercase"
+                <label for="new-status" class="form-label ef-heading small fw-medium text-uppercase"
                   >Novo status</label
                 ><select
                   id="new-status"
@@ -219,7 +250,7 @@
       </div>
     </div>
     <div
-      class="modal fade ef-modal"
+      class="modal fade"
       id="delete-modal"
       tabindex="-1"
       aria-labelledby="delete-modal-title"
@@ -263,8 +294,8 @@
         </div>
       </div>
     </div>
-    <footer class="ef-footer py-3 mt-auto">
-      <div class="container d-flex justify-content-between">
+    <footer class="small border-top border-dark bg-white text-secondary py-3 mt-auto">
+      <div class="container d-flex flex-wrap justify-content-between gap-2">
         <span class="ef-heading text-uppercase">Entrega Fácil</span
         ><span>© 2026 Entrega Fácil</span>
       </div>

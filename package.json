@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "O Entrega Fácil é uma aplicação web responsiva para cadastro e acompanhamento básico de entregas. A aplicação permitirá cadastrar os dados do cliente, informações do produto, endereço de origem, endereço de destino, data prevista e status da entrega.",
   "scripts": {
-    "sass:build": "sass --no-source-map assets/scss/main.scss assets/css/style.css",
-    "sass:watch": "sass --no-source-map --watch assets/scss/main.scss:assets/css/style.css",
+    "sass:build": "sass --no-source-map assets/scss/main.scss:assets/css/main.css assets/scss/entregas.scss:assets/css/entregas.css assets/scss/cadastro.scss:assets/css/cadastro.css assets/scss/detalhes.scss:assets/css/detalhes.css",
+    "sass:watch": "npm run sass:build -- --watch",
     "start": "node scripts/serve.cjs",
     "api": "json-server --watch db.json --host localhost --port 3000",
     "vendor:sync": "node scripts/sync-vendor.cjs",

@@ -5,14 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Nova Entrega | Entrega Fácil</title>
     <link href="../assets/vendor/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <link rel="stylesheet" href="../assets/css/cadastro.css" />
   </head>
   <body class="min-vh-100 d-flex flex-column">
-    <nav class="navbar navbar-expand-sm ef-navbar">
+    <nav class="navbar navbar-expand-sm bg-white border-bottom border-dark">
       <div class="container">
-        <a class="navbar-brand" href="../index.html"
+        <a
+          class="navbar-brand d-inline-flex align-items-center gap-2 fw-bold text-uppercase"
+          href="../index.html"
           ><img
-            class="ef-brand-icon"
+            class="ef-brand-icon img-fluid object-fit-contain"
             src="../assets/images/entrega-icon-32.webp"
             srcset="
               ../assets/images/entrega-icon-32.webp 32w,
@@ -45,14 +48,18 @@
         </div>
       </div>
     </nav>
-    <main class="container ef-page flex-grow-1">
+    <main class="container flex-grow-1 pt-4 pt-sm-5 pb-5">
       <header
-        class="ef-page-heading d-flex flex-column flex-md-row justify-content-between align-items-md-end"
+        class="border-bottom border-dark pb-3 mb-4 gap-3 d-flex flex-column flex-md-row justify-content-between align-items-md-end"
       >
         <div>
-          <div class="ef-kicker">Ordem de expedição // Módulo 01</div>
-          <h1>Nova entrega</h1>
-          <p>Preencha os dados abaixo para registrar uma nova entrega no sistema.</p>
+          <div class="ef-kicker fw-medium text-secondary text-uppercase">
+            Ordem de expedição // Módulo 01
+          </div>
+          <h1 class="ef-page-title fw-bold my-1">Nova entrega</h1>
+          <p class="mb-0 text-secondary">
+            Preencha os dados abaixo para registrar uma nova entrega no sistema.
+          </p>
         </div>
         <span class="badge text-bg-light border border-secondary-subtle text-dark mt-3 mt-md-0"
           >Despacho rodoviário padrão</span
@@ -61,18 +68,24 @@
       <div id="persistence-notice" class="alert d-none" role="status"></div>
       <div id="app-alert" class="alert d-none" role="alert"></div>
       <form id="delivery-form" class="d-grid gap-4" novalidate>
-        <section class="card ef-card">
-          <div class="card-header d-flex justify-content-between align-items-center">
+        <section class="card bg-white border-dark ef-card">
+          <div
+            class="card-header bg-white d-flex flex-wrap justify-content-between align-items-center gap-2"
+          >
             <div class="d-flex align-items-center gap-2">
-              <span class="ef-section-number">01</span>
-              <h2 class="ef-card-title">Dados do Cliente</h2>
+              <span class="ef-section-number ef-heading small bg-dark text-white flex-shrink-0"
+                >01</span
+              >
+              <h2 class="h6 mb-0">Dados do Cliente</h2>
             </div>
-            <span class="ef-kicker d-none d-sm-inline">Identificação principal</span>
+            <span class="ef-kicker fw-medium text-secondary text-uppercase d-none d-sm-inline"
+              >Identificação principal</span
+            >
           </div>
           <div class="card-body">
             <div class="row g-3">
               <div class="col-12 col-md-4">
-                <label class="form-label ef-label" for="cliente-nome"
+                <label class="form-label ef-heading small fw-medium" for="cliente-nome"
                   >Nome completo <span class="text-danger">*</span></label
                 ><input
                   class="form-control"
@@ -86,7 +99,7 @@
                 <div class="invalid-feedback" id="cliente-nome-error" aria-live="polite"></div>
               </div>
               <div class="col-12 col-md-4">
-                <label class="form-label ef-label" for="cliente-cpf"
+                <label class="form-label ef-heading small fw-medium" for="cliente-cpf"
                   >CPF <span class="text-danger">*</span></label
                 ><input
                   class="form-control"
@@ -101,7 +114,7 @@
                 <div class="invalid-feedback" id="cliente-cpf-error" aria-live="polite"></div>
               </div>
               <div class="col-12 col-md-4">
-                <label class="form-label ef-label" for="cliente-telefone"
+                <label class="form-label ef-heading small fw-medium" for="cliente-telefone"
                   >Telefone <span class="text-danger">*</span></label
                 ><input
                   class="form-control"
@@ -118,17 +131,23 @@
             </div>
           </div>
         </section>
-        <section class="card ef-card">
-          <div class="card-header d-flex justify-content-between align-items-center">
+        <section class="card bg-white border-dark ef-card">
+          <div
+            class="card-header bg-white d-flex flex-wrap justify-content-between align-items-center gap-2"
+          >
             <div class="d-flex align-items-center gap-2">
-              <span class="ef-section-number">02</span>
-              <h2 class="ef-card-title">Produto</h2>
+              <span class="ef-section-number ef-heading small bg-dark text-white flex-shrink-0"
+                >02</span
+              >
+              <h2 class="h6 mb-0">Produto</h2>
             </div>
-            <span class="ef-kicker d-none d-sm-inline">Manifesto de carga</span>
+            <span class="ef-kicker fw-medium text-secondary text-uppercase d-none d-sm-inline"
+              >Manifesto de carga</span
+            >
           </div>
           <div class="card-body d-grid gap-3">
             <div>
-              <label class="form-label ef-label" for="produto-nome"
+              <label class="form-label ef-heading small fw-medium" for="produto-nome"
                 >Nome do produto <span class="text-danger">*</span></label
               ><input
                 class="form-control"
@@ -141,7 +160,8 @@
               <div class="invalid-feedback" id="produto-nome-error" aria-live="polite"></div>
             </div>
             <div>
-              <label class="form-label ef-label" for="produto-descricao">Descrição (opcional)</label
+              <label class="form-label ef-heading small fw-medium" for="produto-descricao"
+                >Descrição (opcional)</label
               ><textarea
                 class="form-control"
                 id="produto-descricao"
@@ -154,17 +174,23 @@
         </section>
         <div class="row g-4">
           <div class="col-12 col-lg-6">
-            <section class="card ef-card h-100">
-              <div class="card-header d-flex justify-content-between align-items-center">
+            <section class="card bg-white border-dark ef-card h-100">
+              <div
+                class="card-header bg-white d-flex flex-wrap justify-content-between align-items-center gap-2"
+              >
                 <div class="d-flex align-items-center gap-2">
-                  <span class="ef-section-number">03A</span>
-                  <h2 class="ef-card-title">Origem</h2>
+                  <span class="ef-section-number ef-heading small bg-dark text-white flex-shrink-0"
+                    >03A</span
+                  >
+                  <h2 class="h6 mb-0">Origem</h2>
                 </div>
-                <span class="ef-kicker d-none d-sm-inline">Coleta / Hub</span>
+                <span class="ef-kicker fw-medium text-secondary text-uppercase d-none d-sm-inline"
+                  >Coleta / Hub</span
+                >
               </div>
               <div class="card-body d-grid gap-3">
                 <div>
-                  <label class="form-label ef-label" for="origem-cep"
+                  <label class="form-label ef-heading small fw-medium" for="origem-cep"
                     >CEP <span class="text-danger">*</span></label
                   >
                   <div class="input-group has-validation">
@@ -186,7 +212,7 @@
                 </div>
                 <div class="row g-3">
                   <div class="col-8">
-                    <label class="form-label ef-label" for="origem-logradouro"
+                    <label class="form-label ef-heading small fw-medium" for="origem-logradouro"
                       >Logradouro <span class="text-danger">*</span></label
                     ><input
                       class="form-control"
@@ -203,7 +229,7 @@
                     ></div>
                   </div>
                   <div class="col-4">
-                    <label class="form-label ef-label" for="origem-numero"
+                    <label class="form-label ef-heading small fw-medium" for="origem-numero"
                       >Número <span class="text-danger">*</span></label
                     ><input
                       class="form-control"
@@ -218,7 +244,7 @@
                 </div>
                 <div class="row g-3">
                   <div class="col-12 col-sm-5">
-                    <label class="form-label ef-label" for="origem-bairro"
+                    <label class="form-label ef-heading small fw-medium" for="origem-bairro"
                       >Bairro <span class="text-danger">*</span></label
                     ><input
                       class="form-control"
@@ -230,7 +256,7 @@
                     <div class="invalid-feedback" id="origem-bairro-error" aria-live="polite"></div>
                   </div>
                   <div class="col-8 col-sm-5">
-                    <label class="form-label ef-label" for="origem-cidade"
+                    <label class="form-label ef-heading small fw-medium" for="origem-cidade"
                       >Cidade <span class="text-danger">*</span></label
                     ><input
                       class="form-control"
@@ -242,7 +268,7 @@
                     <div class="invalid-feedback" id="origem-cidade-error" aria-live="polite"></div>
                   </div>
                   <div class="col-4 col-sm-2">
-                    <label class="form-label ef-label" for="origem-uf"
+                    <label class="form-label ef-heading small fw-medium" for="origem-uf"
                       >UF <span class="text-danger">*</span></label
                     ><input
                       class="form-control text-uppercase"
@@ -259,17 +285,23 @@
             </section>
           </div>
           <div class="col-12 col-lg-6">
-            <section class="card ef-card h-100">
-              <div class="card-header d-flex justify-content-between align-items-center">
+            <section class="card bg-white border-dark ef-card h-100">
+              <div
+                class="card-header bg-white d-flex flex-wrap justify-content-between align-items-center gap-2"
+              >
                 <div class="d-flex align-items-center gap-2">
-                  <span class="ef-section-number">03B</span>
-                  <h2 class="ef-card-title">Destino</h2>
+                  <span class="ef-section-number ef-heading small bg-dark text-white flex-shrink-0"
+                    >03B</span
+                  >
+                  <h2 class="h6 mb-0">Destino</h2>
                 </div>
-                <span class="ef-kicker d-none d-sm-inline">Entrega final</span>
+                <span class="ef-kicker fw-medium text-secondary text-uppercase d-none d-sm-inline"
+                  >Entrega final</span
+                >
               </div>
               <div class="card-body d-grid gap-3">
                 <div>
-                  <label class="form-label ef-label" for="destino-cep"
+                  <label class="form-label ef-heading small fw-medium" for="destino-cep"
                     >CEP <span class="text-danger">*</span></label
                   >
                   <div class="input-group has-validation">
@@ -291,7 +323,7 @@
                 </div>
                 <div class="row g-3">
                   <div class="col-8">
-                    <label class="form-label ef-label" for="destino-logradouro"
+                    <label class="form-label ef-heading small fw-medium" for="destino-logradouro"
                       >Logradouro <span class="text-danger">*</span></label
                     ><input
                       class="form-control"
@@ -307,7 +339,7 @@
                     ></div>
                   </div>
                   <div class="col-4">
-                    <label class="form-label ef-label" for="destino-numero"
+                    <label class="form-label ef-heading small fw-medium" for="destino-numero"
                       >Número <span class="text-danger">*</span></label
                     ><input
                       class="form-control"
@@ -326,7 +358,7 @@
                 </div>
                 <div class="row g-3">
                   <div class="col-12 col-sm-5">
-                    <label class="form-label ef-label" for="destino-bairro"
+                    <label class="form-label ef-heading small fw-medium" for="destino-bairro"
                       >Bairro <span class="text-danger">*</span></label
                     ><input
                       class="form-control"
@@ -342,7 +374,7 @@
                     ></div>
                   </div>
                   <div class="col-8 col-sm-5">
-                    <label class="form-label ef-label" for="destino-cidade"
+                    <label class="form-label ef-heading small fw-medium" for="destino-cidade"
                       >Cidade <span class="text-danger">*</span></label
                     ><input
                       class="form-control"
@@ -358,7 +390,7 @@
                     ></div>
                   </div>
                   <div class="col-4 col-sm-2">
-                    <label class="form-label ef-label" for="destino-uf"
+                    <label class="form-label ef-heading small fw-medium" for="destino-uf"
                       >UF <span class="text-danger">*</span></label
                     ><input
                       class="form-control text-uppercase"
@@ -375,18 +407,24 @@
             </section>
           </div>
         </div>
-        <section class="card ef-card">
-          <div class="card-header d-flex justify-content-between align-items-center">
+        <section class="card bg-white border-dark ef-card">
+          <div
+            class="card-header bg-white d-flex flex-wrap justify-content-between align-items-center gap-2"
+          >
             <div class="d-flex align-items-center gap-2">
-              <span class="ef-section-number">04</span>
-              <h2 class="ef-card-title">Dados da Entrega</h2>
+              <span class="ef-section-number ef-heading small bg-dark text-white flex-shrink-0"
+                >04</span
+              >
+              <h2 class="h6 mb-0">Dados da Entrega</h2>
             </div>
-            <span class="ef-kicker d-none d-sm-inline">Cronograma operacional</span>
+            <span class="ef-kicker fw-medium text-secondary text-uppercase d-none d-sm-inline"
+              >Cronograma operacional</span
+            >
           </div>
           <div class="card-body">
             <div class="row g-3">
               <div class="col-12 col-md-6">
-                <label class="form-label ef-label" for="data-prevista"
+                <label class="form-label ef-heading small fw-medium" for="data-prevista"
                   >Data prevista <span class="text-danger">*</span></label
                 ><input
                   class="form-control"
@@ -399,7 +437,7 @@
                 <div class="invalid-feedback" id="data-prevista-error" aria-live="polite"></div>
               </div>
               <div class="col-12 col-md-6">
-                <label class="form-label ef-label" for="status"
+                <label class="form-label ef-heading small fw-medium" for="status"
                   >Status inicial <span class="text-danger">*</span></label
                 ><select
                   class="form-select"
@@ -424,8 +462,8 @@
         </div>
       </form>
     </main>
-    <footer class="ef-footer py-3 mt-auto">
-      <div class="container d-flex justify-content-between">
+    <footer class="small border-top border-dark bg-white text-secondary py-3 mt-auto">
+      <div class="container d-flex flex-wrap justify-content-between gap-2">
         <span class="ef-heading text-uppercase">Entrega Fácil</span
         ><span>© 2026 Entrega Fácil</span>
       </div>

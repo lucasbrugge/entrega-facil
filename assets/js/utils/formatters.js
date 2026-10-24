@@ -15,16 +15,19 @@ export function addressCity(address) {
 }
 
 export function statusClass(status = '') {
-  return `status-${status
-    .toLocaleLowerCase('pt-BR')
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .replace(/\s+/g, '-')}`;
+  const color =
+    {
+      Pendente: 'warning',
+      'Em transporte': 'primary',
+      Entregue: 'success',
+      Cancelada: 'danger',
+    }[status] || 'secondary';
+  return `badge border fw-medium text-uppercase text-${color}-emphasis bg-${color}-subtle border-${color}-subtle`;
 }
 
 export function statusBadge(status) {
   const badge = document.createElement('span');
-  badge.className = `ef-status ${statusClass(status)}`;
+  badge.className = statusClass(status);
   badge.textContent = status || 'Sem status';
   return badge;
 }

@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap");
+:root {
+  --bs-body-font-family: Inter, Arial, sans-serif;
+  --bs-body-color: #1b1c1c;
+  --bs-body-bg: #fbf9f8;
+}
+
+h1,
+h2,
+h3,
+.navbar-brand,
+.ef-heading,
+.ef-kicker,
+.ef-meta {
+  font-family: "Space Grotesk", Inter, sans-serif;
+}
+
+.navbar-brand {
+  font-size: clamp(1rem, 2.5vw, 1.15rem);
+  letter-spacing: -0.04em;
+}
+
+.ef-brand-icon {
+  width: 2rem;
+}
+
+.ef-page-title {
+  font-size: clamp(1.65rem, 3vw, 2rem);
+  letter-spacing: -0.04em;
+}
+
+.ef-kicker,
+.ef-meta {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+}
+
+.ef-card {
+  box-shadow: 0 4px 0 #1b1c1c;
+}
