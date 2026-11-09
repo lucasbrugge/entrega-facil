@@ -1,8 +1,7 @@
 import { initialData } from './seed.js';
 import { migrateDeliveryNumbers, reserveDeliveryNumber } from './delivery-numbers.js';
 
-export const STORAGE_KEY = 'entrega-facil-demo-data-v1';
-const clone = (value) => structuredClone(value);
+const STORAGE_KEY = 'entrega-facil-demo-data-v1';
 const sameId = (left, right) => String(left) === String(right);
 
 function write(data) {
@@ -27,7 +26,7 @@ function read() {
   }
   let data;
   try {
-    data = saved === null ? clone(initialData) : JSON.parse(saved);
+    data = saved === null ? structuredClone(initialData) : JSON.parse(saved);
   } catch (error) {
     throw new Error('Os dados locais não puderam ser lidos. O conteúdo original foi preservado.', {
       cause: error,
@@ -50,13 +49,13 @@ function find(data, id) {
 // Cada alteração é gravada em uma única chave, com entrega e endereços juntos.
 export const demoStore = {
   list() {
-    return clone(read());
+    return read();
   },
   details(id) {
     const data = read();
     return {
-      delivery: clone(find(data, id)),
-      addresses: clone(data.enderecos.filter((item) => sameId(item.entregaId, id))),
+      delivery: find(data, id),
+      addresses: data.enderecos.filter((item) => sameId(item.entregaId, id)),
     };
   },
   create(delivery, addresses) {
@@ -71,14 +70,14 @@ export const demoStore = {
       ...addresses.map((address) => ({ ...address, id: crypto.randomUUID(), entregaId: saved.id })),
     );
     write(data);
-    return clone(saved);
+    return saved;
   },
   updateStatus(id, status) {
     const data = read();
     const delivery = find(data, id);
     delivery.status = status;
     write(data);
-    return clone(delivery);
+    return delivery;
   },
   delete(id) {
     const data = read();

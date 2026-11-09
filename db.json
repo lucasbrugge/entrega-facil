@@ -12,17 +12,6 @@
       "numeroEntrega": 1
     },
     {
-      "id": "2",
-      "clienteNome": "Marina Costa",
-      "clienteCpf": "111.444.777-35",
-      "clienteTelefone": "(42) 99999-0002",
-      "produtoNome": "Cadeira de escritório",
-      "produtoDescricao": "Cadeira ergonômica embalada para transporte.",
-      "dataPrevista": "2026-10-12",
-      "status": "Em transporte",
-      "numeroEntrega": 2
-    },
-    {
       "id": "3",
       "clienteNome": "Rafael Mendes",
       "clienteCpf": "123.456.789-09",
@@ -43,6 +32,17 @@
       "dataPrevista": "2026-10-16",
       "status": "Cancelada",
       "numeroEntrega": 4
+    },
+    {
+      "clienteNome": "LUCAS BRUGGE DE ALMEIDA",
+      "clienteCpf": "111.444.777-35",
+      "clienteTelefone": "(24) 22626-2626",
+      "produtoNome": "asdasd",
+      "produtoDescricao": "asdasd",
+      "dataPrevista": "2026-10-24",
+      "status": "Entregue",
+      "id": "d0c90525-59eb-4510-acca-65c91337905f",
+      "numeroEntrega": 6
     }
   ],
   "enderecos": [
@@ -65,28 +65,6 @@
       "logradouro": "Avenida Modelo",
       "numero": "250",
       "bairro": "Centro",
-      "cidade": "Curitiba",
-      "uf": "PR"
-    },
-    {
-      "id": "3",
-      "entregaId": "2",
-      "tipo": "Origem",
-      "cep": "84010-000",
-      "logradouro": "Rua das Flores",
-      "numero": "45",
-      "bairro": "Centro",
-      "cidade": "Ponta Grossa",
-      "uf": "PR"
-    },
-    {
-      "id": "4",
-      "entregaId": "2",
-      "tipo": "Destino",
-      "cep": "80010-000",
-      "logradouro": "Rua do Mercado",
-      "numero": "810",
-      "bairro": "São Francisco",
       "cidade": "Curitiba",
       "uf": "PR"
     },
@@ -133,9 +111,31 @@
       "bairro": "Uvaranas",
       "cidade": "Ponta Grossa",
       "uf": "PR"
+    },
+    {
+      "tipo": "Origem",
+      "cep": "85010-030",
+      "logradouro": "Rua Doutor Laranjeiras",
+      "numero": "755",
+      "bairro": "Centro",
+      "cidade": "Guarapuava",
+      "uf": "PR",
+      "id": "85f06814-4864-456d-9e49-62634b82a602",
+      "entregaId": "d0c90525-59eb-4510-acca-65c91337905f"
+    },
+    {
+      "tipo": "Destino",
+      "cep": "85010-030",
+      "logradouro": "Rua Doutor Laranjeiras",
+      "numero": "444",
+      "bairro": "Centro",
+      "cidade": "Guarapuava",
+      "uf": "PR",
+      "id": "2dffde23-b530-4a98-a677-042453967165",
+      "entregaId": "d0c90525-59eb-4510-acca-65c91337905f"
     }
   ],
   "configuracao": {
-    "ultimoNumeroEntrega": 4
+    "ultimoNumeroEntrega": 6
   }
 }

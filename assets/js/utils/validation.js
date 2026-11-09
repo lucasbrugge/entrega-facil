@@ -74,10 +74,7 @@ export function initValidation() {
 
 export {
   digits,
-  validCpf,
-  validPhone,
   validCep,
-  validDate,
   formatCpf,
   formatCep,
   formatPhone,

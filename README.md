@@ -60,42 +60,42 @@ dados reais.
 
 #### RA1 - Utilizar Frameworks CSS para estilização de elementos HTML e criação de layouts responsivos.
 
-- [x] ID 01 - Prototipa interfaces adaptáveis para no mínimo os tamanhos de tela mobile e desktop, usando ferramentas de design tradicionais (Figma, Quant UX ou Sketch) ou IA (Stitch).
-- [x] ID 02 - Implementa layout responsivo com Framework CSS (Bootstrap, Materialize) usando Flexbox ou Grid do próprio framework.
-- [x] ID 03 - Implementa layout responsivo com CSS puro, usando Flexbox ou Grid Layout.
-- [x] ID 04 - Utiliza componentes prontos de um Framework CSS (ex.: card, button) e componentes JavaScript do framework (ex.: modal, carousel).
-- [x] ID 05 - Cria layout fluido usando unidades relativas (vw, vh, %, em, rem) no lugar de unidades fixas (px).
-- [x] ID 06 - Aplica um Design System consistente (cores, tipografia, padrões de componentes) em toda a aplicação.
-- [x] ID 07 - Utiliza Sass (SCSS) com ou sem framework, aplicando variáveis, mixins e funções para modularizar o código.
-- [x] ID 08 - Aplica tipografia responsiva (media queries mobile first) ou tipografia fluida (função clamp() + unidades relativas).
-- [x] ID 09 - Aplica técnicas de responsividade de imagens usando CSS (object-fit, containers com unidades relativas).
-- [x] ID 10 - Otimiza imagens usando formatos modernos (WebP) e carregamento adaptativo (srcset, picture, ou parâmetros do Cloudinary).
+- [x] ID 01 - Prototipa interfaces adaptáveis para no mínimo os tamanhos de tela mobile e desktop, usando ferramentas de design tradicionais (Figma, Quant UX ou Sketch) ou IA (Stitch). Evidência: [protótipo mobile e desktop](https://stitch.withgoogle.com/projects/2737167932936789921).
+- [x] ID 02 - Implementa layout responsivo com Framework CSS (Bootstrap, Materialize) usando Flexbox ou Grid do próprio framework. Evidência: [pages/cadastro.html:86–131](pages/cadastro.html#L86-L131).
+- [x] ID 03 - Implementa layout responsivo com CSS puro, usando Flexbox ou Grid Layout. Evidência: [assets/scss/cadastro.scss:4–9](assets/scss/cadastro.scss#L4-L9).
+- [x] ID 04 - Utiliza componentes prontos de um Framework CSS (ex.: card, button) e componentes JavaScript do framework (ex.: modal, carousel). Evidência: [pages/detalhes.html:63–103](pages/detalhes.html#L63-L103).
+- [x] ID 05 - Cria layout fluido usando unidades relativas (vw, vh, %, em, rem) no lugar de unidades fixas (px). Evidência: [assets/scss/main.scss:24–46](assets/scss/main.scss#L24-L46).
+- [x] ID 06 - Aplica um Design System consistente (cores, tipografia, padrões de componentes) em toda a aplicação. Evidência: [assets/scss/main.scss:8–22](assets/scss/main.scss#L8-L22).
+- [x] ID 07 - Utiliza Sass (SCSS) com ou sem framework, aplicando variáveis, mixins e funções para modularizar o código. Evidência: [assets/scss/main.scss:1–47](assets/scss/main.scss#L1-L47).
+- [x] ID 08 - Aplica tipografia responsiva (media queries mobile first) ou tipografia fluida (função clamp() + unidades relativas). Evidência: [assets/scss/main.scss:24–35](assets/scss/main.scss#L24-L35).
+- [x] ID 09 - Aplica técnicas de responsividade de imagens usando CSS (object-fit, containers com unidades relativas). Evidência: [index.html:17–29](index.html#L17-L29).
+- [x] ID 10 - Otimiza imagens usando formatos modernos (WebP) e carregamento adaptativo (srcset, picture, ou parâmetros do Cloudinary). Evidência: [index.html:17–29](index.html#L17-L29).
 
 #### RA2 - Realizar tratamento de formulários e aplicar validações customizadas no lado cliente.
 
-- [x] ID 11 - Implementa validação HTML nativa (campos obrigatórios, tipos, limites de caracteres) com mensagens de erro/sucesso no lado cliente.
-- [x] ID 12 - Aplica expressões regulares (REGEX) para validações customizadas (e-mail, telefone, datas, etc.)
-- [x] ID 13 - Utiliza elementos de seleção em formulários (checkbox, radio, select) para coleta de dados.
-- [x] ID 14 - Implementa leitura e escrita no Web Storage (localStorage/sessionStorage) para persistir dados localmente.
+- [ ] ID 11 - Implementa validação HTML nativa (campos obrigatórios, tipos, limites de caracteres) com mensagens de erro/sucesso no lado cliente. Evidência: [pages/cadastro.html:86–129](pages/cadastro.html#L86-L129).
+- [ ] ID 12 - Aplica expressões regulares (REGEX) para validações customizadas (e-mail, telefone, datas, etc.) Evidência: [assets/js/utils/validation.js:3–25](assets/js/utils/validation.js#L3-L25).
+- [ ] ID 13 - Utiliza elementos de seleção em formulários (checkbox, radio, select) para coleta de dados. Evidência: [pages/cadastro.html:440–454](pages/cadastro.html#L440-L454).
+- [ ] ID 14 - Implementa leitura e escrita no Web Storage (localStorage/sessionStorage) para persistir dados localmente. Evidência: [assets/js/data/demo-store.js:7–40](assets/js/data/demo-store.js#L7-L40).
 
 #### RA3 - Aplicar ferramentas para otimização do processo de desenvolvimento web.
 
-- [x] ID 15 - Configura ambiente com Node.js e NPM para gerenciamento de pacotes e dependências.
-- [x] ID 16 - Utiliza boas práticas de versionamento no Git/GitHub (branch main ou branches específicos, uso de .gitignore).
-- [x] ID 17 - Mantém um README.md padronizado, conforme template da disciplina, com checklist preenchido.
-- [x] ID 18 - Organiza arquivos do projeto de forma modular, seguindo padrão de exemplo fornecido.
-- [x] ID 19 - Configura linters e formatadores (ESLint, Prettier) para manter qualidade e padronização do código.
+- [x] ID 15 - Configura ambiente com Node.js e NPM para gerenciamento de pacotes e dependências. Evidência: [package.json:26–42](package.json#L26-L42).
+- [x] ID 16 - Utiliza boas práticas de versionamento no Git/GitHub (branch main ou branches específicos, uso de .gitignore). Evidência: [.gitignore:1–2](.gitignore#L1-L2).
+- [ ] ID 17 - Mantém um README.md padronizado, conforme template da disciplina, com checklist preenchido. Evidência: [README.md:59–98](README.md#L59-L98).
+- [ ] ID 18 - Organiza arquivos do projeto de forma modular, seguindo padrão de exemplo fornecido. Evidência: [assets/js/app.js:1–7](assets/js/app.js#L1-L7).
+- [ ] ID 19 - Configura linters e formatadores (ESLint, Prettier) para manter qualidade e padronização do código. Evidência: [eslint.config.cjs:1–13](eslint.config.cjs#L1-L13).
 
 #### RA4 - Aplicar bibliotecas de funções e componentes em JavaScript para aprimorar a interatividade de páginas web.
 
-- [x] ID 20 - Utiliza jQuery para manipulação do DOM e interatividade (eventos, animações, manipulação de elementos)
-- [x] ID 21 - Integra e configura um plugin jQuery relevante (ex.: jQuery Mask Plugin) ou outra biblioteca de funções.
+- [ ] ID 20 - Utiliza jQuery para manipulação do DOM e interatividade (eventos, animações, manipulação de elementos) Evidência: [assets/js/features/delivery-create.js:26–67](assets/js/features/delivery-create.js#L26-L67).
+- [ ] ID 21 - Integra e configura um plugin jQuery relevante (ex.: jQuery Mask Plugin) ou outra biblioteca de funções. Evidência: [assets/js/utils/masks.js:1–17](assets/js/utils/masks.js#L1-L17).
 
 #### RA5 - Efetuar requisições assíncronas para uma API fake e APIs públicas, permitindo a obtenção e manipulação de dados dinamicamente.
 
-- [x] ID 22 - Realiza requisições assíncronas para uma API fake (ex.: JSON Server) para persistir dados de um formulário.
-- [x] ID 23 - Realiza requisições assíncronas para uma API fake para exibir dados na página.
-- [x] ID 24 - Realiza requisições assíncronas para APIs públicas reais (OpenWeather, ViaCEP etc.), exibindo os dados e tratando erros.
+- [ ] ID 22 - Realiza requisições assíncronas para uma API fake (ex.: JSON Server) para persistir dados de um formulário. Evidência: [assets/js/services/delivery-service.js:63–98](assets/js/services/delivery-service.js#L63-L98).
+- [ ] ID 23 - Realiza requisições assíncronas para uma API fake para exibir dados na página. Evidência: [assets/js/services/delivery-service.js:137–146](assets/js/services/delivery-service.js#L137-L146).
+- [ ] ID 24 - Realiza requisições assíncronas para APIs públicas reais (OpenWeather, ViaCEP etc.), exibindo os dados e tratando erros. Evidência: [assets/js/features/delivery-create.js:45–65](assets/js/features/delivery-create.js#L45-L65).
 
 ## 🚀 Instalação e execução
 

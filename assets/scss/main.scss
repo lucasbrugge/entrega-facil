@@ -1,4 +1,6 @@
 @use 'variables' as v;
+@use 'mixins' as m;
+@use 'functions' as f;
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap');
 
@@ -25,7 +27,7 @@ h3,
 }
 
 .ef-brand-icon {
-  width: 2rem;
+  @include m.square-size(f.space(8));
 }
 
 .ef-page-title {
@@ -41,5 +43,5 @@ h3,
 
 // O Bootstrap não oferece esta sombra sólida, sem desfoque.
 .ef-card {
-  box-shadow: 0 4px 0 v.$ink;
+  box-shadow: 0 f.space(1) 0 v.$ink;
 }

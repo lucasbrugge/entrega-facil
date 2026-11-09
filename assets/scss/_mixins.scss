@@ -1,7 +1,5 @@
-// Micro-layout dos marcadores de seção; o grid das páginas continua no Bootstrap.
-@mixin square-marker($size) {
-  display: inline-grid;
-  place-items: center;
+// Dimensões quadradas reaproveitadas no ícone da marca e nos marcadores de seção.
+@mixin square-size($size) {
   width: $size;
   height: $size;
 }

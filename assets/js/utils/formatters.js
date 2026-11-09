@@ -24,10 +24,3 @@ export function statusClass(status = '') {
     }[status] || 'secondary';
   return `badge border fw-medium text-uppercase text-${color}-emphasis bg-${color}-subtle border-${color}-subtle`;
 }
-
-export function statusBadge(status) {
-  const badge = document.createElement('span');
-  badge.className = statusClass(status);
-  badge.textContent = status || 'Sem status';
-  return badge;
-}

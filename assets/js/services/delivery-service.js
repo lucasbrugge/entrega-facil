@@ -60,12 +60,6 @@ function apiService(api, recovery) {
     }
   }
 
-  async function details(id) {
-    const delivery = await api.request(deliveryPath(id));
-    const addresses = await api.request(`/enderecos?entregaId=${encodeURIComponent(id)}`);
-    return { delivery, addresses };
-  }
-
   async function create(delivery, addresses, data) {
     const numeroEntrega = reserveDeliveryNumber(data);
     await api.request('/configuracao', {
@@ -141,21 +135,20 @@ function apiService(api, recovery) {
   }
 
   return {
-    mode: 'api',
     async list() {
       const data = await prepare();
       return { entregas: data.entregas, enderecos: await api.request('/enderecos') };
     },
     async details(id) {
       await prepare();
-      return details(id);
+      const delivery = await api.request(deliveryPath(id));
+      const addresses = await api.request(`/enderecos?entregaId=${encodeURIComponent(id)}`);
+      return { delivery, addresses };
     },
     create(delivery, addresses) {
-      validateStatus(delivery.status);
       return mutate((data) => create(delivery, addresses, data));
     },
     updateStatus(id, status) {
-      validateStatus(status);
       return mutate(async () => {
         try {
           return await api.request(deliveryPath(id), {
@@ -198,21 +191,19 @@ export async function createDeliveryService() {
       mode = 'demo';
     }
   }
-  if (mode === 'api') return apiService(api, recovery);
-  // Inicializa somente quando não há estado, incluindo um estado vazio após exclusões.
-  demoStore.list();
+  const store = mode === 'api' ? apiService(api, recovery) : demoStore;
+  // Inicializa os dados locais uma vez, sem repor registros excluídos.
+  if (mode === 'demo') store.list();
   return {
-    mode: 'demo',
-    list: async () => demoStore.list(),
-    details: async (id) => demoStore.details(id),
-    create: async (delivery, addresses) => {
+    mode,
+    ...store,
+    async create(delivery, addresses) {
       validateStatus(delivery.status);
-      return demoStore.create(delivery, addresses);
+      return store.create(delivery, addresses);
     },
-    updateStatus: async (id, status) => {
+    async updateStatus(id, status) {
       validateStatus(status);
-      return demoStore.updateStatus(id, status);
+      return store.updateStatus(id, status);
     },
-    delete: async (id) => demoStore.delete(id),
   };
 }

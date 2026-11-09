@@ -4,6 +4,7 @@ import {
   formatCep,
   formatCpf,
   formatPhone,
+  validCep,
   validateField,
   validateForm,
 } from '../utils/validation.js';
@@ -24,20 +25,19 @@ function formAddress(type) {
 
 function initCepLookup() {
   const $ = jQuery;
-  const requests = {};
   for (const type of ['origem', 'destino']) {
+    let requestId = 0;
     const input = document.getElementById(`${type}-cep`);
     const feedback = $(`#${type}-feedback`);
     $(input).on('input', () => {
-      requests[type] = Symbol(type);
+      requestId++;
       feedback.removeClass('text-success text-danger').text('');
     });
     $(`[data-cep="${type}"]`).on('click', async () => {
       const cep = digits(input.value);
-      const request = Symbol(type);
-      requests[type] = request;
+      const request = ++requestId;
       feedback.removeClass('text-success text-danger');
-      if (!/^\d{8}$/.test(cep)) {
+      if (!validCep(cep)) {
         feedback.addClass('text-danger').text('Informe um CEP com 8 números.');
         input.focus();
         return;
@@ -45,7 +45,7 @@ function initCepLookup() {
       feedback.text('Consultando CEP...');
       try {
         const address = await lookupCep(cep);
-        if (requests[type] !== request || digits(input.value) !== cep) return;
+        if (requestId !== request) return;
         const fields = {
           logradouro: address.logradouro || '',
           bairro: address.bairro || '',
@@ -61,7 +61,7 @@ function initCepLookup() {
           .addClass('text-success')
           .text('Endereço preenchido pelo ViaCEP. Complete o número.');
       } catch (error) {
-        if (requests[type] !== request || digits(input.value) !== cep) return;
+        if (requestId !== request) return;
         feedback.addClass('text-danger').text(`Não foi possível consultar o CEP. ${error.message}`);
       }
     });

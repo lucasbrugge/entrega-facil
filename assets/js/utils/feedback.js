@@ -37,7 +37,8 @@ export function preserveModeLinks(mode) {
   for (const link of document.querySelectorAll('a[href]')) {
     const url = new URL(link.getAttribute('href'), window.location.href);
     if (url.origin === window.location.origin && url.pathname.endsWith('.html')) {
-      link.href = modeLink(url.href, mode);
+      url.searchParams.set('modo', mode);
+      link.href = url.href;
     }
   }
 }

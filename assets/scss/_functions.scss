@@ -1,0 +1,6 @@
+@use 'variables' as v;
+
+// Escala de um quarto de rem, também usada pelos espaçamentos do Bootstrap.
+@function space($steps) {
+  @return $steps * v.$space-unit;
+}
