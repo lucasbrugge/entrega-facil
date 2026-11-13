@@ -1,0 +1,56 @@
+name: Publicar Entrega Fácil
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Baixar arquivos do repositório
+        uses: actions/checkout@v6
+
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Preparar arquivos do site
+        run: |
+          mkdir -p _site
+          cp -R app assets _site/
+
+          python3 - <<'PY'
+          from pathlib import Path
+
+          pagina = Path("app/index.html").read_text(encoding="utf-8")
+          pagina = pagina.replace("../assets/", "assets/")
+          pagina = pagina.replace('href="pages/', 'href="app/pages/')
+          pagina = pagina.replace('href="entregas.css"', 'href="app/entregas.css"')
+
+          Path("_site/index.html").write_text(pagina, encoding="utf-8")
+          PY
+
+      - name: Preparar pacote para publicação
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+      - name: Publicar no GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
