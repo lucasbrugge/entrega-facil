@@ -1,6 +1,19 @@
 @use 'variables' as v;
 @use 'mixins' as m;
 
+// Origem e destino empilham no celular e dividem a largura em telas maiores.
+.ef-address-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+}
+
+@media (min-width: 62rem) {
+  .ef-address-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 // Dimensão fluida dos marcadores 01–04; cores e tipografia vêm de classes.
 .ef-section-number {
   @include m.square-size(v.$section-marker-size);

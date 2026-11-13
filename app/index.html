@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Entregas | Entrega Fácil</title>
+
+    <meta
+      name="description"
+      content="Entrega Fácil: listagem, cadastro e detalhes de entregas. Prévia visual da aplicação."
+    />
+    <link rel="icon" href="../assets/images/entrega-icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../assets/vendor/bootstrap.min.css" />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <link rel="stylesheet" href="entregas.css" />
+  </head>
+  <body class="min-vh-100 d-flex flex-column">
+    <nav
+      class="navbar navbar-expand-sm bg-white border-bottom border-dark"
+      aria-label="Navegação principal"
+    >
+      <div class="container">
+        <a
+          class="navbar-brand d-inline-flex align-items-center gap-2 fw-bold text-uppercase"
+          href="index.html"
+        >
+          <img
+            class="ef-brand-icon img-fluid"
+            src="../assets/images/entrega-icon-32.webp"
+            srcset="
+              ../assets/images/entrega-icon-32.webp 32w,
+              ../assets/images/entrega-icon-64.webp 64w,
+              ../assets/images/entrega-icon-96.webp 96w
+            "
+            sizes="2rem"
+            width="32"
+            height="32"
+            alt=""
+          />Entrega Fácil
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainNav"
+          aria-controls="mainNav"
+          aria-expanded="false"
+          aria-label="Abrir menu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+          <div class="navbar-nav ms-auto align-items-sm-center gap-3 py-2">
+            <a class="nav-link active" aria-current="page" href="index.html">Entregas</a>
+            <a class="btn btn-dark btn-sm px-3" href="pages/cadastro/index.html">+ Nova Entrega</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <main class="container flex-grow-1 pt-4 pt-sm-5 pb-5">
+      <header
+        class="border-bottom border-dark pb-3 mb-4 gap-3 d-flex flex-column flex-sm-row justify-content-between align-items-sm-end"
+      >
+        <div>
+          <div class="ef-kicker fw-medium text-secondary text-uppercase">
+            Controle de expedição // Painel operacional
+          </div>
+          <h1 class="ef-page-title fw-bold my-1">Suas entregas</h1>
+          <p class="mb-0 text-secondary">
+            Conheça a organização das suas entregas com estes dados de exemplo.
+          </p>
+        </div>
+        <div class="ef-kicker fw-medium text-secondary text-uppercase mt-3 mt-sm-0">
+          <span id="delivery-count">3</span> entregas
+        </div>
+      </header>
+      <section aria-label="Filtros de entregas" class="mb-4">
+        <div class="row align-items-center g-3">
+          <div class="col-12 col-lg-6">
+            <div class="input-group">
+              <span class="input-group-text bg-white" aria-hidden="true">⌕</span
+              ><input
+                disabled
+                id="delivery-search"
+                class="form-control"
+                type="search"
+                placeholder="Buscar por ID, cliente ou produto..."
+                aria-label="Buscar entregas"
+              />
+            </div>
+          </div>
+          <div class="col-12 col-lg-6">
+            <nav class="nav nav-pills flex-wrap gap-2" aria-label="Filtrar por status">
+              <button disabled class="btn btn-dark btn-sm" type="button">Todas</button
+              ><button disabled class="btn btn-outline-dark btn-sm" type="button">Pendentes</button
+              ><button disabled class="btn btn-outline-dark btn-sm" type="button">
+                Em transporte</button
+              ><button disabled class="btn btn-outline-dark btn-sm" type="button">Entregues</button
+              ><button disabled class="btn btn-outline-dark btn-sm" type="button">
+                Canceladas
+              </button>
+            </nav>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="delivery-list"
+        class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4"
+        aria-label="Lista de entregas"
+      >
+        <div class="col">
+          <article class="card bg-white border-dark ef-card ef-delivery-card h-100">
+            <div
+              class="card-header bg-white border-dark d-flex flex-wrap justify-content-between align-items-center gap-2"
+            >
+              <h2 class="h6 ef-heading mb-0">Entrega #001</h2>
+              <span
+                class="badge bg-warning-subtle text-warning-emphasis border border-warning-subtle"
+                >Pendente</span
+              >
+            </div>
+            <div class="card-body">
+              <span class="ef-meta d-block fw-medium text-secondary text-uppercase">Produto</span>
+              <p class="small mb-3 text-break">Notebook</p>
+              <span class="ef-meta d-block fw-medium text-secondary text-uppercase">Cliente</span>
+              <p class="small mb-3 text-break">João Silva</p>
+              <span class="ef-meta d-block fw-medium text-secondary text-uppercase"
+                >Itinerário</span
+              >
+              <p class="small mb-0 text-break">Guarapuava / PR → Curitiba / PR</p>
+            </div>
+            <div
+              class="card-footer d-flex flex-wrap justify-content-between align-items-center gap-2"
+            >
+              <span class="small text-secondary">Previsão: 15/11/2026</span>
+              <a class="link-dark small fw-semibold" href="pages/detalhes/index.html"
+                >Ver detalhes →</a
+              >
+            </div>
+          </article>
+        </div>
+        <div class="col">
+          <article class="card bg-white border-dark ef-card ef-delivery-card h-100">
+            <div
+              class="card-header bg-white border-dark d-flex flex-wrap justify-content-between align-items-center gap-2"
+            >
+              <h2 class="h6 ef-heading mb-0">Entrega #002</h2>
+              <span
+                class="badge bg-primary-subtle text-primary-emphasis border border-primary-subtle"
+                >Em transporte</span
+              >
+            </div>
+            <div class="card-body">
+              <span class="ef-meta d-block fw-medium text-secondary text-uppercase">Produto</span>
+              <p class="small mb-3 text-break">Cadeira de escritório</p>
+              <span class="ef-meta d-block fw-medium text-secondary text-uppercase">Cliente</span>
+              <p class="small mb-3 text-break">Marina Costa</p>
+              <span class="ef-meta d-block fw-medium text-secondary text-uppercase"
+                >Itinerário</span
+              >
+              <p class="small mb-0 text-break">Ponta Grossa / PR → Curitiba / PR</p>
+            </div>
+            <div
+              class="card-footer d-flex flex-wrap justify-content-between align-items-center gap-2"
+            >
+              <span class="small text-secondary">Previsão: 16/11/2026</span>
+              <button class="btn btn-link btn-sm text-secondary p-0" type="button" disabled>
+                Ver detalhes →
+              </button>
+            </div>
+          </article>
+        </div>
+        <div class="col">
+          <article class="card bg-white border-dark ef-card ef-delivery-card h-100">
+            <div
+              class="card-header bg-white border-dark d-flex flex-wrap justify-content-between align-items-center gap-2"
+            >
+              <h2 class="h6 ef-heading mb-0">Entrega #003</h2>
+              <span
+                class="badge bg-success-subtle text-success-emphasis border border-success-subtle"
+                >Entregue</span
+              >
+            </div>
+            <div class="card-body">
+              <span class="ef-meta d-block fw-medium text-secondary text-uppercase">Produto</span>
+              <p class="small mb-3 text-break">Monitor 27 polegadas</p>
+              <span class="ef-meta d-block fw-medium text-secondary text-uppercase">Cliente</span>
+              <p class="small mb-3 text-break">Rafael Mendes</p>
+              <span class="ef-meta d-block fw-medium text-secondary text-uppercase"
+                >Itinerário</span
+              >
+              <p class="small mb-0 text-break">Londrina / PR → Maringá / PR</p>
+            </div>
+            <div
+              class="card-footer d-flex flex-wrap justify-content-between align-items-center gap-2"
+            >
+              <span class="small text-secondary">Previsão: 17/11/2026</span>
+              <button class="btn btn-link btn-sm text-secondary p-0" type="button" disabled>
+                Ver detalhes →
+              </button>
+            </div>
+          </article>
+        </div>
+      </section>
+      <p class="small text-secondary mt-4 mb-0">
+        Prévia visual: os detalhes da entrega #001 estão disponíveis. Busca e filtros serão
+        disponibilizados em uma próxima etapa.
+      </p>
+    </main>
+    <footer class="small border-top border-dark bg-white text-secondary py-3 mt-auto">
+      <div class="container d-flex flex-wrap justify-content-between gap-2">
+        <span class="ef-heading text-uppercase">Entrega Fácil</span
+        ><span>© 2026 Entrega Fácil</span>
+      </div>
+    </footer>
+
+    <script src="../assets/vendor/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

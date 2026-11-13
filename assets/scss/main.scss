@@ -9,6 +9,9 @@
   --bs-body-font-family: #{v.$font-body};
   --bs-body-color: #{v.$ink};
   --bs-body-bg: #{v.$bg};
+  --bs-border-radius: #{v.$corner-radius};
+  --bs-border-radius-sm: #{v.$corner-radius};
+  --bs-border-radius-lg: #{v.$corner-radius};
 }
 
 h1,
@@ -28,6 +31,7 @@ h3,
 
 .ef-brand-icon {
   @include m.square-size(f.space(8));
+  object-fit: contain;
 }
 
 .ef-page-title {
@@ -44,4 +48,9 @@ h3,
 // O Bootstrap não oferece esta sombra sólida, sem desfoque.
 .ef-card {
   box-shadow: 0 f.space(1) 0 v.$ink;
+}
+
+// O botão de fechar usa um raio fixo no Bootstrap; segue o mesmo token do tema.
+.btn-close {
+  border-radius: var(--bs-border-radius);
 }

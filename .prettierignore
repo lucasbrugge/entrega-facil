@@ -3,3 +3,4 @@ assets/vendor/
 assets/css/
 package-lock.json
 docs/
+app/**/*.css

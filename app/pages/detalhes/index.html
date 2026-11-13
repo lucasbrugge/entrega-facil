@@ -4,30 +4,41 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Detalhes da Entrega | Entrega Fácil</title>
-    <link href="../assets/vendor/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="../assets/css/main.css" />
-    <link rel="stylesheet" href="../assets/css/detalhes.css" />
+
+    <meta
+      name="description"
+      content="Entrega Fácil: listagem, cadastro e detalhes de entregas. Prévia visual da aplicação."
+    />
+    <link rel="icon" href="../../../assets/images/entrega-icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../../assets/vendor/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../../assets/css/main.css" />
+    <link rel="stylesheet" href="detalhes.css" />
   </head>
   <body class="min-vh-100 d-flex flex-column">
-    <nav class="navbar navbar-expand-sm bg-white border-bottom border-dark">
+    <nav
+      class="navbar navbar-expand-sm bg-white border-bottom border-dark"
+      aria-label="Navegação principal"
+    >
       <div class="container">
         <a
           class="navbar-brand d-inline-flex align-items-center gap-2 fw-bold text-uppercase"
-          href="../index.html"
-          ><img
-            class="ef-brand-icon img-fluid object-fit-contain"
-            src="../assets/images/entrega-icon-32.webp"
+          href="../../index.html"
+        >
+          <img
+            class="ef-brand-icon img-fluid"
+            src="../../../assets/images/entrega-icon-32.webp"
             srcset="
-              ../assets/images/entrega-icon-32.webp 32w,
-              ../assets/images/entrega-icon-64.webp 64w,
-              ../assets/images/entrega-icon-96.webp 96w
+              ../../../assets/images/entrega-icon-32.webp 32w,
+              ../../../assets/images/entrega-icon-64.webp 64w,
+              ../../../assets/images/entrega-icon-96.webp 96w
             "
-            sizes="32px"
+            sizes="2rem"
             width="32"
             height="32"
             alt=""
-          />Entrega Fácil</a
-        ><button
+          />Entrega Fácil
+        </a>
+        <button
           class="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
@@ -39,53 +50,39 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="mainNav">
-          <div class="navbar-nav ms-auto align-items-sm-center gap-sm-3">
-            <a class="nav-link active" href="../index.html">Entregas</a
-            ><a class="btn btn-dark btn-sm px-3" href="cadastro.html">+ Nova Entrega</a>
+          <div class="navbar-nav ms-auto align-items-sm-center gap-3 py-2">
+            <a class="nav-link" href="../../index.html">Entregas</a>
+            <a class="btn btn-dark btn-sm px-3" href="../cadastro/index.html">+ Nova Entrega</a>
           </div>
         </div>
       </div>
     </nav>
     <main class="container flex-grow-1 pt-4 pt-sm-5 pb-5">
-      <a class="link-dark small text-uppercase text-decoration-none" href="../index.html"
+      <a class="link-dark small text-uppercase text-decoration-none" href="../../index.html"
         >← Voltar para entregas</a
       >
       <header
         class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 border-bottom border-2 border-dark pb-3 mt-3 mb-4"
       >
         <div class="d-flex flex-wrap align-items-center gap-3">
-          <h1 class="ef-page-title fw-bold text-uppercase mb-0 text-break" id="detail-title">
-            Entrega
-          </h1>
-          <span id="detail-status" class="badge text-bg-secondary fw-medium text-uppercase">—</span>
-        </div>
-        <div class="d-flex flex-wrap gap-2">
-          <button
-            class="btn btn-dark"
-            id="status-open"
-            type="button"
-            data-delivery-action
-            data-bs-toggle="modal"
-            data-bs-target="#status-modal"
-            disabled
+          <h1 class="ef-page-title fw-bold my-1" id="detail-title">Entrega #001</h1>
+          <span
+            id="detail-status"
+            class="badge bg-warning-subtle text-warning-emphasis border border-warning-subtle"
+            >Pendente</span
           >
-            ↻ Atualizar status
-          </button>
-          <button
-            class="btn btn-outline-danger"
-            id="delete-open"
-            type="button"
-            data-delivery-action
-            data-bs-toggle="modal"
-            data-bs-target="#delete-modal"
-            disabled
-          >
-            Excluir entrega
-          </button>
         </div>
+        <button
+          class="btn btn-dark"
+          type="button"
+          data-bs-toggle="modal"
+          data-bs-target="#status-modal"
+        >
+          ↻ Atualizar status
+        </button>
       </header>
-      <div id="persistence-notice" class="alert d-none" role="status"></div>
-      <div id="app-alert" class="alert d-none" role="alert"></div>
+      <p class="small text-secondary">Dados fictícios da entrega #001, apresentada na listagem.</p>
+
       <section class="mb-4" aria-labelledby="route-heading">
         <div class="ef-kicker fw-medium text-secondary text-uppercase mb-2" id="route-heading">
           ◇ Rota da entrega
@@ -97,14 +94,16 @@
                 <span class="ef-kicker fw-medium text-secondary text-uppercase">Ponto A</span
                 ><span class="ef-kicker fw-medium text-secondary text-uppercase">Origem</span>
               </div>
-              <h2 class="h5 text-break" id="origin-address-title">—</h2>
-              <p class="text-secondary mb-2 text-break" id="origin-address-line">—</p>
-              <span class="badge text-bg-light border text-secondary" id="origin-cep">CEP: —</span>
+              <h2 class="h5" id="origin-address-title">Rua Exemplo, 100</h2>
+              <p class="text-secondary mb-2" id="origin-address-line">Centro · Guarapuava / PR</p>
+              <span class="badge text-bg-light border text-secondary" id="origin-cep"
+                >CEP: 85000-000</span
+              >
             </article>
           </div>
           <div class="col-auto d-none d-lg-flex align-items-center">
             <div class="text-center">
-              <span class="d-block border border-dark bg-white ef-card p-3">→</span
+              <span class="d-grid border border-dark card bg-white ef-card p-3">→</span
               ><span class="ef-kicker fw-medium text-secondary text-uppercase">Trânsito</span>
             </div>
           </div>
@@ -114,10 +113,12 @@
                 <span class="ef-kicker fw-medium text-secondary text-uppercase">Ponto B</span
                 ><span class="ef-kicker fw-medium text-secondary text-uppercase">Destino</span>
               </div>
-              <h2 class="h5 text-break" id="destination-address-title">—</h2>
-              <p class="text-secondary mb-2 text-break" id="destination-address-line">—</p>
+              <h2 class="h5" id="destination-address-title">Avenida Modelo, 250</h2>
+              <p class="text-secondary mb-2" id="destination-address-line">
+                Centro · Curitiba / PR
+              </p>
               <span class="badge text-bg-light border text-secondary" id="destination-cep"
-                >CEP: —</span
+                >CEP: 80000-000</span
               >
             </article>
           </div>
@@ -127,39 +128,41 @@
         <div class="col-12 col-md-6 col-lg-4">
           <article class="card bg-white border-dark ef-card h-100 p-3">
             <div
-              class="d-flex align-items-center justify-content-between border-bottom border-dark pb-2 mb-3 gap-2"
+              class="d-flex align-items-center justify-content-between gap-2 border-bottom pb-2 mb-3"
             >
               <h2 class="h6 text-uppercase mb-0">Cliente</h2>
               <span aria-hidden="true">♙</span>
             </div>
             <div>
               <span class="ef-meta d-block fw-medium text-secondary text-uppercase">Nome</span>
-              <p class="small mb-3 text-break" id="detail-client">—</p>
+              <p class="small mb-3 text-break" id="detail-client">João Silva</p>
               <span class="ef-meta d-block fw-medium text-secondary text-uppercase">CPF</span>
-              <p class="small mb-3 text-break" id="detail-cpf">—</p>
+              <p class="small mb-3 text-break" id="detail-cpf">000.000.000-00</p>
               <span class="ef-meta d-block fw-medium text-secondary text-uppercase">Telefone</span>
-              <p class="small text-break mb-0" id="detail-phone">—</p>
+              <p class="small mb-3 text-break mb-0" id="detail-phone">(00) 90000-0001</p>
             </div>
           </article>
         </div>
         <div class="col-12 col-md-6 col-lg-4">
           <article class="card bg-white border-dark ef-card h-100 p-3">
             <div
-              class="d-flex align-items-center justify-content-between border-bottom border-dark pb-2 mb-3 gap-2"
+              class="d-flex align-items-center justify-content-between gap-2 border-bottom pb-2 mb-3"
             >
               <h2 class="h6 text-uppercase mb-0">Produto</h2>
               <span aria-hidden="true">▣</span>
             </div>
             <span class="ef-meta d-block fw-medium text-secondary text-uppercase">Nome</span>
-            <p class="small mb-3 text-break" id="detail-product">—</p>
+            <p class="small mb-3 text-break" id="detail-product">Notebook</p>
             <span class="ef-meta d-block fw-medium text-secondary text-uppercase">Descrição</span>
-            <p class="mb-0 text-break" id="detail-description">—</p>
+            <p class="mb-0" id="detail-description">
+              Notebook para entrega de demonstração. Transportar na embalagem original.
+            </p>
           </article>
         </div>
         <div class="col-12 col-md-6 col-lg-4">
           <article class="card bg-white border-dark ef-card h-100 p-3">
             <div
-              class="d-flex align-items-center justify-content-between border-bottom border-dark pb-2 mb-3 gap-2"
+              class="d-flex align-items-center justify-content-between gap-2 border-bottom pb-2 mb-3"
             >
               <h2 class="h6 text-uppercase mb-0">Informações da Entrega</h2>
               <span aria-hidden="true">▱</span>
@@ -167,15 +170,15 @@
             <span class="ef-meta d-block fw-medium text-secondary text-uppercase"
               >Data prevista</span
             >
-            <p class="small mb-3 text-break" id="detail-date">—</p>
+            <p class="small mb-3 text-break" id="detail-date">15/11/2026</p>
             <span class="ef-meta d-block fw-medium text-secondary text-uppercase"
               >Status atual</span
             >
             <p class="mb-0">
               <span
                 id="detail-status-secondary"
-                class="badge text-bg-secondary fw-medium text-uppercase"
-                >—</span
+                class="badge bg-warning-subtle text-warning-emphasis border border-warning-subtle"
+                >Pendente</span
               >
             </p>
           </article>
@@ -202,95 +205,44 @@
               aria-label="Fechar"
             ></button>
           </div>
-          <form id="status-form" novalidate>
+          <div>
             <div class="modal-body d-grid gap-3">
-              <div id="status-feedback" class="alert d-none" role="alert"></div>
-              <div class="d-flex flex-wrap justify-content-between gap-3 p-3 border bg-light">
+              <div class="d-flex justify-content-between p-3 border bg-light">
                 <div>
                   <span class="ef-meta d-block fw-medium text-secondary text-uppercase"
                     >Identificador</span
-                  ><strong class="ef-heading" id="modal-delivery-id">—</strong>
+                  ><strong class="ef-heading" id="modal-delivery-id">Entrega #001</strong>
                 </div>
                 <div class="text-end">
                   <span class="ef-meta d-block fw-medium text-secondary text-uppercase"
                     >Status atual</span
                   ><span
-                    class="badge text-bg-secondary fw-medium text-uppercase"
+                    class="badge bg-warning-subtle text-warning-emphasis border border-warning-subtle"
                     id="modal-current-status"
-                    >—</span
+                    >Pendente</span
                   >
                 </div>
               </div>
               <div>
                 <label for="new-status" class="form-label ef-heading small fw-medium text-uppercase"
                   >Novo status</label
-                ><select
-                  id="new-status"
-                  name="status"
-                  aria-describedby="new-status-error"
-                  class="form-select"
-                  required
-                >
+                ><select id="new-status" name="status" class="form-select">
                   <option value="Pendente">Pendente</option>
                   <option value="Em transporte">Em transporte</option>
                   <option value="Entregue">Entregue</option>
                   <option value="Cancelada">Cancelada</option>
                 </select>
-                <div class="invalid-feedback" id="new-status-error" aria-live="polite"></div>
-                <div class="form-text">A alteração atualizará a etapa operacional da entrega.</div>
+                <div class="form-text">
+                  Prévia visual: a alteração de status ainda não será salva.
+                </div>
               </div>
             </div>
             <div class="modal-footer">
               <button class="btn btn-outline-dark" type="button" data-bs-dismiss="modal">
-                Cancelar</button
-              ><button class="btn btn-dark" type="submit">Confirmar</button>
+                Fechar</button
+              ><button disabled class="btn btn-dark" type="button">Confirmar</button>
             </div>
-          </form>
-        </div>
-      </div>
-    </div>
-    <div
-      class="modal fade"
-      id="delete-modal"
-      tabindex="-1"
-      aria-labelledby="delete-modal-title"
-      aria-describedby="delete-description"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h2
-              class="modal-title h5 ef-heading text-uppercase text-danger"
-              id="delete-modal-title"
-            >
-              Excluir entrega
-            </h2>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Fechar"
-            ></button>
           </div>
-          <form id="delete-form">
-            <div class="modal-body">
-              <div id="delete-feedback" class="alert d-none" role="alert"></div>
-              <p class="ef-heading fw-semibold" id="delete-delivery-number">Entrega</p>
-              <p id="delete-description" class="mb-0">
-                Deseja excluir esta entrega e seus endereços de origem e destino? Esta ação não pode
-                ser desfeita.
-              </p>
-            </div>
-            <div class="modal-footer">
-              <button class="btn btn-outline-dark" type="button" data-bs-dismiss="modal">
-                Cancelar
-              </button>
-              <button class="btn btn-danger" id="delete-confirm" type="submit">
-                Confirmar exclusão
-              </button>
-            </div>
-          </form>
         </div>
       </div>
     </div>
@@ -300,7 +252,7 @@
         ><span>© 2026 Entrega Fácil</span>
       </div>
     </footer>
-    <script src="../assets/vendor/bootstrap.bundle.min.js"></script>
-    <script type="module" src="../assets/js/app.js"></script>
+
+    <script src="../../../assets/vendor/bootstrap.bundle.min.js"></script>
   </body>
 </html>

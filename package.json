@@ -1,14 +1,10 @@
 {
   "name": "entrega-facil",
   "version": "1.0.0",
-  "description": "O Entrega Fácil é uma aplicação web responsiva para cadastro e acompanhamento básico de entregas. A aplicação permitirá cadastrar os dados do cliente, informações do produto, endereço de origem, endereço de destino, data prevista e status da entrega.",
+  "description": "Casca responsiva do Entrega Fácil: três páginas HTML estáticas com Bootstrap e Sass para a 2ª entrega.",
   "scripts": {
-    "sass:build": "sass --no-source-map assets/scss/main.scss:assets/css/main.css assets/scss/entregas.scss:assets/css/entregas.css assets/scss/cadastro.scss:assets/css/cadastro.css assets/scss/detalhes.scss:assets/css/detalhes.css",
+    "sass:build": "sass --no-source-map assets/scss/main.scss:assets/css/main.css assets/scss/entregas.scss:app/entregas.css assets/scss/cadastro.scss:app/pages/cadastro/cadastro.css assets/scss/detalhes.scss:app/pages/detalhes/detalhes.css",
     "sass:watch": "npm run sass:build -- --watch",
-    "start": "node scripts/serve.cjs",
-    "api": "json-server --watch db.json --host localhost --port 3000",
-    "vendor:sync": "node scripts/sync-vendor.cjs",
-    "images:build": "node scripts/build-images.cjs",
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
@@ -24,18 +20,14 @@
   },
   "homepage": "https://github.com/lucasbrugge/entrega-facil#readme",
   "dependencies": {
-    "bootstrap": "^5.3.8",
-    "jquery": "4.0.0",
-    "jquery-mask-plugin": "1.14.16"
+    "bootstrap": "^5.3.8"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
     "eslint": "10.13.0",
     "globals": "17.13.0",
-    "json-server": "0.17.4",
     "prettier": "3.9.10",
-    "sass": "^1.105.2",
-    "sharp": "0.35.5"
+    "sass": "^1.105.2"
   },
   "engines": {
     "node": "^20.19.0 || ^22.13.0 || >=24"

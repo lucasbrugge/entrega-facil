@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nova Entrega | Entrega Fácil</title>
+
+    <meta
+      name="description"
+      content="Entrega Fácil: listagem, cadastro e detalhes de entregas. Prévia visual da aplicação."
+    />
+    <link rel="icon" href="../../../assets/images/entrega-icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../../assets/vendor/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../../assets/css/main.css" />
+    <link rel="stylesheet" href="cadastro.css" />
+  </head>
+  <body class="min-vh-100 d-flex flex-column">
+    <nav
+      class="navbar navbar-expand-sm bg-white border-bottom border-dark"
+      aria-label="Navegação principal"
+    >
+      <div class="container">
+        <a
+          class="navbar-brand d-inline-flex align-items-center gap-2 fw-bold text-uppercase"
+          href="../../index.html"
+        >
+          <img
+            class="ef-brand-icon img-fluid"
+            src="../../../assets/images/entrega-icon-32.webp"
+            srcset="
+              ../../../assets/images/entrega-icon-32.webp 32w,
+              ../../../assets/images/entrega-icon-64.webp 64w,
+              ../../../assets/images/entrega-icon-96.webp 96w
+            "
+            sizes="2rem"
+            width="32"
+            height="32"
+            alt=""
+          />Entrega Fácil
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainNav"
+          aria-controls="mainNav"
+          aria-expanded="false"
+          aria-label="Abrir menu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+          <div class="navbar-nav ms-auto align-items-sm-center gap-3 py-2">
+            <a class="nav-link" href="../../index.html">Entregas</a>
+            <a class="btn btn-dark btn-sm px-3" aria-current="page" href="../cadastro/index.html"
+              >+ Nova Entrega</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+    <main class="container flex-grow-1 pt-4 pt-sm-5 pb-5">
+      <header
+        class="border-bottom border-dark pb-3 mb-4 gap-3 d-flex flex-column flex-md-row justify-content-between align-items-md-end"
+      >
+        <div>
+          <div class="ef-kicker fw-medium text-secondary text-uppercase">
+            Ordem de expedição // Módulo 01
+          </div>
+          <h1 class="ef-page-title fw-bold my-1">Nova entrega</h1>
+          <p class="mb-0 text-secondary">
+            Dados do cliente, produto e endereços reunidos em um único formulário.
+          </p>
+        </div>
+        <span class="badge text-bg-light border border-secondary-subtle text-dark mt-3 mt-md-0"
+          >Despacho rodoviário padrão</span
+        >
+      </header>
+
+      <form id="delivery-form" class="d-grid gap-4" novalidate>
+        <section class="card bg-white border-dark ef-card">
+          <div
+            class="card-header d-flex justify-content-between align-items-center bg-white border-dark gap-2"
+          >
+            <div class="d-flex align-items-center gap-2">
+              <span class="ef-section-number flex-shrink-0 bg-black text-white small">01</span>
+              <h2 class="h6 ef-heading mb-0">Dados do Cliente</h2>
+            </div>
+            <span class="ef-kicker fw-medium text-secondary text-uppercase d-none d-sm-inline"
+              >Identificação principal</span
+            >
+          </div>
+          <div class="card-body">
+            <div class="row g-3">
+              <div class="col-12 col-md-4">
+                <label class="form-label ef-heading small fw-medium" for="cliente-nome"
+                  >Nome completo </label
+                ><input
+                  class="form-control"
+                  id="cliente-nome"
+                  name="clienteNome"
+                  placeholder="Ex: João da Silva"
+                  autocomplete="name"
+                />
+              </div>
+              <div class="col-12 col-md-4">
+                <label class="form-label ef-heading small fw-medium" for="cliente-cpf">CPF </label
+                ><input
+                  class="form-control"
+                  id="cliente-cpf"
+                  name="clienteCpf"
+                  placeholder="000.000.000-00"
+                  inputmode="numeric"
+                />
+              </div>
+              <div class="col-12 col-md-4">
+                <label class="form-label ef-heading small fw-medium" for="cliente-telefone"
+                  >Telefone </label
+                ><input
+                  class="form-control"
+                  id="cliente-telefone"
+                  name="clienteTelefone"
+                  placeholder="(00) 00000-0000"
+                  inputmode="tel"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="card bg-white border-dark ef-card">
+          <div
+            class="card-header d-flex justify-content-between align-items-center bg-white border-dark gap-2"
+          >
+            <div class="d-flex align-items-center gap-2">
+              <span class="ef-section-number flex-shrink-0 bg-black text-white small">02</span>
+              <h2 class="h6 ef-heading mb-0">Produto</h2>
+            </div>
+            <span class="ef-kicker fw-medium text-secondary text-uppercase d-none d-sm-inline"
+              >Manifesto de carga</span
+            >
+          </div>
+          <div class="card-body d-grid gap-3">
+            <div>
+              <label class="form-label ef-heading small fw-medium" for="produto-nome"
+                >Nome do produto </label
+              ><input
+                class="form-control"
+                id="produto-nome"
+                name="produtoNome"
+                placeholder="Ex: Peça industrial retificada Mod. 4"
+              />
+            </div>
+            <div>
+              <label class="form-label ef-heading small fw-medium" for="produto-descricao"
+                >Descrição (opcional)</label
+              ><textarea
+                class="form-control"
+                id="produto-descricao"
+                name="produtoDescricao"
+                rows="3"
+                placeholder="Informações adicionais, fragilidade, orientações de acondicionamento..."
+              ></textarea>
+            </div>
+          </div>
+        </section>
+        <div class="ef-address-grid">
+          <div>
+            <section class="card bg-white border-dark ef-card h-100">
+              <div
+                class="card-header d-flex justify-content-between align-items-center bg-white border-dark gap-2"
+              >
+                <div class="d-flex align-items-center gap-2">
+                  <span class="ef-section-number flex-shrink-0 bg-black text-white small">03A</span>
+                  <h2 class="h6 ef-heading mb-0">Origem</h2>
+                </div>
+                <span class="ef-kicker fw-medium text-secondary text-uppercase d-none d-sm-inline"
+                  >Coleta / Hub</span
+                >
+              </div>
+              <div class="card-body d-grid gap-3">
+                <div>
+                  <label class="form-label ef-heading small fw-medium" for="origem-cep">CEP </label>
+                  <div class="input-group">
+                    <input
+                      class="form-control"
+                      id="origem-cep"
+                      name="origem-cep"
+                      placeholder="00000-000"
+                      inputmode="numeric"
+                    /><button disabled class="btn btn-outline-dark" type="button">
+                      ⌕ Consultar
+                    </button>
+                  </div>
+                </div>
+                <div class="row g-3">
+                  <div class="col-8">
+                    <label class="form-label ef-heading small fw-medium" for="origem-logradouro"
+                      >Logradouro </label
+                    ><input
+                      class="form-control"
+                      id="origem-logradouro"
+                      name="origem-logradouro"
+                      placeholder="Rua, Avenida, Estrada..."
+                    />
+                  </div>
+                  <div class="col-4">
+                    <label class="form-label ef-heading small fw-medium" for="origem-numero"
+                      >Número </label
+                    ><input
+                      class="form-control"
+                      id="origem-numero"
+                      name="origem-numero"
+                      placeholder="123"
+                    />
+                  </div>
+                </div>
+                <div class="row g-3">
+                  <div class="col-12 col-sm-5">
+                    <label class="form-label ef-heading small fw-medium" for="origem-bairro"
+                      >Bairro </label
+                    ><input class="form-control" id="origem-bairro" name="origem-bairro" />
+                  </div>
+                  <div class="col-8 col-sm-5">
+                    <label class="form-label ef-heading small fw-medium" for="origem-cidade"
+                      >Cidade </label
+                    ><input class="form-control" id="origem-cidade" name="origem-cidade" />
+                  </div>
+                  <div class="col-4 col-sm-2">
+                    <label class="form-label ef-heading small fw-medium" for="origem-uf">UF </label
+                    ><input class="form-control text-uppercase" id="origem-uf" name="origem-uf" />
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+          <div>
+            <section class="card bg-white border-dark ef-card h-100">
+              <div
+                class="card-header d-flex justify-content-between align-items-center bg-white border-dark gap-2"
+              >
+                <div class="d-flex align-items-center gap-2">
+                  <span class="ef-section-number flex-shrink-0 bg-black text-white small">03B</span>
+                  <h2 class="h6 ef-heading mb-0">Destino</h2>
+                </div>
+                <span class="ef-kicker fw-medium text-secondary text-uppercase d-none d-sm-inline"
+                  >Entrega final</span
+                >
+              </div>
+              <div class="card-body d-grid gap-3">
+                <div>
+                  <label class="form-label ef-heading small fw-medium" for="destino-cep"
+                    >CEP
+                  </label>
+                  <div class="input-group">
+                    <input
+                      class="form-control"
+                      id="destino-cep"
+                      name="destino-cep"
+                      placeholder="00000-000"
+                      inputmode="numeric"
+                    /><button disabled class="btn btn-outline-dark" type="button">
+                      ⌕ Consultar
+                    </button>
+                  </div>
+                </div>
+                <div class="row g-3">
+                  <div class="col-8">
+                    <label class="form-label ef-heading small fw-medium" for="destino-logradouro"
+                      >Logradouro </label
+                    ><input
+                      class="form-control"
+                      id="destino-logradouro"
+                      name="destino-logradouro"
+                    />
+                  </div>
+                  <div class="col-4">
+                    <label class="form-label ef-heading small fw-medium" for="destino-numero"
+                      >Número </label
+                    ><input
+                      class="form-control"
+                      id="destino-numero"
+                      name="destino-numero"
+                      placeholder="123"
+                    />
+                  </div>
+                </div>
+                <div class="row g-3">
+                  <div class="col-12 col-sm-5">
+                    <label class="form-label ef-heading small fw-medium" for="destino-bairro"
+                      >Bairro </label
+                    ><input class="form-control" id="destino-bairro" name="destino-bairro" />
+                  </div>
+                  <div class="col-8 col-sm-5">
+                    <label class="form-label ef-heading small fw-medium" for="destino-cidade"
+                      >Cidade </label
+                    ><input class="form-control" id="destino-cidade" name="destino-cidade" />
+                  </div>
+                  <div class="col-4 col-sm-2">
+                    <label class="form-label ef-heading small fw-medium" for="destino-uf">UF </label
+                    ><input class="form-control text-uppercase" id="destino-uf" name="destino-uf" />
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+        <section class="card bg-white border-dark ef-card">
+          <div
+            class="card-header d-flex justify-content-between align-items-center bg-white border-dark gap-2"
+          >
+            <div class="d-flex align-items-center gap-2">
+              <span class="ef-section-number flex-shrink-0 bg-black text-white small">04</span>
+              <h2 class="h6 ef-heading mb-0">Dados da Entrega</h2>
+            </div>
+            <span class="ef-kicker fw-medium text-secondary text-uppercase d-none d-sm-inline"
+              >Cronograma operacional</span
+            >
+          </div>
+          <div class="card-body">
+            <div class="row g-3">
+              <div class="col-12 col-md-6">
+                <label class="form-label ef-heading small fw-medium" for="data-prevista"
+                  >Data prevista </label
+                ><input class="form-control" id="data-prevista" name="dataPrevista" type="date" />
+              </div>
+              <div class="col-12 col-md-6">
+                <label class="form-label ef-heading small fw-medium" for="status"
+                  >Status inicial </label
+                ><select class="form-select" id="status" name="status">
+                  <option value="Pendente" selected>Pendente</option>
+                  <option value="Em transporte">Em transporte</option>
+                  <option value="Entregue">Entregue</option>
+                  <option value="Cancelada">Cancelada</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </section>
+        <div class="d-flex flex-column-reverse flex-sm-row justify-content-end gap-2">
+          <a class="btn btn-outline-dark" href="../../index.html">Cancelar</a
+          ><button disabled class="btn btn-dark px-4" type="submit">✓ Cadastrar entrega</button>
+        </div>
+        <p class="small text-secondary mb-0">
+          Prévia do formulário: o cadastro e a consulta de CEP ainda não estão disponíveis. Os dados
+          preenchidos não serão salvos.
+        </p>
+      </form>
+    </main>
+    <footer class="small border-top border-dark bg-white text-secondary py-3 mt-auto">
+      <div class="container d-flex flex-wrap justify-content-between gap-2">
+        <span class="ef-heading text-uppercase">Entrega Fácil</span
+        ><span>© 2026 Entrega Fácil</span>
+      </div>
+    </footer>
+
+    <script src="../../../assets/vendor/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

@@ -3,6 +3,9 @@
   --bs-body-font-family: Inter, Arial, sans-serif;
   --bs-body-color: #1b1c1c;
   --bs-body-bg: #fbf9f8;
+  --bs-border-radius: 0.125rem;
+  --bs-border-radius-sm: 0.125rem;
+  --bs-border-radius-lg: 0.125rem;
 }
 
 h1,
@@ -23,6 +26,7 @@ h3,
 .ef-brand-icon {
   width: 2rem;
   height: 2rem;
+  object-fit: contain;
 }
 
 .ef-page-title {
@@ -38,4 +42,8 @@ h3,
 
 .ef-card {
   box-shadow: 0 0.25rem 0 #1b1c1c;
+}
+
+.btn-close {
+  border-radius: var(--bs-border-radius);
 }
