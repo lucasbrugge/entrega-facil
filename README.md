@@ -46,42 +46,60 @@ de comportamento; não são dependências desta versão.
 
 Os enunciados abaixo foram preservados literalmente de `6ddf6c9df7`.
 As marcações comprovadas da 1ª entrega (**01, 15, 16 e 17**) foram preservadas.
-Os IDs **02–10** ficam desmarcados até o autor conferir as evidências e confirmar
-que consegue explicar o código. Os IDs 15 e 16 também integram a avaliação desta fase.
+Os IDs **02–10, 15 e 16** estão implementados na casca da 2ª entrega e marcados
+com referências ao código atual. A defesa técnica deve explicar o conceito,
+a aplicação e o efeito de retirar cada recurso.
 
 No commit histórico, 18 e 19 estavam marcados, mas a evidência era incompleta:
 18 tinha apenas a separação de documentos em `docs/`; 19 não tinha configuração
-de linter ou formatador. A estrutura atual e as ferramentas fornecem evidências
-para conferência, sem atribuir sua implementação à 1ª entrega. O enunciado
-reserva os IDs 17–19 à 3ª entrega; o 17 é mantido como registro histórico.
+de linter ou formatador. Os IDs **13, 18 e 19** agora estão marcados pelas
+evidências da versão atual, como requisitos antecipados da 3ª entrega, sem
+atribuir essas implementações à 1ª entrega. Eles não integram os 11 IDs avaliados
+na 2ª entrega; o 17 permanece como registro histórico.
 
 #### RA1 - Utilizar Frameworks CSS para estilização de elementos HTML e criação de layouts responsivos.
 
 - [x] ID 01 - Prototipa interfaces adaptáveis para no mínimo os tamanhos de tela mobile e desktop, usando ferramentas de design tradicionais (Figma, Quant UX ou Sketch) ou IA (Stitch).
-- [ ] ID 02 - Implementa layout responsivo com Framework CSS (Bootstrap, Materialize) usando Flexbox ou Grid do próprio framework.
-- [ ] ID 03 - Implementa layout responsivo com CSS puro, usando Flexbox ou Grid Layout.
-- [ ] ID 04 - Utiliza componentes prontos de um Framework CSS (ex.: card, button) e componentes JavaScript do framework (ex.: modal, carousel).
-- [ ] ID 05 - Cria layout fluido usando unidades relativas (vw, vh, %, em, rem) no lugar de unidades fixas (px).
-- [ ] ID 06 - Aplica um Design System consistente (cores, tipografia, padrões de componentes) em toda a aplicação.
-- [ ] ID 07 - Utiliza Sass (SCSS) com ou sem framework, aplicando variáveis, mixins e funções para modularizar o código.
-- [ ] ID 08 - Aplica tipografia responsiva (media queries mobile first) ou tipografia fluida (função clamp() + unidades relativas).
-- [ ] ID 09 - Aplica técnicas de responsividade de imagens usando CSS (object-fit, containers com unidades relativas).
-- [ ] ID 10 - Otimiza imagens usando formatos modernos (WebP) e carregamento adaptativo (srcset, picture, ou parâmetros do Cloudinary).
+      Referências: [protótipo mobile e desktop](https://stitch.withgoogle.com/projects/2737167932936789921).
+- [x] ID 02 - Implementa layout responsivo com Framework CSS (Bootstrap, Materialize) usando Flexbox ou Grid do próprio framework.
+      Referências: [app/index.html:107–142](app/index.html#L107-L142) — grid Bootstrap com `row`, `col` e `row-cols-*`.
+- [x] ID 03 - Implementa layout responsivo com CSS puro, usando Flexbox ou Grid Layout.
+      Referências: [assets/scss/cadastro.scss:5–15](assets/scss/cadastro.scss#L5-L15) — Grid próprio com uma coluna e media query para duas; [aplicação no HTML](app/pages/cadastro/index.html#L166-L179).
+- [x] ID 04 - Utiliza componentes prontos de um Framework CSS (ex.: card, button) e componentes JavaScript do framework (ex.: modal, carousel).
+      Referências: [card](app/index.html#L112-L142), [menu recolhível](app/index.html#L41-L57), [acionador do modal](app/pages/detalhes/index.html#L75-L82) e [modal com bundle Bootstrap](app/pages/detalhes/index.html#L188-L256).
+- [x] ID 05 - Cria layout fluido usando unidades relativas (vw, vh, %, em, rem) no lugar de unidades fixas (px).
+      Referências: [assets/scss/main.scss:27–45](assets/scss/main.scss#L27-L45) — `rem`, `em` e `vw`; [gap relativo do cadastro](assets/scss/cadastro.scss#L5-L14).
+- [x] ID 06 - Aplica um Design System consistente (cores, tipografia, padrões de componentes) em toda a aplicação.
+      Referências: [tokens documentados](sdd.md#L10-L23), [variáveis Sass](assets/scss/_variables.scss#L1-L8) e [aplicação compartilhada](assets/scss/main.scss#L8-L25).
+- [x] ID 07 - Utiliza Sass (SCSS) com ou sem framework, aplicando variáveis, mixins e funções para modularizar o código.
+      Referências: [variáveis](assets/scss/_variables.scss#L1-L8), [mixin square-size](assets/scss/_mixins.scss#L1-L5), [função space](assets/scss/_functions.scss#L1-L6), [usos no estilo comum](assets/scss/main.scss#L32-L51) e [reuso do mixin no cadastro](assets/scss/cadastro.scss#L17-L22).
+- [x] ID 08 - Aplica tipografia responsiva (media queries mobile first) ou tipografia fluida (função clamp() + unidades relativas).
+      Referências: [assets/scss/main.scss:27–40](assets/scss/main.scss#L27-L40) — tipografia fluida da marca e do título com `clamp()`.
+- [x] ID 09 - Aplica técnicas de responsividade de imagens usando CSS (object-fit, containers com unidades relativas).
+      Referências: [assets/scss/main.scss:32–35](assets/scss/main.scss#L32-L35) — tamanho relativo e `object-fit: contain`; [imagem com img-fluid](app/index.html#L27-L39).
+- [x] ID 10 - Otimiza imagens usando formatos modernos (WebP) e carregamento adaptativo (srcset, picture, ou parâmetros do Cloudinary).
+      Referências: [app/index.html:27–39](app/index.html#L27-L39) — WebP com `srcset` de 32/64/96px e `sizes="2rem"`, adaptado principalmente à densidade de pixels.
 
 #### RA2 - Realizar tratamento de formulários e aplicar validações customizadas no lado cliente.
 
 - [ ] ID 11 - Implementa validação HTML nativa (campos obrigatórios, tipos, limites de caracteres) com mensagens de erro/sucesso no lado cliente.
 - [ ] ID 12 - Aplica expressões regulares (REGEX) para validações customizadas (e-mail, telefone, datas, etc.)
-- [ ] ID 13 - Utiliza elementos de seleção em formulários (checkbox, radio, select) para coleta de dados.
+- [x] ID 13 - Utiliza elementos de seleção em formulários (checkbox, radio, select) para coleta de dados.
+      Referências: [app/pages/cadastro/index.html:327–334](app/pages/cadastro/index.html#L327-L334) — `select` de status com `name`, opções e valor inicial, dentro do formulário. A seleção funciona; envio e gravação permanecem desativados nesta casca.
 - [ ] ID 14 - Implementa leitura e escrita no Web Storage (localStorage/sessionStorage) para persistir dados localmente.
 
 #### RA3 - Aplicar ferramentas para otimização do processo de desenvolvimento web.
 
 - [x] ID 15 - Configura ambiente com Node.js e NPM para gerenciamento de pacotes e dependências.
+      Referências: [dependências e versão de Node](package.json#L22-L34), [comandos npm](package.json#L5-L10) e [lockfile](package-lock.json).
 - [x] ID 16 - Utiliza boas práticas de versionamento no Git/GitHub (branch main ou branches específicos, uso de .gitignore).
+      Referências: [.gitignore:1–2](.gitignore#L1-L2) — exclusão de `node_modules` e `.env`; [histórico da simplificação](https://github.com/lucasbrugge/entrega-facil/commits/main).
 - [x] ID 17 - Mantém um README.md padronizado, conforme template da disciplina, com checklist preenchido.
-- [ ] ID 18 - Organiza arquivos do projeto de forma modular, seguindo padrão de exemplo fornecido.
-- [ ] ID 19 - Configura linters e formatadores (ESLint, Prettier) para manter qualidade e padronização do código.
+      Referências: [README da 1ª entrega](https://github.com/lucasbrugge/entrega-facil/blob/6ddf6c9df7/README.md) e seções deste README com documentação, checklist e execução. Marcação histórica, fora dos 11 IDs avaliados na 2ª entrega.
+- [x] ID 18 - Organiza arquivos do projeto de forma modular, seguindo padrão de exemplo fornecido.
+      Referências: [listagem e seu CSS](app/), [cadastro](app/pages/cadastro/), [detalhes](app/pages/detalhes/) e [parciais Sass](assets/scss/); [destinos da compilação por página](package.json#L5-L7). HTML e CSS específico ficam juntos; recursos compartilhados ficam em `assets/`.
+- [x] ID 19 - Configura linters e formatadores (ESLint, Prettier) para manter qualidade e padronização do código.
+      Referências: [configuração ESLint](eslint.config.cjs#L1-L9), [configuração Prettier](.prettierrc.json#L1-L5), [exclusões de formatação](.prettierignore#L1-L6) e [comandos npm](package.json#L8-L10). Ambos foram executados com sucesso; nesta casca, o ESLint analisa a própria configuração, pois não há JavaScript próprio da aplicação.
 
 #### RA4 - Aplicar bibliotecas de funções e componentes em JavaScript para aprimorar a interatividade de páginas web.
 
@@ -94,10 +112,12 @@ reserva os IDs 17–19 à 3ª entrega; o 17 é mantido como registro histórico.
 - [ ] ID 23 - Realiza requisições assíncronas para uma API fake para exibir dados na página.
 - [ ] ID 24 - Realiza requisições assíncronas para APIs públicas reais (OpenWeather, ViaCEP etc.), exibindo os dados e tratando erros.
 
-### Evidências para confirmação do autor
+### Referências dos indicadores
 
-Antes de marcar os IDs 02–10, conferir no código: conceito, motivo de uso,
-sintaxe e efeito de retirar cada recurso. A explicação do autor continua necessária.
+As referências junto de cada indicador apontam para os arquivos e linhas atuais.
+Depois da publicação e da criação da tag da entrega, o mapa do Moodle deve usar
+links definitivos em `blob/entrega-2/`, conferindo novamente os intervalos.
+A tag ainda não foi criada; as referências atuais não representam links dessa tag.
 
 ### Organização e origem das telas
 
