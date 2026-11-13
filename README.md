@@ -150,7 +150,7 @@ Referências: [modelo de README](https://github.com/utfpr-gp/roubank-css) e
 
 Requer Node.js **20.19+, 22.13+ ou 24+**, npm e a extensão **Live Server** do VS Code.
 
-Após publicar a `main` atualizada, clone o projeto:
+Clone o projeto publicado:
 
 ```bash
 git clone https://github.com/lucasbrugge/entrega-facil.git
@@ -192,3 +192,36 @@ CSS compilados e lockfile.
 - [Detalhes da entrega](app/pages/detalhes/index.html)
 
 Abra as páginas pelo Live Server conforme o manual acima.
+
+Capturas reais da versão de trabalho: celular **390px** e desktop **1440px**,
+com viewport de 900px de altura; imagens de página inteira.
+
+### Listagem — celular (390px)
+
+![Listagem em celular, 390px](evidencias/entrega-2/entregas-mobile.png)
+
+### Listagem — desktop (1440px)
+
+![Listagem em desktop, 1440px](evidencias/entrega-2/entregas-desktop.png)
+
+### Cadastro — celular (390px)
+
+![Cadastro em celular, 390px](evidencias/entrega-2/cadastro-mobile.png)
+
+### Cadastro — desktop (1440px)
+
+![Cadastro em desktop, 1440px](evidencias/entrega-2/cadastro-desktop.png)
+
+### Detalhes — celular (390px)
+
+![Detalhes em celular, 390px](evidencias/entrega-2/detalhes-mobile.png)
+
+### Detalhes — desktop (1440px)
+
+![Detalhes em desktop, 1440px](evidencias/entrega-2/detalhes-desktop.png)
+
+Abra cada imagem para ler em tamanho completo. O cadastro tem captura mais alta,
+pois reúne o formulário inteiro. Dados de exemplo fictícios.
+
+Preparação: [mapa provisório](mapa-entrega-2.md), [tópicos do vídeo](roteiro-entrega-2.md)
+e [origem das capturas e testes](evidencias/entrega-2/README.md).
