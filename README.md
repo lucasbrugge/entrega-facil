@@ -222,6 +222,3 @@ com viewport de 900px de altura; imagens de página inteira.
 
 Abra cada imagem para ler em tamanho completo. O cadastro tem captura mais alta,
 pois reúne o formulário inteiro. Dados de exemplo fictícios.
-
-Preparação: [mapa provisório](mapa-entrega-2.md), [tópicos do vídeo](roteiro-entrega-2.md)
-e [origem das capturas e testes](evidencias/entrega-2/README.md).
