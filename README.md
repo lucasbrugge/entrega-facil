@@ -2,235 +2,173 @@
 
 ### Autor: Lucas Brugge de Almeida
 
-O Entrega Fácil é uma aplicação web responsiva para cadastro e acompanhamento básico de entregas. A aplicação permite cadastrar os dados do cliente, informações do produto, endereço de origem, endereço de destino, data prevista e status da entrega.
+O Entrega Fácil é uma aplicação web para cadastro e acompanhamento de entregas.
+Esta versão apresenta a **casca da 2ª entrega**: listagem, cadastro e detalhes em
+três páginas HTML responsivas, com Bootstrap e Sass.
 
-O frontend utiliza HTML, Sass e JavaScript, com Bootstrap e jQuery. Uma API fake executável com JSON Server persiste entregas e endereços. A consulta ViaCEP preenche os endereços a partir do CEP.
+Os exemplos estão escritos no HTML. A navegação, o menu responsivo e o modal
+Bootstrap funcionam. Busca, filtros, cadastro, consulta de CEP e atualização de
+status permanecem como apresentação visual, sem gravações. APIs, CRUD, validações,
+jQuery e armazenamento no navegador ficam para a 3ª entrega.
 
 ## 📚 Documentação do Projeto
 
-Para entender as regras de negócio, o escopo e a arquitetura técnica da aplicação, consulte os documentos abaixo:
+- [📄 Product Requirements Document (PRD)](docs/prd.md) — Escopo e histórias de usuário da 1ª entrega.
+- [🛠️ Arquitetura da Aplicação](docs/architecture.md) — Modelo de dados, tecnologias e integrações previstas na 1ª entrega.
 
-- [📄 Product Requirements Document (PRD)](docs/prd.md) - Visão geral, público-alvo, histórias de usuário e regras de negócio.
-- [🛠️ Arquitetura da Aplicação](docs/architecture.md) - Design System, modelo de dados, tecnologias utilizadas, API pública e arquitetura da aplicação.
+Os dois documentos permanecem integralmente preservados. Descrevem a proposta
+completa, incluindo funcionalidades que não fazem parte desta casca.
+[docs/validacao-tecnica.md](docs/validacao-tecnica.md) é um registro histórico
+de outubro; seus testes e comandos de API não descrevem a versão atual.
 
 ## 🎨 Design
 
-- 🎨 Design System - Documentado no arquivo `docs/architecture.md`.
-- 🖼️ Protótipo no Figma/Stitch - [Páginas](https://stitch.withgoogle.com/projects/2737167932936789921)
+- 🎨 [Design System aplicado e tokens da casca](sdd.md) — Complemento técnico, sem modificar a arquitetura original.
+- 🖼️ Protótipo no Figma/Stitch — [Páginas](https://stitch.withgoogle.com/projects/2737167932936789921)
 
 ## 🌐 Site em Produção - GitHub Pages
 
-Link será adicionado após a publicação da aplicação.
+A partir da Entrega 3.
 
 ## 💻 Tecnologias e Dependências
 
-### Framework CSS
+- **Bootstrap 5.3.8:** grid, cards, campos, botões, badges, navbar e modal.
+- **Sass:** tokens, mixin reutilizado, função de espaçamento e estilos por página.
+- **Node.js e npm:** gerenciamento das dependências e ferramentas de desenvolvimento.
+- **ESLint e Prettier:** verificação dos scripts e padronização do código.
 
-**Bootstrap 5.3.8**
-
-O Bootstrap foi escolhido por oferecer um sistema de Grid responsivo
-e uma ampla variedade de componentes prontos compatíveis com o
-protótipo do Entrega Fácil, como Navbar, Cards, Buttons, Forms,
-Input Groups, Badges e Modals.
-
-Além de facilitar a adaptação da aplicação para dispositivos mobile,
-tablet e desktop, o framework possui classes utilitárias para
-espaçamento, alinhamento e responsividade. O projeto possui
-documentação consolidada, licença MIT e desenvolvimento ativo.
-
-O Bootstrap é customizado com SCSS/CSS para manter a identidade
-visual Neo-Industrial do projeto.
-
-### API Pública
-
-**ViaCEP**
-
-O ViaCEP foi escolhido por fornecer uma API pública e gratuita para
-consulta de endereços brasileiros através do CEP.
-
-No Entrega Fácil, a API é utilizada nos campos de origem e destino.
-Ao informar um CEP válido, a aplicação poderá preencher automaticamente
-dados como logradouro, bairro, cidade e UF.
-
-Essa integração reduz o preenchimento manual dos endereços e permite
-demonstrar requisições assíncronas e tratamento de erros utilizando
-dados reais.
+Bootstrap, suas licenças, CSS compilados e imagens acompanham o projeto.
+Google Fonts carrega Inter e Space Grotesk pela internet, com fontes alternativas.
+ViaCEP e JSON Server continuam previstos nos documentos originais para a etapa
+de comportamento; não são dependências desta versão.
 
 ## ✅ Checklist | Indicadores de Desempenho (ID) dos Resultados de Aprendizagem (RA)
 
+Os enunciados abaixo foram preservados literalmente de `6ddf6c9df7`.
+As marcações comprovadas da 1ª entrega (**01, 15, 16 e 17**) foram preservadas.
+Os IDs **02–10** ficam desmarcados até o autor conferir as evidências e confirmar
+que consegue explicar o código. Os IDs 15 e 16 também integram a avaliação desta fase.
+
+No commit histórico, 18 e 19 estavam marcados, mas a evidência era incompleta:
+18 tinha apenas a separação de documentos em `docs/`; 19 não tinha configuração
+de linter ou formatador. A estrutura atual e as ferramentas fornecem evidências
+para conferência, sem atribuir sua implementação à 1ª entrega. O enunciado
+reserva os IDs 17–19 à 3ª entrega; o 17 é mantido como registro histórico.
+
 #### RA1 - Utilizar Frameworks CSS para estilização de elementos HTML e criação de layouts responsivos.
 
-- [x] ID 01 - Prototipa interfaces adaptáveis para no mínimo os tamanhos de tela mobile e desktop, usando ferramentas de design tradicionais (Figma, Quant UX ou Sketch) ou IA (Stitch). Evidência: [protótipo mobile e desktop](https://stitch.withgoogle.com/projects/2737167932936789921).
-- [x] ID 02 - Implementa layout responsivo com Framework CSS (Bootstrap, Materialize) usando Flexbox ou Grid do próprio framework. Evidência: [pages/cadastro.html:86–131](pages/cadastro.html#L86-L131).
-- [x] ID 03 - Implementa layout responsivo com CSS puro, usando Flexbox ou Grid Layout. Evidência: [assets/scss/cadastro.scss:4–9](assets/scss/cadastro.scss#L4-L9).
-- [x] ID 04 - Utiliza componentes prontos de um Framework CSS (ex.: card, button) e componentes JavaScript do framework (ex.: modal, carousel). Evidência: [pages/detalhes.html:63–103](pages/detalhes.html#L63-L103).
-- [x] ID 05 - Cria layout fluido usando unidades relativas (vw, vh, %, em, rem) no lugar de unidades fixas (px). Evidência: [assets/scss/main.scss:24–46](assets/scss/main.scss#L24-L46).
-- [x] ID 06 - Aplica um Design System consistente (cores, tipografia, padrões de componentes) em toda a aplicação. Evidência: [assets/scss/main.scss:8–22](assets/scss/main.scss#L8-L22).
-- [x] ID 07 - Utiliza Sass (SCSS) com ou sem framework, aplicando variáveis, mixins e funções para modularizar o código. Evidência: [assets/scss/main.scss:1–47](assets/scss/main.scss#L1-L47).
-- [x] ID 08 - Aplica tipografia responsiva (media queries mobile first) ou tipografia fluida (função clamp() + unidades relativas). Evidência: [assets/scss/main.scss:24–35](assets/scss/main.scss#L24-L35).
-- [x] ID 09 - Aplica técnicas de responsividade de imagens usando CSS (object-fit, containers com unidades relativas). Evidência: [index.html:17–29](index.html#L17-L29).
-- [x] ID 10 - Otimiza imagens usando formatos modernos (WebP) e carregamento adaptativo (srcset, picture, ou parâmetros do Cloudinary). Evidência: [index.html:17–29](index.html#L17-L29).
+- [x] ID 01 - Prototipa interfaces adaptáveis para no mínimo os tamanhos de tela mobile e desktop, usando ferramentas de design tradicionais (Figma, Quant UX ou Sketch) ou IA (Stitch).
+- [ ] ID 02 - Implementa layout responsivo com Framework CSS (Bootstrap, Materialize) usando Flexbox ou Grid do próprio framework.
+- [ ] ID 03 - Implementa layout responsivo com CSS puro, usando Flexbox ou Grid Layout.
+- [ ] ID 04 - Utiliza componentes prontos de um Framework CSS (ex.: card, button) e componentes JavaScript do framework (ex.: modal, carousel).
+- [ ] ID 05 - Cria layout fluido usando unidades relativas (vw, vh, %, em, rem) no lugar de unidades fixas (px).
+- [ ] ID 06 - Aplica um Design System consistente (cores, tipografia, padrões de componentes) em toda a aplicação.
+- [ ] ID 07 - Utiliza Sass (SCSS) com ou sem framework, aplicando variáveis, mixins e funções para modularizar o código.
+- [ ] ID 08 - Aplica tipografia responsiva (media queries mobile first) ou tipografia fluida (função clamp() + unidades relativas).
+- [ ] ID 09 - Aplica técnicas de responsividade de imagens usando CSS (object-fit, containers com unidades relativas).
+- [ ] ID 10 - Otimiza imagens usando formatos modernos (WebP) e carregamento adaptativo (srcset, picture, ou parâmetros do Cloudinary).
 
 #### RA2 - Realizar tratamento de formulários e aplicar validações customizadas no lado cliente.
 
-- [ ] ID 11 - Implementa validação HTML nativa (campos obrigatórios, tipos, limites de caracteres) com mensagens de erro/sucesso no lado cliente. Evidência: [pages/cadastro.html:86–129](pages/cadastro.html#L86-L129).
-- [ ] ID 12 - Aplica expressões regulares (REGEX) para validações customizadas (e-mail, telefone, datas, etc.) Evidência: [assets/js/utils/validation.js:3–25](assets/js/utils/validation.js#L3-L25).
-- [ ] ID 13 - Utiliza elementos de seleção em formulários (checkbox, radio, select) para coleta de dados. Evidência: [pages/cadastro.html:440–454](pages/cadastro.html#L440-L454).
-- [ ] ID 14 - Implementa leitura e escrita no Web Storage (localStorage/sessionStorage) para persistir dados localmente. Evidência: [assets/js/data/demo-store.js:7–40](assets/js/data/demo-store.js#L7-L40).
+- [ ] ID 11 - Implementa validação HTML nativa (campos obrigatórios, tipos, limites de caracteres) com mensagens de erro/sucesso no lado cliente.
+- [ ] ID 12 - Aplica expressões regulares (REGEX) para validações customizadas (e-mail, telefone, datas, etc.)
+- [ ] ID 13 - Utiliza elementos de seleção em formulários (checkbox, radio, select) para coleta de dados.
+- [ ] ID 14 - Implementa leitura e escrita no Web Storage (localStorage/sessionStorage) para persistir dados localmente.
 
 #### RA3 - Aplicar ferramentas para otimização do processo de desenvolvimento web.
 
-- [x] ID 15 - Configura ambiente com Node.js e NPM para gerenciamento de pacotes e dependências. Evidência: [package.json:26–42](package.json#L26-L42).
-- [x] ID 16 - Utiliza boas práticas de versionamento no Git/GitHub (branch main ou branches específicos, uso de .gitignore). Evidência: [.gitignore:1–2](.gitignore#L1-L2).
-- [ ] ID 17 - Mantém um README.md padronizado, conforme template da disciplina, com checklist preenchido. Evidência: [README.md:59–98](README.md#L59-L98).
-- [ ] ID 18 - Organiza arquivos do projeto de forma modular, seguindo padrão de exemplo fornecido. Evidência: [assets/js/app.js:1–7](assets/js/app.js#L1-L7).
-- [ ] ID 19 - Configura linters e formatadores (ESLint, Prettier) para manter qualidade e padronização do código. Evidência: [eslint.config.cjs:1–13](eslint.config.cjs#L1-L13).
+- [x] ID 15 - Configura ambiente com Node.js e NPM para gerenciamento de pacotes e dependências.
+- [x] ID 16 - Utiliza boas práticas de versionamento no Git/GitHub (branch main ou branches específicos, uso de .gitignore).
+- [x] ID 17 - Mantém um README.md padronizado, conforme template da disciplina, com checklist preenchido.
+- [ ] ID 18 - Organiza arquivos do projeto de forma modular, seguindo padrão de exemplo fornecido.
+- [ ] ID 19 - Configura linters e formatadores (ESLint, Prettier) para manter qualidade e padronização do código.
 
 #### RA4 - Aplicar bibliotecas de funções e componentes em JavaScript para aprimorar a interatividade de páginas web.
 
-- [ ] ID 20 - Utiliza jQuery para manipulação do DOM e interatividade (eventos, animações, manipulação de elementos) Evidência: [assets/js/features/delivery-create.js:26–67](assets/js/features/delivery-create.js#L26-L67).
-- [ ] ID 21 - Integra e configura um plugin jQuery relevante (ex.: jQuery Mask Plugin) ou outra biblioteca de funções. Evidência: [assets/js/utils/masks.js:1–17](assets/js/utils/masks.js#L1-L17).
+- [ ] ID 20 - Utiliza jQuery para manipulação do DOM e interatividade (eventos, animações, manipulação de elementos)
+- [ ] ID 21 - Integra e configura um plugin jQuery relevante (ex.: jQuery Mask Plugin) ou outra biblioteca de funções.
 
 #### RA5 - Efetuar requisições assíncronas para uma API fake e APIs públicas, permitindo a obtenção e manipulação de dados dinamicamente.
 
-- [ ] ID 22 - Realiza requisições assíncronas para uma API fake (ex.: JSON Server) para persistir dados de um formulário. Evidência: [assets/js/services/delivery-service.js:63–98](assets/js/services/delivery-service.js#L63-L98).
-- [ ] ID 23 - Realiza requisições assíncronas para uma API fake para exibir dados na página. Evidência: [assets/js/services/delivery-service.js:137–146](assets/js/services/delivery-service.js#L137-L146).
-- [ ] ID 24 - Realiza requisições assíncronas para APIs públicas reais (OpenWeather, ViaCEP etc.), exibindo os dados e tratando erros. Evidência: [assets/js/features/delivery-create.js:45–65](assets/js/features/delivery-create.js#L45-L65).
+- [ ] ID 22 - Realiza requisições assíncronas para uma API fake (ex.: JSON Server) para persistir dados de um formulário.
+- [ ] ID 23 - Realiza requisições assíncronas para uma API fake para exibir dados na página.
+- [ ] ID 24 - Realiza requisições assíncronas para APIs públicas reais (OpenWeather, ViaCEP etc.), exibindo os dados e tratando erros.
 
-## 🚀 Instalação e execução
+### Evidências para confirmação do autor
 
-Requer Node.js **20.19+, 22.13+ ou 24+**, npm e navegador atual. Bootstrap, jQuery
-e jQuery Mask Plugin são carregados localmente; Google Fonts e ViaCEP usam internet.
+Antes de marcar os IDs 02–10, conferir no código: conceito, motivo de uso,
+sintaxe e efeito de retirar cada recurso. A explicação do autor continua necessária.
 
-```bash
-npm ci
-npm run sass:build
+### Organização e origem das telas
+
+```text
+app/
+  index.html
+  entregas.css
+  pages/cadastro/
+    index.html
+    cadastro.css
+  pages/detalhes/
+    index.html
+    detalhes.css
+assets/
+  css/
+  scss/
+  images/
+  vendor/
+docs/
 ```
 
-Inicie a API e o frontend em terminais separados:
+Os três HTML foram recuperados seletivamente de `c5048275ab`, conferidos e
+adaptados para conteúdo estático. O Sass enxuto, as imagens e o Bootstrap local
+foram reaproveitados da `main` em `525a647`. O histórico permanece acessível.
+
+Referências: [modelo de README](https://github.com/utfpr-gp/roubank-css) e
+[organização por páginas](https://github.com/utfpr-gp/joao-lenao--gerador-relatorio-medico).
+
+## 🚀 Manual de execução
+
+Requer Node.js **20.19+, 22.13+ ou 24+**, npm e a extensão **Live Server** do VS Code.
+
+Após publicar a `main` atualizada, clone o projeto:
 
 ```bash
-npm run api
+git clone https://github.com/lucasbrugge/entrega-facil.git
+cd entrega-facil
+npm install
 ```
 
-```bash
-npm start
-```
+Na cópia de trabalho atual, basta executar `npm install` na raiz. No VS Code,
+abra **app/index.html**, clique com o botão direito e escolha **Open with Live
+Server**. A página inicial é **app/index.html**; mantenha a raiz inteira do
+projeto aberta no editor para os caminhos de `assets/` funcionarem.
 
-Abra **http://localhost:8080**. A API usa **http://localhost:3000** e persiste
-alterações em `db.json`. Os dados iniciais são demonstrativos.
+A listagem contém o link **Ver detalhes** da entrega #001. Nos detalhes, use
+**Nova Entrega** para abrir o cadastro e **Cancelar** para retornar à listagem.
+No celular, esses links também estão disponíveis pelo menu recolhível.
 
-### API fake e modo demonstração
+Os estilos compilados e o Bootstrap já acompanham a versão. Não é necessário
+executar Sass ou uma API para abrir as páginas.
 
-O JSON Server **0.17.4**, com versão fixada, é compatível com as rotas GET,
-POST, PATCH e DELETE e com o filtro `?entregaId=...` utilizado pela aplicação.
-Os IDs iniciais são strings e os novos registros recebem UUIDs conhecidos antes
-do envio. Cada entrega possui dois endereços ligados por `entregaId`. O campo
-`numeroEntrega` é usado na apresentação, separado do ID interno. O contador
-persistente evita reutilizar números depois de excluir registros; JSON Server
-não garante incremento atômico entre clientes simultâneos.
-Consulte a [documentação da versão utilizada](https://github.com/typicode/json-server/tree/v0.17.4).
-
-Se o salvamento de um endereço falhar, o serviço tenta remover os registros do
-cadastro incompleto. A exclusão pelo operador exige confirmação em modal Bootstrap
-e remove a entrega e seus endereços. Em falha parcial ou resposta incerta, o
-serviço consulta o estado da API antes de repetir ou restaurar registros. Snapshots
-no navegador permitem retomar a recuperação depois de recarregar. Preserve o
-armazenamento local até concluir uma recuperação pendente.
-
-Sem API, a aplicação usa o modo demonstração e salva somente em `localStorage`,
-sem sincronizar com `db.json`. O seeder inicializa apenas um armazenamento ainda
-inexistente; dados criados ou excluídos persistem ao recarregar. O modo escolhido
-permanece nos links entre páginas. Use `/?modo=demo` para demonstração ou
-`/?modo=api` para acessar o JSON Server. Falhas de gravação na API são informadas
-sem salvar silenciosamente no modo local.
-Em GitHub Pages, o frontend funciona com os arquivos versionados; JSON Server
-precisa ser executado separadamente.
-
-### Máscaras e validação
-
-O cadastro carrega uma única cópia local de **jQuery 4.0.0** e **jQuery Mask Plugin
-1.14.16**, nessa ordem, antes do módulo `assets/js/utils/masks.js`, inicializado
-por `app.js`. O JavaScript usa módulos nativos organizados em `services/`, `data/`,
-`features/` e `utils/`.
-Consulte a [documentação do plugin](https://igorescobar.github.io/jQuery-Mask-Plugin/docs.html).
-As versões minificadas e licenças estão em `assets/vendor/`, permitindo execução
-sem publicar `node_modules`. Para sincronizá-las depois de uma atualização deliberada:
-
-```bash
-npm run vendor:sync
-```
-
-As máscaras formatam CPF, os dois CEPs e telefone fixo/celular com alternância
-entre 10 e 11 dígitos. Máscaras não substituem validação: `utils/validation.js` verifica
-CPF com dígitos verificadores e bloqueio de repetidos, regex de telefone com DDD e
-CEP, obrigatórios, UF, data real e os quatro status permitidos.
-
-O formulário usa `novalidate`, `setCustomValidity()` e `checkValidity()` com
-feedback textual Bootstrap, `aria-describedby`, `aria-invalid` e atualização
-ao corrigir o campo. CPF, telefone e CEP são enviados e armazenados com a mesma
-formatação das máscaras. ViaCEP recebe somente os oito dígitos do CEP e preserva
-o número digitado manualmente.
-
-### Imagens responsivas — IDs 09 e 10
-
-O pequeno ícone de entregas da navbar é renderizado nas três páginas. O SVG
-original acompanha os WebP otimizados de **32, 64 e 96px**, com menos de 1,2 KB cada.
-`srcset` e `sizes="32px"` permitem ao navegador escolher a imagem para a densidade
-da tela. O SCSS define apenas `width: 2rem`; as classes Bootstrap `img-fluid` e
-`object-fit-contain` cuidam da proporção, do limite de largura e do encaixe.
-O `alt` vazio evita repetir o nome da marca ao leitor de tela.
-
-```bash
-npm run images:build
-```
-
-### Sass: desenvolvimento e compilação
+### Desenvolvimento
 
 ```bash
 npm run sass:build
 npm run sass:watch
-```
-
-Edite `assets/scss/`, nunca os arquivos compilados e versionados em `assets/css/`.
-Os dois comandos compilam os quatro pontos de entrada:
-
-| SCSS → CSS                       | Carregamento          | Personalização e motivo                                                                                                                                                                                                                                                       |
-| -------------------------------- | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `main.scss` → `main.css`         | Todas as páginas      | Fontes Inter/Space Grotesk, cores de fundo/texto, títulos e marca com `clamp()`, espaçamento entre letras, largura de 2rem do ícone WebP e sombra sólida dos cards. São valores específicos da identidade Neo-Industrial Mono, sem utilitários Bootstrap equivalentes exatos. |
-| `entregas.scss` → `entregas.css` | `index.html`          | Oculta a lista vazia para neutralizar os gutters; eleva levemente o card no hover, somente com ponteiro compatível e sem preferência por movimento reduzido. Bootstrap não oferece utilitários condicionais para `:empty` ou essa transformação.                              |
-| `cadastro.scss` → `cadastro.css` | `pages/cadastro.html` | Marcadores quadrados fluidos de 1,7 a 2rem centralizados com `inline-grid`. Bootstrap não fornece essas dimensões; o pequeno layout próprio demonstra CSS Grid responsivo sem substituir o grid de colunas do framework.                                                      |
-| `detalhes.scss` → `detalhes.css` | `pages/detalhes.html` | `white-space: pre-line` preserva as quebras digitadas na descrição do produto. Os utilitários Bootstrap de texto não oferecem esse comportamento.                                                                                                                             |
-
-Cada HTML carrega **Bootstrap → main.css → CSS da página**. O antigo CSS
-monolítico e os parciais de base/layout/componentes foram removidos.
-`_variables.scss` centraliza somente cinco valores utilizados. O mixin
-`square-marker` em `_mixins.scss` recebe a dimensão do marcador e reúne seu
-micro-layout. `@use` carrega esses recursos sem emitir CSS global novamente:
-`main.scss` usa variáveis; `cadastro.scss` usa variáveis e o mixin; as demais
-páginas não precisam importar recursos Sass. O `@import url(...)` das fontes é
-CSS nativo, não importação legada de módulos Sass.
-
-Botões, inputs, selects, validação visual, cards, badges e modais usam os estilos
-nativos do Bootstrap. Classes como `row`, `col-*`, `d-flex`, `flex-wrap`, `gap-*`,
-`h-100`, `p-3`, `border-dark` e `text-break` substituem regras próprias de layout.
-Os status usam `badge` e as cores semânticas `*-subtle`/`*-emphasis` do framework.
-Não há redefinições próprias de `.btn`, `.form-control`, `.form-select` ou `.modal`.
-
-A base é mobile-first: navbar recolhida, campos/cards empilhados e ações que
-quebram linha. Classes responsivas do Bootstrap fazem as adaptações a partir de
-`sm`, `md`, `lg` e `xl`; o CSS próprio não precisa de media queries por largura.
-As fontes usam `clamp()`, e as imagens mantêm WebP, `srcset` e `object-fit`.
-
-### Qualidade do código
-
-```bash
 npm run lint
 npm run format:check
-npm run format
 ```
 
-ESLint considera o JavaScript do navegador, Bootstrap, jQuery e os scripts Node.js.
-Prettier formata HTML, SCSS e JavaScript. O CSS compilado, as bibliotecas de
-terceiros, o lockfile e os documentos aprovados em `docs/` são preservados pelo
-formatador.
+Edite `assets/scss/`. O Sass gera o estilo compartilhado em `assets/css/main.css`
+e os estilos específicos em `app/entregas.css`, `app/pages/cadastro/cadastro.css`
+e `app/pages/detalhes/detalhes.css`. Preserve os CSS compilados junto do código-fonte.
+`npm run format` formata os arquivos de trabalho, preservando `docs/`, bibliotecas,
+CSS compilados e lockfile.
+
+## 📱 Telas da aplicação
+
+- [Listagem de entregas](app/index.html)
+- [Cadastro](app/pages/cadastro/index.html)
+- [Detalhes da entrega](app/pages/detalhes/index.html)
+
+Abra as páginas pelo Live Server conforme o manual acima.
